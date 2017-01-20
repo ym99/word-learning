@@ -3,7 +3,7 @@
    "version": "1.1.0",
    "description": "word-learning.",
    "scripts": {
-     "lite": "lite-server --port 10001",
+     "lite": "lite-server --port 3000",
      "start": "npm run lite"
    },
    "author": "ym99",
