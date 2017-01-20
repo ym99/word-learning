@@ -27,80 +27,8 @@
             text-align: center;
         }
 
-        .test-mode::before {
-            content: "Test mode";
-            font-weight: bold;
-        }
-
-        .learning-mode::before {
-            content: "Learning mode";
-            font-weight: bold;
-        }
-
-        .a-class::before {
-            content: "A ";
+        #grade {
             font-size: large;
-            color: green;
-        }
-
-        .a-m-class::before {
-            content: "A- ";
-            font-size: large;
-            color: green;
-        }
-
-        .b-p-class::before {
-            content: "B+ ";
-            font-size: large;
-            color: yellowgreen;
-        }
-
-        .b-class::before {
-            content: "B ";
-            font-size: large;
-            color: yellowgreen;
-        }
-
-        .b-m-class::before {
-            content: "B- ";
-            font-size: large;
-            color: yellowgreen;
-        }
-
-        .c-p-class::before {
-            content: "C+ ";
-            font-size: large;
-            color: orange;
-        }
-
-        .c-class::before {
-            content: "C ";
-            font-size: large;
-            color: orange;
-        }
-
-        .c-m-class::before {
-            content: "C- ";
-            font-size: large;
-            color: orange;
-        }
-
-        .d-p-class::before {
-            content: "D+ ";
-            font-size: large;
-            color: orangered;
-        }
-
-        .d-class::before {
-            content: "D ";
-            font-size: large;
-            color: orangered;
-        }
-
-        .f-class::before {
-            content: "F ";
-            font-size: large;
-            color: red;
         }
     </style>
 </head>
@@ -118,6 +46,14 @@
                 <a class="navbar-brand" href="#">Word Learning</a>
             </div>
 
+            <div class="navbar-text navbar-right">
+                <span id="grade"></span>
+                <span id="percent"></span>
+                |
+                <b><span id="new-words"></span></b> new and
+                <b><span id="words"></span></b> known words
+            </div>
+
             <div class="collapse navbar-collapse" id="nav-bar">
                 <ul class="nav navbar-nav">
                     <li id="mode-new" class="active"><a href="#" onclick="runNew(); return false;">New Words Only</a></li>
@@ -126,20 +62,6 @@
                 </ul>
             </div>
 
-        </div>
-    </nav>
-
-    <nav class="navbar navbar-inverse navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="navbar-text">
-                <span id="grade"></span>
-                <span id="percent">?</span>
-                <span>correct</span>
-            </div>
-            <div class="navbar-text navbar-right">
-                <b><span id="new-words"></span></b> new and
-                <b><span id="words"></span></b> known words
-            </div>
         </div>
     </nav>
 
@@ -271,7 +193,7 @@
             $("#percent")
                 .data("correct", 0)
                 .data("total", 0)
-                .text("?")
+                .text("")
             ;
 
             $("#grade").removeClass();
@@ -287,30 +209,22 @@
                 .data("total", total)
             ;
 
-            const value = correct / total;
-            $percent.text((value * 100).toFixed(0) + "%");
+            const percent = correct / total;
+            $percent.text((percent * 100).toFixed(0) + "% correct");
 
-            showGrade(value);
-        }
-
-        function showGrade(percent) {
-            const gradeClass =
-                percent >= 0.94 ? "a-class" :
-                percent >= 0.90 ? "a-m-class" :
-                percent >= 0.87 ? "b-p-class" :
-                percent >= 0.83 ? "b-class" :
-                percent >= 0.80 ? "b-m-class" :
-                percent >= 0.77 ? "c-p-class" :
-                percent >= 0.73 ? "c-class" :
-                percent >= 0.70 ? "c-m-class" :
-                percent >= 0.67 ? "d-p-class" :
-                percent >= 0.60 ? "d-class" :
-                                  "f-class"
-            ;
-
-            $("#grade")
-                .removeClass()
-                .addClass(gradeClass);
+            $("#grade").html(
+                percent >= 0.94 ? "<span class='label label-success'>A</span>" :
+                percent >= 0.90 ? "<span class='label label-success'>A-</span>" :
+                percent >= 0.87 ? "<span class='label label-info'>B+</span>" :
+                percent >= 0.83 ? "<span class='label label-info'>B</span>" :
+                percent >= 0.80 ? "<span class='label label-info'>B-</span>" :
+                percent >= 0.77 ? "<span class='label label-warning'>C+</span>" :
+                percent >= 0.73 ? "<span class='label label-warning'>C</span>" :
+                percent >= 0.70 ? "<span class='label label-warning'>C-</span>" :
+                percent >= 0.67 ? "<span class='label label-danger'>D+</span>" :
+                percent >= 0.60 ? "<span class='label label-danger'>D</span>" :
+                                  "<span class='label label-danger'>F</span>"
+            );
         }
 
         function run(counts) {
