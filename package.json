@@ -1,0 +1,14 @@
+{
+   "name": "word-learning",
+   "version": "1.1.0",
+   "description": "word-learning.",
+   "scripts": {
+     "lite": "lite-server --port 10001",
+     "start": "npm run lite"
+   },
+   "author": "ym99",
+   "license": "GNU-3",
+   "devDependencies": {
+     "lite-server": "^1.3.1"
+   }
+}
