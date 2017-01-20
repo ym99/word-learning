@@ -152,6 +152,8 @@
                 <th>Correct Answer</th>
             </tr>
         </thread>
+        <tbody>
+        </tbody>
     </table>
 
     <script src="words.js"></script>
@@ -202,67 +204,64 @@
             const index = Math.floor(Math.random() * questions.length);
             var question = questions.splice(index, 1)[0];
 
-            const table = document.getElementById("table");
+            $tr = $("<tr></tr>").appendTo("#table tbody");
 
-            const tr = document.createElement("tr");
-            table.appendChild(tr);
+            $("<td></td>").appendTo($tr).text(($("#percent").data("total") || 0) + 1);
 
-            const countTd = document.createElement("td");
-            tr.appendChild(countTd);
-            countTd.appendChild(document.createTextNode(($("#percent").data("total") || 0) + 1));
+            $("<td></td>").appendTo($tr).text(question.question);
+            
+            $("<td></td>")
+                .appendTo($tr)
+                .append("<input type='text' id='input'></input>")
+                .find("input")
+                .data("answer", question.answer)
+                .focus()
+                .bind("keypress", function (event) { return keyPress(event); })
+            ;
 
-            const questionTd = document.createElement("td");
-            tr.appendChild(questionTd);
-            questionTd.appendChild(document.createTextNode(question.question));
-
-            const answerTd = document.createElement("td");
-            tr.appendChild(answerTd);
-            const input = document.createElement("input");
-            answerTd.appendChild(input);
-            input.setAttribute("type", "text");
-            input.setAttribute("id", "input");
-            input.onkeypress = function (event) { return keyPress(event); };
-            input.setAttribute("data-answer", question.answer);
-            input.focus();
-
-            const checkTd = document.createElement("td");
-            tr.appendChild(checkTd);
-            const button = document.createElement("button");
-            checkTd.appendChild(button);
-            button.setAttribute("type", "button");
-            button.setAttribute("id", "button");
-            button.onclick = function () { checkInput(questions); };
-            button.appendChild(document.createTextNode("check"));
+            $("<td></td>")
+                .appendTo($tr)
+                .append("<button type='button' id='button'></button>")
+                .find("button")
+                .text("check")
+                .bind("click", function (event) { checkInput(event, questions); })
+            ;
         }
 
         function keyPress(event) {
-            if ((event || window.event).keyCode === 13) {
-                document.getElementById('button').click();
+            const e = event || window.event;
+            if (e.keyCode === 13) {
+                $(e.target).closest("tr").find("button").click();
                 return false;
             }
             return true;
         }
 
-        function isEqual(x, y) {
-            return x.trim().toUpperCase() === y.trim().toUpperCase();
-        }
+        function checkInput(event, questions) {
+            function isEqual(x, y) {
+                return x.trim().toUpperCase() === y.trim().toUpperCase();
+            }
 
-        function checkInput(questions) {
-            const input = document.getElementById("input");
-            const answer = input.value;
-            const correctAnswer = input.getAttribute("data-answer");
+            const $button = $((event || window.event).target);
+            const $input = $button.closest("tr").find("input");
 
-            const button = document.getElementById("button");
-
-            input.parentElement.appendChild(document.createTextNode(answer));
-            button.parentElement.appendChild(document.createTextNode(correctAnswer));
-
+            const answer = $input.val();
+            const correctAnswer = $input.data("answer");
             const isCorrect = isEqual(answer, correctAnswer);
-            input.parentElement.parentElement.className += isCorrect ? "correct" : "incorrect";
-            registerAnswer(isCorrect);
 
-            input.parentElement.removeChild(input);
-            button.parentElement.removeChild(button);
+            $input
+                .closest("tr")
+                .toggleClass("correct", isCorrect)
+                .toggleClass("incorrect", !isCorrect)
+            ;
+
+            $input.closest("td").text(answer);
+            $button.closest("td").text(correctAnswer);
+
+            $input.remove();
+            $button.remove();
+
+            registerAnswer(isCorrect);
 
             setTimeout(function () { showNextQuestion(questions); }, 0);
         }
@@ -314,10 +313,7 @@
         }
 
         function run(counts) {
-            for (const table = document.getElementById("table") ; table.rows.length > 1;)
-            {
-                table.deleteRow(-1);
-            }
+            $("#table tbody").empty();
             resetAnswer();
 
             showNextQuestion(
