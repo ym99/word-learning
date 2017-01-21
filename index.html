@@ -186,6 +186,7 @@
             const correctAnswer = $input.data("answer");
             const isCorrect = isEqual(answer, correctAnswer);
 
+            // on the table
             $input
                 .closest("tr")
                 .toggleClass("success", isCorrect)
@@ -198,12 +199,7 @@
             $input.remove();
             $button.remove();
 
-            registerAnswer(isCorrect);
-
-            setTimeout(function () { showNextQuestion(questions); }, 0);
-        }
-
-        function registerAnswer(isCorrect) {
+            // on the navbar
             const $percent = $("#percent");
             const correct = ($percent.data("correct") || 0) + (isCorrect ? 1 : 0);
             const total = ($percent.data("total") || 0) + 1;
@@ -229,6 +225,8 @@
                 percent >= 0.60 ? "<span class='label label-danger'>D</span>" :
                                   "<span class='label label-danger'>F</span>"
             );
+
+            setTimeout(function () { showNextQuestion(questions); }, 0);
         }
 
         function showFinalGrade(){
