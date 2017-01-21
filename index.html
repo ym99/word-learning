@@ -36,9 +36,9 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%); 
-            font-size:1000%;
             z-index: 1000;
-            display: none;            
+            display: none;
+            text-align:center;         
         }
     </style>
 </head>
@@ -67,9 +67,9 @@
 
             <div class="collapse navbar-collapse" id="nav-bar">
                 <ul class="nav navbar-nav">
-                    <li id="mode-new" class="active"><a href="#" onclick="runNew(); return false;">New Words Only</a></li>
-                    <li id="mode-mix" ><a href="#" onclick="runMix(); return false;">Mix of New and Old Words</a></li>
-                    <li id="mode-test" ><a href="#" onclick="runTest(); return false;">Test</a></li>
+                    <li id="mode-new"><a href="#" onclick="runNew(); return false;">New Words Only</a></li>
+                    <li id="mode-mix"><a href="#" onclick="runMix(); return false;">Mix of New and Old Words</a></li>
+                    <li id="mode-test" class="active"><a href="#" onclick="runTest(); return false;">Test</a></li>
                 </ul>
             </div>
 
@@ -133,6 +133,7 @@
 
         function showNextQuestion(questions) {
             if (questions.length === 0) {
+                showFinalGrade();
                 return;
             }
 
@@ -202,16 +203,6 @@
             setTimeout(function () { showNextQuestion(questions); }, 0);
         }
 
-        function resetAnswer(isCorrect) {
-            $("#percent")
-                .data("correct", 0)
-                .data("total", 0)
-                .text("")
-            ;
-
-            $("#grade").removeClass();
-        }
-
         function registerAnswer(isCorrect) {
             const $percent = $("#percent");
             const correct = ($percent.data("correct") || 0) + (isCorrect ? 1 : 0);
@@ -240,9 +231,41 @@
             );
         }
 
+        function showFinalGrade(){
+            const $finalGrade  = $("#final-grade");
+            $("#grade")
+                .clone()
+                .css("font-size", "1000%")
+                .appendTo($finalGrade)
+            ;
+            
+            $("<br />")
+                .appendTo($finalGrade)
+            ;
+            $("<br />")
+                .appendTo($finalGrade)
+            ;
+
+            $("#percent")
+                .clone()
+                .css("font-size", "200%")
+                .appendTo($finalGrade)
+            ;
+
+            $finalGrade.show();
+        }
+
         function run(ratio) {
             $("#table tbody").empty();
-            resetAnswer();
+            $("#final-grade").empty().hide();
+
+            $("#percent")
+                .data("correct", 0)
+                .data("total", 0)
+                .text("")
+            ;
+
+            $("#grade").empty().removeClass();
 
             showNextQuestion(
                 createQuestions({
@@ -286,11 +309,8 @@
             });
         }
 
-        if (newWords.length > 0){
-            runNew();
-        } else {
-            runTest();
-        }
+        runTest();
+
     </script>
 </body>
 </html>
