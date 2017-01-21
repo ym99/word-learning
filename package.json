@@ -4,9 +4,9 @@
   "description": "word-learning.",
   "scripts": {
     "lite": "lite-server --baseDir ./docs --port 3000",
-    "start": "npm run lite",
     "build": "babel app/*.jsx -d temp",
-    "pack": "webpack --display-error-details"
+    "bundle": "webpack --display-error-details",
+    "start": "npm run build && npm run bundle && npm run lite"
   },
   "author": "ym99",
   "license": "GNU-3",
