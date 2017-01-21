@@ -5,7 +5,7 @@
   "scripts": {
     "lite": "lite-server --baseDir ./docs --port 3000",
     "start": "npm run lite",
-    "build": "babel docs/*.jsx -d ./",
+    "build": "babel app/*.jsx -d temp",
     "pack": "webpack --display-error-details"
   },
   "author": "ym99",

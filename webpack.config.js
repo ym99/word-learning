@@ -26,6 +26,6 @@ module.exports = {
     // },
     resolve: {
         extensions: ['', '.js'],
-        root: path.resolve(__dirname, "docs"),
+        root: path.resolve(__dirname, "temp", "app"),
     },
 };
