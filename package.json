@@ -1,6 +1,6 @@
 {
    "name": "word-learning",
-   "version": "1.1.0",
+   "version": "2.1.0",
    "description": "word-learning.",
    "scripts": {
      "lite": "lite-server --port 3000",
