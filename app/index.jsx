@@ -1,4 +1,7 @@
 import { newWords, words } from 'words';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { App } from 'App';
 
 function createQuestions(assignment) {
 
@@ -236,3 +239,11 @@ if (newWords.length > 0) {
 } else {
     runTest();
 }
+
+function main() {
+    ReactDOM.render(
+        <App />,
+        document.getElementById('test')
+    );    
+}
+main();
