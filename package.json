@@ -1,14 +1,33 @@
 {
-   "name": "word-learning",
-   "version": "2.1.0",
-   "description": "word-learning.",
-   "scripts": {
-     "lite": "lite-server --baseDir ./docs --port 3000",
-     "start": "npm run lite"
-   },
-   "author": "ym99",
-   "license": "GNU-3",
-   "devDependencies": {
-     "lite-server": "^1.3.1"
-   }
+  "name": "word-learning",
+  "version": "2.1.0",
+  "description": "word-learning.",
+  "scripts": {
+    "lite": "lite-server --baseDir ./docs --port 3000",
+    "start": "npm run lite",
+    "build": "babel docs/*.jsx -d ./",
+    "pack": "webpack --display-error-details"
+  },
+  "author": "ym99",
+  "license": "GNU-3",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.22.2",
+    "babel-preset-es2015": "^6.22.0",
+    "lite-server": "^1.3.1",
+    "webpack": "^1.14.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-es2015-arrow-functions"
+    ]
+  },
+  "dependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-loader": "^6.2.10",
+    "react": "^15.4.2"
+  }
 }

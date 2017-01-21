@@ -49,7 +49,7 @@ function showNextQuestion(questions) {
     var index = Math.floor(Math.random() * questions.length);
     var question = questions.splice(index, 1)[0];
 
-    $tr = $("<tr></tr>").appendTo("#table tbody");
+    var $tr = $("<tr></tr>").appendTo("#table tbody");
 
     $("<th scope='row'></th>").appendTo($tr).text(($("#percent").data("total") || 0) + 1);
 
