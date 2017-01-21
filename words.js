@@ -1,9 +1,4 @@
 ﻿const newWords = [
-    { spanish: "echar", english: "to throw" },
-    { spanish: "salir", english: "to leave" },
-    { spanish: "secar", english: "to take out" },
-    { spanish: "venir", english: "to come" },
-    { spanish: "saber", english: "to know" },
 ];
 
 const words = [
@@ -20,12 +15,14 @@ const words = [
 
     { spanish: "trabajar", english: "to work" },
     { spanish: "escuechar", english: "to listen" },
+    { spanish: "echar", english: "to throw" },
+    { spanish: "secar", english: "to take out" },
 
     // -- ER ----------------------------
     { spanish: "ser", english: "to be", englishComment: " (somebody)" },
     { spanish: "hacer", english: "to do" },
     { spanish: "haber", english: "to have" },
-//          { spanish: "tener", english: "to have" },
+    { spanish: "saber", english: "to know" },
     { spanish: "querer", english: "to want" },
 
     { spanish: "poder", english: "to be able" },
@@ -35,4 +32,10 @@ const words = [
     { spanish: "comer", english: "to eat" },
 
     { spanish: "beber", english: "to drink" },
+//          { spanish: "tener", english: "to have" },
+
+    // -- IR ----------------------------
+    { spanish: "salir", english: "to leave" },
+    { spanish: "venir", english: "to come" },
+    
 ];
