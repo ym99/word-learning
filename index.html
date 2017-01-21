@@ -30,6 +30,16 @@
         #grade {
             font-size: large;
         }
+
+        #final-grade {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%); 
+            font-size:1000%;
+            z-index: 1000;
+            display: none;            
+        }
     </style>
 </head>
 <body>
@@ -79,6 +89,8 @@
         </tbody>
     </table>
 
+    <div id="final-grade"></div>
+
     <script src="words.js"></script>
     <script>
         function createQuestions(assignment) {
@@ -103,14 +115,14 @@
             let questions = [];
 
             for (let i = 0; i < assignment.newWords.length; i++) {
-                for (let c = 0; c < assignment.newWordsCount; c++) {
+                for (let c = 0; c < assignment.newWordsRatio; c++) {
                     questions.push(createSpanishQuestion(assignment.newWords[i]));
                     questions.push(createEnglishQuestion(assignment.newWords[i]));
                 }
             }
 
             for (let i = 0; i < assignment.words.length; i++) {
-                for (let c = 0; c < assignment.wordsCount; c++) {
+                for (let c = 0; c < assignment.wordsRatio; c++) {
                     questions.push(createSpanishQuestion(assignment.words[i]));
                     questions.push(createEnglishQuestion(assignment.words[i]));
                 }
@@ -228,15 +240,15 @@
             );
         }
 
-        function run(counts) {
+        function run(ratio) {
             $("#table tbody").empty();
             resetAnswer();
 
             showNextQuestion(
                 createQuestions({
-                    newWordsCount: counts.newWordsCount,
+                    newWordsRatio: ratio.newWordsRatio,
                     newWords: newWords,
-                    wordsCount: counts.wordsCount,
+                    wordsRatio: ratio.wordsRatio,
                     words: words
                 }));
         }
@@ -247,8 +259,8 @@
             $("#mode-test").removeClass("active");
 
             run({
-                newWordsCount: 10,
-                wordsCount: 0
+                newWordsRatio: 10,
+                wordsRatio: 0
             });
         }
 
@@ -258,8 +270,8 @@
             $("#mode-test").removeClass("active");
 
             run({
-                newWordsCount: 5,
-                wordsCount: 1
+                newWordsRatio: 5,
+                wordsRatio: 1
             });
         }
 
@@ -269,12 +281,16 @@
             $("#mode-test").addClass("active");
 
             run({
-                newWordsCount: 1,
-                wordsCount: 1
+                newWordsRatio: 1,
+                wordsRatio: 1
             });
         }
 
-        runNew();
+        if (newWords.length > 0){
+            runNew();
+        } else {
+            runTest();
+        }
     </script>
 </body>
 </html>
