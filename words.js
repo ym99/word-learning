@@ -2,7 +2,7 @@
     { spanish: "ir", english: "to go" },
     { spanish: "tener", english: "to have", englishComment: " (to possess)" },
     { spanish: "ver", english: "to see" },
-    { spanish: "conocer", english:"to know" },
+    { spanish: "conocer", english:"to know", englishComment: " (familiar with a person or place)" },
     { spanish: "entender", english:"to understand" },
     { spanish: "ver", english: "to see" },
 ];
@@ -28,7 +28,7 @@ const words = [
     { spanish: "ser", english: "to be", englishComment: " (somebody)" },
     { spanish: "hacer", english: "to do" },
     { spanish: "haber", english: "to have", englishComment: " (auxiliary, supportive verb)" },
-    { spanish: "saber", english: "to know" },
+    { spanish: "saber", english: "to know", englishComment: " (fact or skill)" },
     { spanish: "querer", english: "to want" },
 
     { spanish: "poder", english: "to be able" },
