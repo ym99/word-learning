@@ -21678,7 +21678,7 @@
 	            return {
 	                total: total,
 	                correct: correct,
-	                percentInfo: (percent * 100).toFixed(2) + "%",
+	                percentInfo: (percent * 100).toFixed(0) + "%",
 	                grade: grade,
 	                gradeClass: grade.startsWith("A") ? "label label-success" : grade.startsWith("B") ? "label label-info" : grade.startsWith("C") ? "label label-warning" : "label label-danger"
 	            };
