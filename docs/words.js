@@ -1,10 +1,4 @@
 ﻿const newWords = [
-    { spanish: "ir", english: "to go" },
-    { spanish: "tener", english: "to have", englishComment: " (to possess)" },
-    { spanish: "ver", english: "to see" },
-    { spanish: "conocer", english:"to know", englishComment: " (person or place)" },
-    { spanish: "entender", english:"to understand" },
-    { spanish: "ver", english: "to see" },
 ];
 
 const words = [
@@ -38,8 +32,15 @@ const words = [
     { spanish: "comer", english: "to eat" },
 
     { spanish: "beber", english: "to drink" },
+    { spanish: "tener", english: "to have", englishComment: " (to possess)" },
+    { spanish: "ver", english: "to see" },
+    { spanish: "conocer", english:"to know", englishComment: " (person or place)" },
+    { spanish: "entender", english:"to understand" },
+
+    { spanish: "ver", english: "to see" },
 
     // -- IR ----------------------------
+    { spanish: "ir", english: "to go" },
     { spanish: "salir", english: "to leave" },
     { spanish: "venir", english: "to come" },
    
