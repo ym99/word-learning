@@ -21773,6 +21773,10 @@
 	        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
 	        _this.state = {
+	            question: {
+	                question: "q?",
+	                correctAnswer: "ca?"
+	            },
 	            history: [{
 	                question: "q1",
 	                answer: "a1",
@@ -21793,7 +21797,10 @@
 	    _createClass(App, [{
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement(_History.History, { history: this.state.history });
+	            return _react2.default.createElement(_History.History, {
+	                question: this.state.question,
+	                history: this.state.history
+	            });
 	        }
 	    }]);
 
@@ -21829,6 +21836,8 @@
 
 	var _Record = __webpack_require__(181);
 
+	var _Question = __webpack_require__(182);
+
 	function _interopRequireDefault(obj) {
 	    return obj && obj.__esModule ? obj : { default: obj };
 	}
@@ -21863,9 +21872,11 @@
 	    _createClass(History, [{
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement('table', { 'class': 'table table-striped table-bordered' }, _react2.default.createElement('thead', null, _react2.default.createElement('tr', null, _react2.default.createElement('th', { 'class': 'col-md-3' }, 'Number'), _react2.default.createElement('th', { 'class': 'col-md-3' }, 'Question'), _react2.default.createElement('th', { 'class': 'col-md-3' }, 'Answer'), _react2.default.createElement('th', { 'class': 'col-md-3' }, 'Correct Answer'))), _react2.default.createElement('tbody', null, this.props.history.map(function (obj, index) {
-	                return _react2.default.createElement(_Record.Record, { index: index, record: obj });
-	            })));
+	            return _react2.default.createElement('table', {
+	                className: 'table table-striped table-bordered',
+	                style: { textAlign: 'center' } }, _react2.default.createElement('thead', null, _react2.default.createElement('tr', null, _react2.default.createElement('th', { className: 'col-md-3', style: { textAlign: 'center' } }, 'Number'), _react2.default.createElement('th', { className: 'col-md-3', style: { textAlign: 'center' } }, 'Question'), _react2.default.createElement('th', { className: 'col-md-3', style: { textAlign: 'center' } }, 'Answer'), _react2.default.createElement('th', { className: 'col-md-3', style: { textAlign: 'center' } }, 'Correct Answer'))), _react2.default.createElement('tbody', null, this.props.history.map(function (obj, index) {
+	                return _react2.default.createElement(_Record.Record, { index: index + 1, record: obj });
+	            }), _react2.default.createElement(_Question.Question, { question: this.props.question })));
 	        }
 	    }]);
 
@@ -21933,11 +21944,115 @@
 	    _createClass(Record, [{
 	        key: 'render',
 	        value: function render() {
-	            return _react2.default.createElement('tr', null, _react2.default.createElement('td', null, 'blah'), _react2.default.createElement('td', null, 'blah'), _react2.default.createElement('td', null, 'blah'), _react2.default.createElement('td', null, 'blah'));
+	            return _react2.default.createElement('tr', null, _react2.default.createElement('td', null, this.props.index), _react2.default.createElement('td', null, this.props.record.question), _react2.default.createElement('td', null, this.props.record.answer), _react2.default.createElement('td', null, this.props.record.correctAnswer));
 	        }
 	    }]);
 
 	    return Record;
+	}(_react.Component);
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.Question = undefined;
+
+	var _createClass = function () {
+	    function defineProperties(target, props) {
+	        for (var i = 0; i < props.length; i++) {
+	            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	        }
+	    }return function (Constructor, protoProps, staticProps) {
+	        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	    };
+	}();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) {
+	    return obj && obj.__esModule ? obj : { default: obj };
+	}
+
+	function _classCallCheck(instance, Constructor) {
+	    if (!(instance instanceof Constructor)) {
+	        throw new TypeError("Cannot call a class as a function");
+	    }
+	}
+
+	function _possibleConstructorReturn(self, call) {
+	    if (!self) {
+	        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	    }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+
+	function _inherits(subClass, superClass) {
+	    if (typeof superClass !== "function" && superClass !== null) {
+	        throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	    }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+
+	var Question = exports.Question = function (_Component) {
+	    _inherits(Question, _Component);
+
+	    function Question(props) {
+	        _classCallCheck(this, Question);
+
+	        var _this = _possibleConstructorReturn(this, (Question.__proto__ || Object.getPrototypeOf(Question)).call(this, props));
+
+	        _this.state = {
+	            isError: false
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Question, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.inputObj.focus();
+	        }
+	    }, {
+	        key: 'onKeyPress',
+	        value: function onKeyPress(event) {
+	            var e = event || window.event;
+
+	            if (e.keyCode === 13) {
+	                this.props.processAnswer();
+	                return false;
+	            }
+
+	            return true;
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            var style = this.state.isError ? {
+	                backgroundColor: 'rgb(242, 222, 222)',
+	                outlineCcolor: 'darkred'
+	            } : {};
+
+	            return _react2.default.createElement('tr', null, _react2.default.createElement('td', null, this.props.index), _react2.default.createElement('td', null, this.props.question.question), _react2.default.createElement('td', null, _react2.default.createElement('input', {
+	                type: 'text',
+	                ref: function ref(x) {
+	                    _this2.inputObj = x;
+	                },
+	                onKeyPress: this.onKeyPress,
+	                style: style
+	            })), _react2.default.createElement('td', null, _react2.default.createElement('button', { type: 'button' }, 'Check')));
+	        }
+	    }]);
+
+	    return Question;
 	}(_react.Component);
 
 /***/ }

@@ -6,6 +6,10 @@ export class App extends Component  {
         super(props);
 
         this.state = {
+            question: {
+                question: "q?",
+                correctAnswer: "ca?"
+            },
             history: [ 
                 { 
                     question: "q1",
@@ -26,7 +30,10 @@ export class App extends Component  {
 
     render(){
         return (
-            <History history={this.state.history}/>
+            <History 
+                question={this.state.question}
+                history={this.state.history}
+            />
         );
     }
 }

@@ -4,10 +4,10 @@ export class Record extends Component  {
     render(){
         return (
             <tr>
-                <td>blah</td>
-                <td>blah</td>
-                <td>blah</td>
-                <td>blah</td>
+                <td>{this.props.index}</td>
+                <td>{this.props.record.question}</td>
+                <td>{this.props.record.answer}</td>
+                <td>{this.props.record.correctAnswer}</td>
             </tr>
         );
     }
