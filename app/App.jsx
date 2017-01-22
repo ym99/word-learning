@@ -6,19 +6,17 @@ export class App extends Component  {
     constructor(props){
         super(props);
 
+        this.switchTo  = this.switchTo.bind(this);
         this.processAnswer = this.processAnswer.bind(this);
 
-        const wordRatios = {
-                new: 1,
-                old: 1
-            };
-
-        const questions = App.generateQuestions(this.props, wordRatios);
+        const mode = "new";
+        const questions = App.generateQuestions(this.props, mode);
+        const questionIndex = App.generateQuestionIndex(questions);
 
         this.state = {
-            wordRatios: wordRatios,
-            questions: questions,
-            questionIndex: App.generateQuestionIndex(questions),
+            mode,
+            questions,
+            questionIndex,
             history: []
         };
     }
@@ -27,7 +25,7 @@ export class App extends Component  {
         return questions.length === 0 ? null : Math.floor(Math.random() * questions.length);
     }
 
-    static generateQuestions({words}, wordRatios){
+    static generateQuestions({words}, mode){
         function createSpanishQuestion(word) {
             return {
                 text: word.spanish + (word.spanishComment || ""),
@@ -42,17 +40,36 @@ export class App extends Component  {
             };
         }
 
+        let newRatio = 1;
+        let oldRatio = 1;
+        switch (mode){
+            case "new":
+                newRatio = 10;
+                oldRatio = 0;
+                break;
+
+            case "mix":
+                newRatio = 5;
+                oldRatio = 1;
+                break;
+
+            case "test":
+                newRatio = 1;
+                oldRatio = 1;
+                break;
+        }
+
         let questions = [];
 
         for (let i = 0; i < (words.new || []).length; i++) {
-            for (let c = 0; c < wordRatios.new; c++) {
+            for (let c = 0; c < newRatio; c++) {
                 questions.push(createSpanishQuestion(words.new[i]));
                 questions.push(createEnglishQuestion(words.new[i]));
             }
         }
 
         for (let i = 0; i < (words.old || []).length; i++) {
-            for (let c = 0; c < wordRatios.old; c++) {
+            for (let c = 0; c < oldRatio; c++) {
                 questions.push(createSpanishQuestion(words.old[i]));
                 questions.push(createEnglishQuestion(words.old[i]));
             }
@@ -94,6 +111,20 @@ export class App extends Component  {
         };
     }
 
+    switchTo(mode){
+        return (prevState, mode) => {
+            const questions = App.generateQuestions(this.props, mode);
+            const questionIndex = App.generateQuestionIndex(questions);
+
+            this.setState({
+                mode,
+                questions,
+                questionIndex,
+                history: []
+            });
+        };
+    }
+
     processAnswer(answer){
         this.setState((prevState) => {
             var question = prevState.questions[prevState.questionIndex];
@@ -129,9 +160,9 @@ export class App extends Component  {
                     </Navbar.Header>
                     <Navbar.Collapse>
                         <Nav>
-                            <NavItem href="#" onclick="runNew(); return false;">New Words Only</NavItem>
-                            <NavItem href="#" onclick="runMix(); return false;">Mix of New and Old Words</NavItem>
-                            <NavItem href="#" onclick="runTest(); return false;">Test</NavItem>
+                            <NavItem href="#" onClick={() => this.switchTo("new")} active={this.state.mode === "new"}>New Words Only</NavItem>
+                            <NavItem href="#" onClick={() => this.switchTo("mix")} active={this.state.mode === "mix"}>Mix of New and Old Words</NavItem>
+                            <NavItem href="#" onClick={() => this.switchTo("test")} active={this.state.mode === "test"}>Test</NavItem>
                         </Nav>
                     </Navbar.Collapse>
                     <Navbar.Text pullRight>
