@@ -1,4 +1,4 @@
-const newWords = [
+export const newWords = [
     { spanish: "decir", english: "to say" },
     { spanish: "creer", english: "to believe" },
     { spanish: "encontrar", english: "to find" },
