@@ -112,16 +112,16 @@ export class App extends Component  {
     }
 
     switchTo(mode){
-        return (prevState, mode) => {
-            const questions = App.generateQuestions(this.props, mode);
+        return (prevState, props) => {
+            const questions = App.generateQuestions(props, mode);
             const questionIndex = App.generateQuestionIndex(questions);
 
-            this.setState({
+            return {
                 mode,
                 questions,
                 questionIndex,
                 history: []
-            });
+            };
         };
     }
 
@@ -130,9 +130,7 @@ export class App extends Component  {
             var question = prevState.questions[prevState.questionIndex];
 
             var newQuestions = [...prevState.questions];
-            console.info(newQuestions.length);
             newQuestions.splice(prevState.questionIndex, 1);
-            console.info(newQuestions.length);
 
             return {
                 questions: newQuestions, 

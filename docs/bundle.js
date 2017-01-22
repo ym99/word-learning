@@ -21588,18 +21588,16 @@
 	    _createClass(App, [{
 	        key: 'switchTo',
 	        value: function switchTo(mode) {
-	            var _this2 = this;
-
-	            return function (prevState, mode) {
-	                var questions = App.generateQuestions(_this2.props, mode);
+	            return function (prevState, props) {
+	                var questions = App.generateQuestions(props, mode);
 	                var questionIndex = App.generateQuestionIndex(questions);
 
-	                _this2.setState({
+	                return {
 	                    mode: mode,
 	                    questions: questions,
 	                    questionIndex: questionIndex,
 	                    history: []
-	                });
+	                };
 	            };
 	        }
 	    }, {
@@ -21627,16 +21625,16 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this3 = this;
+	            var _this2 = this;
 
 	            var stats = App.getStats(this.state);
 
 	            return _react2.default.createElement('div', null, _react2.default.createElement(_reactBootstrap.Navbar, { fixedTop: true, inverse: true, collapseOnSelect: true }, _react2.default.createElement(_reactBootstrap.Navbar.Header, null, _react2.default.createElement(_reactBootstrap.Navbar.Brand, null, _react2.default.createElement('a', { href: '#' }, 'Word Learning')), _react2.default.createElement(_reactBootstrap.Navbar.Toggle, null)), _react2.default.createElement(_reactBootstrap.Navbar.Collapse, null, _react2.default.createElement(_reactBootstrap.Nav, null, _react2.default.createElement(_reactBootstrap.NavItem, { href: '#', onClick: function onClick() {
-	                    return _this3.switchTo("new");
+	                    return _this2.switchTo("new");
 	                }, active: this.state.mode === "new" }, 'New Words Only'), _react2.default.createElement(_reactBootstrap.NavItem, { href: '#', onClick: function onClick() {
-	                    return _this3.switchTo("mix");
+	                    return _this2.switchTo("mix");
 	                }, active: this.state.mode === "mix" }, 'Mix of New and Old Words'), _react2.default.createElement(_reactBootstrap.NavItem, { href: '#', onClick: function onClick() {
-	                    return _this3.switchTo("test");
+	                    return _this2.switchTo("test");
 	                }, active: this.state.mode === "test" }, 'Test'))), _react2.default.createElement(_reactBootstrap.Navbar.Text, { pullRight: true }, _react2.default.createElement('span', { className: stats.gradeClass, style: { fontSize: "large" } }, stats.grade), _react2.default.createElement('span', { className: 'badge' }, stats.percentInfo), _react2.default.createElement('b', null, this.props.words.new.length), ' new and', _react2.default.createElement('b', null, this.props.words.old.length), ' known words \xA0 \xA0')), _react2.default.createElement(_History.History, {
 	                question: this.state.questionIndex ? this.state.questions[this.state.questionIndex] : null,
 	                history: this.state.history,
