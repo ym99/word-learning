@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Answer } from 'Answer';
 
 export class Question extends Component  {
     constructor(props){
@@ -9,25 +10,8 @@ export class Question extends Component  {
         };
     }
 
-    componentDidMount(){
-        this.inputObj.focus(); 
-    }
-
-    keyDown(event) {
-        this.setState({
-            isError: false
-        });
-
-        return true;
-    }
-
-    keyPress(event) {
-        if (event.keyCode === 13) {
-            this.props.processAnswer();
-            return false;
-        }
-
-        return true;
+    click(){
+//        this.props.registerAnswer(this.);
     }
 
     render(){
@@ -41,16 +25,16 @@ export class Question extends Component  {
                 <td>{this.props.index}</td>
                 <td>{this.props.question.question}</td>
                 <td>
-                    <input 
-                        type='text'
-                        ref={(x) => { this.inputObj = x; }} 
-                        onKeyDown={this.keyDown}
-                        onKeyPress={this.keyPress}
-                        style={style}
-                    >
-                    </input>
+                    <Answer />
                 </td>
-                <td><button type='button'>Check</button></td>
+                <td>
+                    <button
+                        type='button'
+                        onClick={this.click}
+                    >
+                        Check
+                    </button>
+                </td>
             </tr>
         );
     }
