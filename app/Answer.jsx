@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 export class Answer extends Component  {
     componentDidMount(){
         this.inputObj.focus(); 
+        this.inputObj.scrollIntoView();
     }
 
     render(){

@@ -24,6 +24,11 @@ export class Question extends Component  {
     handleAnswerReady(){
         if (!this.state.hasAnswerTextErrors){
             this.props.processAnswer(this.state.answerText);
+
+            this.setState({
+                hasAnswerTextErrors: false,
+                answerText: ""
+            });
         }
     }
 

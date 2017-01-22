@@ -5,9 +5,9 @@ export class Record extends Component  {
         return (
             <tr className={this.props.record.isCorrectAnswer ? "success" : "danger"}>
                 <td>{this.props.index}</td>
-                <td>{this.props.record.question}</td>
+                <td>{this.props.record.question.text}</td>
                 <td>{this.props.record.answer}</td>
-                <td>{this.props.record.correctAnswer}</td>
+                <td>{this.props.record.question.answer}</td>
             </tr>
         );
     }
