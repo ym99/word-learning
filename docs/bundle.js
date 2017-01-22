@@ -21778,23 +21778,37 @@
 	                correctAnswer: "ca?"
 	            },
 	            history: [{
+	                isCorrectAnswer: true,
 	                question: "q1",
 	                answer: "a1",
 	                correctAnswer: "ca1"
 	            }, {
+	                isCorrectAnswer: false,
 	                question: "q2",
 	                answer: "a2",
 	                correctAnswer: "ca2"
 	            }, {
+	                isCorrectAnswer: true,
 	                question: "q3",
 	                answer: "a3",
 	                correctAnswer: "ca3"
 	            }]
 	        };
+
+	        _this.processAnswer = _this.processAnswer.bind(_this);
 	        return _this;
 	    }
 
 	    _createClass(App, [{
+	        key: 'processAnswer',
+	        value: function processAnswer(answer, isError) {
+	            // const isCorrectAnswer = x.trim().toUpperCase() === y.trim().toUpperCase();
+
+	            // this.setState({
+
+	            // })
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(_History.History, {
@@ -21887,7 +21901,7 @@
 /* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -21942,9 +21956,9 @@
 	    }
 
 	    _createClass(Record, [{
-	        key: 'render',
+	        key: "render",
 	        value: function render() {
-	            return _react2.default.createElement('tr', null, _react2.default.createElement('td', null, this.props.index), _react2.default.createElement('td', null, this.props.record.question), _react2.default.createElement('td', null, this.props.record.answer), _react2.default.createElement('td', null, this.props.record.correctAnswer));
+	            return _react2.default.createElement("tr", { className: this.props.record.isCorrectAnswer ? "success" : "danger" }, _react2.default.createElement("td", null, this.props.index), _react2.default.createElement("td", null, this.props.record.question), _react2.default.createElement("td", null, this.props.record.answer), _react2.default.createElement("td", null, this.props.record.correctAnswer));
 	        }
 	    }]);
 
