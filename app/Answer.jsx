@@ -9,7 +9,7 @@ export class Answer extends Component  {
             value: ""
         };
 
-        this.handleKeyPress = this.handleKeyPress.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -17,9 +17,12 @@ export class Answer extends Component  {
         this.inputObj.focus(); 
     }
 
-    handleKeyPress(event) {
+    handleKeyDown(event) {
         if (event.keyCode === 13) {
-            this.props.processAnswer();
+            this.props.processAnswer({
+                answer: this.state.value,
+                isError: this.state.isError
+            });
             return false;
         }
 
@@ -47,7 +50,7 @@ export class Answer extends Component  {
             <input 
                 type='text'
                 ref={(x) => { this.inputObj = x; }} 
-                onKeyPress={this.handleKeyPress}
+                onKeyDown={this.handleKeyDown}
                 onChange={this.handleChange}
                 style={style}
                 value={this.state.value}

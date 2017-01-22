@@ -20,7 +20,7 @@ export class History extends Component  {
                     {this.props.history.map(function(obj, index) {
                         return (<Record key={index + 1} index={index + 1} record={obj}/>);
                     })}
-                    <Question question={this.props.question} />
+                    <Question question={this.props.question} processAnswer={this.props.processAnswer}/>
                 </tbody>
             </table>
         );

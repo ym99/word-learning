@@ -7,7 +7,7 @@ export class App extends Component  {
 
         this.state = {
             question: {
-                question: "q?",
+                text: "q?",
                 correctAnswer: "ca?"
             },
             history: [ 
@@ -33,12 +33,17 @@ export class App extends Component  {
         this.processAnswer = this.processAnswer.bind(this);
     }
 
-    processAnswer(answer, isError){
-        // const isCorrectAnswer = x.trim().toUpperCase() === y.trim().toUpperCase();
-
-        // this.setState({
-
-        // })
+    processAnswer({answer, isError}){
+        this.setState((prevState) => {
+            return {
+                history: [...prevState.history, {
+                    isCorrectAnswer: answer.trim().toUpperCase() === prevState.question.correctAnswer.trim().toUpperCase(),
+                    question: prevState.question.text,
+                    answer: answer,
+                    correctAnswer: prevState.question.correctAnswer
+                }]
+            };
+        })
     }
 
     render(){
@@ -46,6 +51,7 @@ export class App extends Component  {
             <History 
                 question={this.state.question}
                 history={this.state.history}
+                processAnswer={this.processAnswer}
             />
         );
     }

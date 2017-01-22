@@ -21746,6 +21746,16 @@
 	    return obj && obj.__esModule ? obj : { default: obj };
 	}
 
+	function _toConsumableArray(arr) {
+	    if (Array.isArray(arr)) {
+	        for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
+	            arr2[i] = arr[i];
+	        }return arr2;
+	    } else {
+	        return Array.from(arr);
+	    }
+	}
+
 	function _classCallCheck(instance, Constructor) {
 	    if (!(instance instanceof Constructor)) {
 	        throw new TypeError("Cannot call a class as a function");
@@ -21774,7 +21784,7 @@
 
 	        _this.state = {
 	            question: {
-	                question: "q?",
+	                text: "q?",
 	                correctAnswer: "ca?"
 	            },
 	            history: [{
@@ -21801,19 +21811,28 @@
 
 	    _createClass(App, [{
 	        key: 'processAnswer',
-	        value: function processAnswer(answer, isError) {
-	            // const isCorrectAnswer = x.trim().toUpperCase() === y.trim().toUpperCase();
+	        value: function processAnswer(_ref) {
+	            var answer = _ref.answer,
+	                isError = _ref.isError;
 
-	            // this.setState({
-
-	            // })
+	            this.setState(function (prevState) {
+	                return {
+	                    history: [].concat(_toConsumableArray(prevState.history), [{
+	                        isCorrectAnswer: answer.trim().toUpperCase() === prevState.question.correctAnswer.trim().toUpperCase(),
+	                        question: prevState.question.text,
+	                        answer: answer,
+	                        correctAnswer: prevState.question.correctAnswer
+	                    }])
+	                };
+	            });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(_History.History, {
 	                question: this.state.question,
-	                history: this.state.history
+	                history: this.state.history,
+	                processAnswer: this.processAnswer
 	            });
 	        }
 	    }]);
@@ -21890,7 +21909,7 @@
 	                className: 'table table-striped table-bordered',
 	                style: { textAlign: 'center' } }, _react2.default.createElement('thead', null, _react2.default.createElement('tr', null, _react2.default.createElement('th', { className: 'col-md-3', style: { textAlign: 'center' } }, 'Number'), _react2.default.createElement('th', { className: 'col-md-3', style: { textAlign: 'center' } }, 'Question'), _react2.default.createElement('th', { className: 'col-md-3', style: { textAlign: 'center' } }, 'Answer'), _react2.default.createElement('th', { className: 'col-md-3', style: { textAlign: 'center' } }, 'Correct Answer'))), _react2.default.createElement('tbody', null, this.props.history.map(function (obj, index) {
 	                return _react2.default.createElement(_Record.Record, { key: index + 1, index: index + 1, record: obj });
-	            }), _react2.default.createElement(_Question.Question, { question: this.props.question })));
+	            }), _react2.default.createElement(_Question.Question, { question: this.props.question, processAnswer: this.props.processAnswer })));
 	        }
 	    }]);
 
@@ -22043,7 +22062,7 @@
 	                outlineCcolor: 'darkred'
 	            } : {};
 
-	            return _react2.default.createElement('tr', null, _react2.default.createElement('td', null, this.props.index), _react2.default.createElement('td', null, this.props.question.question), _react2.default.createElement('td', null, _react2.default.createElement(_Answer.Answer, null)), _react2.default.createElement('td', null, _react2.default.createElement('button', {
+	            return _react2.default.createElement('tr', null, _react2.default.createElement('td', null, this.props.index), _react2.default.createElement('td', null, this.props.question.text), _react2.default.createElement('td', null, _react2.default.createElement(_Answer.Answer, { processAnswer: this.props.processAnswer })), _react2.default.createElement('td', null, _react2.default.createElement('button', {
 	                type: 'button',
 	                onClick: this.click
 	            }, 'Check')));
@@ -22115,7 +22134,7 @@
 	            value: ""
 	        };
 
-	        _this.handleKeyPress = _this.handleKeyPress.bind(_this);
+	        _this.handleKeyDown = _this.handleKeyDown.bind(_this);
 	        _this.handleChange = _this.handleChange.bind(_this);
 	        return _this;
 	    }
@@ -22126,10 +22145,13 @@
 	            this.inputObj.focus();
 	        }
 	    }, {
-	        key: 'handleKeyPress',
-	        value: function handleKeyPress(event) {
+	        key: 'handleKeyDown',
+	        value: function handleKeyDown(event) {
 	            if (event.keyCode === 13) {
-	                this.props.processAnswer();
+	                this.props.processAnswer({
+	                    answer: this.state.value,
+	                    isError: this.state.isError
+	                });
 	                return false;
 	            }
 
@@ -22162,7 +22184,7 @@
 	                ref: function ref(x) {
 	                    _this2.inputObj = x;
 	                },
-	                onKeyPress: this.handleKeyPress,
+	                onKeyDown: this.handleKeyDown,
 	                onChange: this.handleChange,
 	                style: style,
 	                value: this.state.value

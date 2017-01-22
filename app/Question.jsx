@@ -23,9 +23,9 @@ export class Question extends Component  {
         return (
             <tr>
                 <td>{this.props.index}</td>
-                <td>{this.props.question.question}</td>
+                <td>{this.props.question.text}</td>
                 <td>
-                    <Answer />
+                    <Answer processAnswer={this.props.processAnswer}/>
                 </td>
                 <td>
                     <button
