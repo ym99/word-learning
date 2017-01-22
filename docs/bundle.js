@@ -21614,7 +21614,7 @@
 	        value: function render() {
 	            var stats = App.getStats(this.state);
 
-	            return _react2.default.createElement('div', null, _react2.default.createElement(_reactBootstrap.Navbar, { fixedTop: true, inverse: true }, _react2.default.createElement(_reactBootstrap.Navbar.Header, null, _react2.default.createElement(_reactBootstrap.Navbar.Brand, null, _react2.default.createElement('a', { href: '#' }, 'Word Learning'))), _react2.default.createElement(_reactBootstrap.Navbar.Text, { pullRight: true }, _react2.default.createElement('span', { className: stats.gradeClass, style: { fontSize: "large" } }, stats.grade), _react2.default.createElement('span', { className: 'badge' }, stats.percentInfo), _react2.default.createElement('b', null, this.props.words.new.length), ' new and', _react2.default.createElement('b', null, this.props.words.old.length), ' known words \xA0 \xA0')), _react2.default.createElement(_History.History, {
+	            return _react2.default.createElement('div', null, _react2.default.createElement(_reactBootstrap.Navbar, { fixedTop: true, inverse: true }, _react2.default.createElement(_reactBootstrap.Navbar.Header, null, _react2.default.createElement(_reactBootstrap.Navbar.Brand, null, _react2.default.createElement('a', { href: '#' }, 'Word Learning'))), _react2.default.createElement(_reactBootstrap.Navbar.Collapse, null, _react2.default.createElement(_reactBootstrap.Nav, null, _react2.default.createElement(_reactBootstrap.NavItem, { href: '#', onclick: 'runNew(); return false;' }, 'New Words Only'), _react2.default.createElement(_reactBootstrap.NavItem, { href: '#', onclick: 'runMix(); return false;' }, 'Mix of New and Old Words'), _react2.default.createElement(_reactBootstrap.NavItem, { href: '#', onclick: 'runTest(); return false;' }, 'Test'))), _react2.default.createElement(_reactBootstrap.Navbar.Text, { pullRight: true }, _react2.default.createElement('span', { className: stats.gradeClass, style: { fontSize: "large" } }, stats.grade), _react2.default.createElement('span', { className: 'badge' }, stats.percentInfo), _react2.default.createElement('b', null, this.props.words.new.length), ' new and', _react2.default.createElement('b', null, this.props.words.old.length), ' known words \xA0 \xA0')), _react2.default.createElement(_History.History, {
 	                question: this.state.questionIndex ? this.state.questions[this.state.questionIndex] : null,
 	                history: this.state.history,
 	                processAnswer: this.processAnswer
@@ -21672,15 +21672,15 @@
 	            var correct = history.reduce(function (accum, record) {
 	                return accum + record.isCorrectAnswer ? 1 : 0;
 	            }, 0);
-	            var percent = correct / total;
-	            var grade = percent >= 0.94 ? "A" : percent >= 0.90 ? "A-" : percent >= 0.87 ? "B+" : percent >= 0.83 ? "B" : percent >= 0.80 ? "B-" : percent >= 0.77 ? "C+" : percent >= 0.73 ? "C" : percent >= 0.70 ? "C-" : percent >= 0.67 ? "D+" : percent >= 0.60 ? "D" : "F";
+	            var percent = total === 0 ? null : correct / total;
+	            var grade = percent === null ? null : percent >= 0.94 ? "A" : percent >= 0.90 ? "A-" : percent >= 0.87 ? "B+" : percent >= 0.83 ? "B" : percent >= 0.80 ? "B-" : percent >= 0.77 ? "C+" : percent >= 0.73 ? "C" : percent >= 0.70 ? "C-" : percent >= 0.67 ? "D+" : percent >= 0.60 ? "D" : "F";
 
 	            return {
 	                total: total,
 	                correct: correct,
-	                percentInfo: (percent * 100).toFixed(0) + "%",
+	                percentInfo: percent === null ? "" : (percent * 100).toFixed(0) + "%",
 	                grade: grade,
-	                gradeClass: grade.startsWith("A") ? "label label-success" : grade.startsWith("B") ? "label label-info" : grade.startsWith("C") ? "label label-warning" : "label label-danger"
+	                gradeClass: percent === null ? "" : grade.startsWith("A") ? "label label-success" : grade.startsWith("B") ? "label label-info" : grade.startsWith("C") ? "label label-warning" : "label label-danger"
 	            };
 	        }
 	    }]);

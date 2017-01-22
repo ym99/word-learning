@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { History } from 'History';
 
 export class App extends Component  {
@@ -64,8 +64,9 @@ export class App extends Component  {
     static getStats({questions, history}) {
         const total = history.length;
         const correct = history.reduce(function(accum, record) { return accum + record.isCorrectAnswer ? 1 : 0; }, 0);
-        const percent = correct / total;
+        const percent = total === 0 ? null : correct / total;
         const grade = 
+                percent === null ? null :
                 percent >= 0.94 ? "A" :
                 percent >= 0.90 ? "A-" :
                 percent >= 0.87 ? "B+" :
@@ -82,12 +83,14 @@ export class App extends Component  {
         return {
             total,
             correct,
-            percentInfo: (percent * 100).toFixed(0) + "%",
+            percentInfo: percent === null ? "" : (percent * 100).toFixed(0) + "%",
             grade,
-            gradeClass: grade.startsWith("A") ? "label label-success" :
+            gradeClass: 
+                percent === null ? "" :
+                grade.startsWith("A") ? "label label-success" :
                 grade.startsWith("B") ? "label label-info" :
                 grade.startsWith("C") ? "label label-warning" :
-                "label label-danger"
+                                        "label label-danger"
         };
     }
 
@@ -117,13 +120,20 @@ export class App extends Component  {
 
         return (
             <div>
-                <Navbar fixedTop={true} inverse={true}>
+                <Navbar fixedTop inverse>
                     <Navbar.Header>
                         <Navbar.Brand>
                             <a href="#">Word Learning</a>
                         </Navbar.Brand>
                     </Navbar.Header>
-                    <Navbar.Text pullRight={true}>
+                   <Navbar.Collapse>
+                        <Nav>
+                            <NavItem href="#" onclick="runNew(); return false;">New Words Only</NavItem>
+                            <NavItem href="#" onclick="runMix(); return false;">Mix of New and Old Words</NavItem>
+                            <NavItem href="#" onclick="runTest(); return false;">Test</NavItem>
+                        </Nav>
+                    </Navbar.Collapse>
+                    <Navbar.Text pullRight>
                         <span className={stats.gradeClass} style={({fontSize: "large"})}>{stats.grade}</span>
                         <span className="badge">{stats.percentInfo}</span>
                         <b>{this.props.words.new.length}</b> new and
