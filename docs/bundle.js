@@ -22101,7 +22101,6 @@
 	            value: ""
 	        };
 
-	        _this.handleKeyDown = _this.handleKeyDown.bind(_this);
 	        _this.handleKeyPress = _this.handleKeyPress.bind(_this);
 	        _this.handleChange = _this.handleChange.bind(_this);
 	        return _this;
@@ -22111,15 +22110,6 @@
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            this.inputObj.focus();
-	        }
-	    }, {
-	        key: 'handleKeyDown',
-	        value: function handleKeyDown(event) {
-	            this.setState({
-	                isError: false
-	            });
-
-	            return true;
 	        }
 	    }, {
 	        key: 'handleKeyPress',
@@ -22134,7 +22124,12 @@
 	    }, {
 	        key: 'handleChange',
 	        value: function handleChange(event) {
+	            var value = event.target.value;
+
+	            var isError = !value.match(/^[ A-Za-z]*$/);
+
 	            this.setState({
+	                isError: isError,
 	                value: event.target.value
 	            });
 	        }
@@ -22145,7 +22140,7 @@
 
 	            var style = this.state.isError ? {
 	                backgroundColor: 'rgb(242, 222, 222)',
-	                outlineCcolor: 'darkred'
+	                outlineColor: 'darkred'
 	            } : {};
 
 	            return _react2.default.createElement('input', {
@@ -22153,7 +22148,6 @@
 	                ref: function ref(x) {
 	                    _this2.inputObj = x;
 	                },
-	                onKeyDown: this.handleKeyDown,
 	                onKeyPress: this.handleKeyPress,
 	                onChange: this.handleChange,
 	                style: style,

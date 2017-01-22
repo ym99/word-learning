@@ -9,21 +9,12 @@ export class Answer extends Component  {
             value: ""
         };
 
-        this.handleKeyDown = this.handleKeyDown.bind(this);
         this.handleKeyPress = this.handleKeyPress.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount(){
         this.inputObj.focus(); 
-    }
-
-    handleKeyDown(event) {
-        this.setState({
-            isError: false
-        });
-
-        return true;
     }
 
     handleKeyPress(event) {
@@ -36,7 +27,12 @@ export class Answer extends Component  {
     }
 
     handleChange(event){
+        const value = event.target.value;
+
+        const isError = !value.match(/^[ A-Za-z]*$/);
+
         this.setState({
+            isError: isError,
             value: event.target.value
         })
     }
@@ -44,14 +40,13 @@ export class Answer extends Component  {
     render(){
         const style = this.state.isError ? {
             backgroundColor: 'rgb(242, 222, 222)',
-            outlineCcolor: 'darkred'
+            outlineColor: 'darkred'
         } : {};
 
         return (
             <input 
                 type='text'
                 ref={(x) => { this.inputObj = x; }} 
-                onKeyDown={this.handleKeyDown}
                 onKeyPress={this.handleKeyPress}
                 onChange={this.handleChange}
                 style={style}
