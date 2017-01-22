@@ -18,12 +18,6 @@ module.exports = {
             }
         ]
     },
-    // resolveLoader:{
-    //     root: path.resolve(__dirname, "docs"),
-    //     modulesDirectories: ["web_loaders", "web_modules", "node_loaders", "node_modules"],
-    //     extensions: ["", ".webpack-loader.js", ".web-loader.js", ".loader.js", ".js"],
-    //     packageMains: ["webpackLoader", "webLoader", "loader", "main"]
-    // },
     resolve: {
         extensions: ['', '.js'],
         root: path.resolve(__dirname, "temp", "app"),
