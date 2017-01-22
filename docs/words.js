@@ -1,7 +1,7 @@
 ﻿const newWords = [
     { spanish: "decir", english: "to say" },
     { spanish: "creer", english: "to believe" },
-    { spanish: "encotrar", english: "to find" },
+    { spanish: "encontrar", english: "to find" },
 ];
 
 const words = [
