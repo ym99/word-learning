@@ -124,15 +124,9 @@ export class App extends Component  {
                     <Navbar.Header>
                         <Navbar.Brand>
                             <a href="#">Word Learning</a>
+                            <Navbar.Toggle />
                         </Navbar.Brand>
                     </Navbar.Header>
-                   <Navbar.Collapse>
-                        <Nav>
-                            <NavItem href="#" onclick="runNew(); return false;">New Words Only</NavItem>
-                            <NavItem href="#" onclick="runMix(); return false;">Mix of New and Old Words</NavItem>
-                            <NavItem href="#" onclick="runTest(); return false;">Test</NavItem>
-                        </Nav>
-                    </Navbar.Collapse>
                     <Navbar.Text pullRight>
                         <span className={stats.gradeClass} style={({fontSize: "large"})}>{stats.grade}</span>
                         <span className="badge">{stats.percentInfo}</span>
@@ -141,6 +135,13 @@ export class App extends Component  {
                         &nbsp;
                         &nbsp;                    
                     </Navbar.Text>
+                    <Navbar.Collapse>
+                        <Nav>
+                            <NavItem href="#" onclick="runNew(); return false;">New Words Only</NavItem>
+                            <NavItem href="#" onclick="runMix(); return false;">Mix of New and Old Words</NavItem>
+                            <NavItem href="#" onclick="runTest(); return false;">Test</NavItem>
+                        </Nav>
+                    </Navbar.Collapse>
                 </Navbar>
                 <History 
                     question={this.state.questionIndex ? this.state.questions[this.state.questionIndex] : null}
