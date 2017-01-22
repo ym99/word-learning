@@ -2,19 +2,19 @@
     { spanish: "ir", english: "to go" },
     { spanish: "tener", english: "to have", englishComment: " (to possess)" },
     { spanish: "ver", english: "to see" },
-    { spanish: "conocer", english:"to know", englishComment: " (familiar with a person or place)" },
+    { spanish: "conocer", english:"to know", englishComment: " (person or place)" },
     { spanish: "entender", english:"to understand" },
     { spanish: "ver", english: "to see" },
 ];
 
 const words = [
     // -- AR ----------------------------
-    { spanish: "estar", english: "to be", englishComment: " (place, feeling)" },
+    { spanish: "estar", english: "to be", englishComment: " (location, feeling)" },
     { spanish: "pensar", english: "to think" },
     { spanish: "llevar", english: "to wear" },
     { spanish: "amar", english: "to love" },
 
-    { spanish: "gustar", english: "to be pleasing" },
+    { spanish: "gustar", english: "to like", englishComment: " (to be pleasing)" },
     { spanish: "dar", english: "to give" },
     { spanish: "empezar", english: "to begin" },
     { spanish: "andar", english: "to walk" },
