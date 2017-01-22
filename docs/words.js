@@ -1,4 +1,7 @@
 ﻿const newWords = [
+    { spanish: "decir", english: "to say" },
+    { spanish: "creer", english: "to believe" },
+    { spanish: "encotar", english: "to find" },
 ];
 
 const words = [
@@ -14,7 +17,7 @@ const words = [
     { spanish: "andar", english: "to walk" },
 
     { spanish: "trabajar", english: "to work" },
-    { spanish: "escuechar", english: "to listen" },
+    { spanish: "escuchar", english: "to listen" },
     { spanish: "echar", english: "to throw" },
     { spanish: "sacar", english: "to take out" },
 
@@ -43,5 +46,4 @@ const words = [
     { spanish: "ir", english: "to go" },
     { spanish: "salir", english: "to leave" },
     { spanish: "venir", english: "to come" },
-   
 ];
