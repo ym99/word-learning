@@ -23,7 +23,7 @@ export class Question extends Component  {
 
     handleAnswerReady(){
         if (!this.state.hasAnswerTextErrors){
-            window.alert(this.state.answerText);
+            this.props.processAnswer(this.state.answerText);
         }
     }
 

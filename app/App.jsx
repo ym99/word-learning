@@ -33,7 +33,7 @@ export class App extends Component  {
         this.processAnswer = this.processAnswer.bind(this);
     }
 
-    processAnswer({answer, isError}){
+    processAnswer(answer){
         this.setState((prevState) => {
             return {
                 history: [...prevState.history, {

@@ -21811,10 +21811,7 @@
 
 	    _createClass(App, [{
 	        key: 'processAnswer',
-	        value: function processAnswer(_ref) {
-	            var answer = _ref.answer,
-	                isError = _ref.isError;
-
+	        value: function processAnswer(answer) {
 	            this.setState(function (prevState) {
 	                return {
 	                    history: [].concat(_toConsumableArray(prevState.history), [{
@@ -22065,7 +22062,7 @@
 	        key: 'handleAnswerReady',
 	        value: function handleAnswerReady() {
 	            if (!this.state.hasAnswerTextErrors) {
-	                window.alert(this.state.answerText);
+	                this.props.processAnswer(this.state.answerText);
 	            }
 	        }
 	    }, {
