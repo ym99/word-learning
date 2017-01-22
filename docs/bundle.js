@@ -22097,8 +22097,13 @@
 	        var _this = _possibleConstructorReturn(this, (Answer.__proto__ || Object.getPrototypeOf(Answer)).call(this, props));
 
 	        _this.state = {
-	            isError: false
+	            isError: false,
+	            value: ""
 	        };
+
+	        _this.handleKeyDown = _this.handleKeyDown.bind(_this);
+	        _this.handleKeyPress = _this.handleKeyPress.bind(_this);
+	        _this.handleChange = _this.handleChange.bind(_this);
 	        return _this;
 	    }
 
@@ -22108,8 +22113,8 @@
 	            this.inputObj.focus();
 	        }
 	    }, {
-	        key: 'keyDown',
-	        value: function keyDown(event) {
+	        key: 'handleKeyDown',
+	        value: function handleKeyDown(event) {
 	            this.setState({
 	                isError: false
 	            });
@@ -22117,8 +22122,8 @@
 	            return true;
 	        }
 	    }, {
-	        key: 'keyPress',
-	        value: function keyPress(event) {
+	        key: 'handleKeyPress',
+	        value: function handleKeyPress(event) {
 	            if (event.keyCode === 13) {
 	                this.props.processAnswer();
 	                return false;
@@ -22127,8 +22132,12 @@
 	            return true;
 	        }
 	    }, {
-	        key: 'change',
-	        value: function change() {}
+	        key: 'handleChange',
+	        value: function handleChange(event) {
+	            this.setState({
+	                value: event.target.value
+	            });
+	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
@@ -22144,10 +22153,11 @@
 	                ref: function ref(x) {
 	                    _this2.inputObj = x;
 	                },
-	                onKeyDown: this.keyDown,
-	                onKeyPress: this.keyPress,
-	                onChange: this.change,
-	                style: style
+	                onKeyDown: this.handleKeyDown,
+	                onKeyPress: this.handleKeyPress,
+	                onChange: this.handleChange,
+	                style: style,
+	                value: this.state.value
 	            });
 	        }
 	    }]);

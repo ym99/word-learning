@@ -4,16 +4,21 @@ export class Answer extends Component  {
     constructor(props){
         super(props);
 
-        this.state ={
-            isError: false            
+        this.state = {
+            isError: false,
+            value: ""
         };
+
+        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleKeyPress = this.handleKeyPress.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount(){
         this.inputObj.focus(); 
     }
 
-    keyDown(event) {
+    handleKeyDown(event) {
         this.setState({
             isError: false
         });
@@ -21,7 +26,7 @@ export class Answer extends Component  {
         return true;
     }
 
-    keyPress(event) {
+    handleKeyPress(event) {
         if (event.keyCode === 13) {
             this.props.processAnswer();
             return false;
@@ -30,8 +35,10 @@ export class Answer extends Component  {
         return true;
     }
 
-    change(){
-        
+    handleChange(event){
+        this.setState({
+            value: event.target.value
+        })
     }
 
     render(){
@@ -44,10 +51,11 @@ export class Answer extends Component  {
             <input 
                 type='text'
                 ref={(x) => { this.inputObj = x; }} 
-                onKeyDown={this.keyDown}
-                onKeyPress={this.keyPress}
-                onChange={this.change}
+                onKeyDown={this.handleKeyDown}
+                onKeyPress={this.handleKeyPress}
+                onChange={this.handleChange}
                 style={style}
+                value={this.state.value}
             >
             </input>
         );
