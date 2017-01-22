@@ -22044,15 +22044,29 @@
 	        var _this = _possibleConstructorReturn(this, (Question.__proto__ || Object.getPrototypeOf(Question)).call(this, props));
 
 	        _this.state = {
-	            isError: false
+	            hasAnswerTextErrors: false,
+	            answerText: ""
 	        };
+
+	        _this.handleAnswerChange = _this.handleAnswerChange.bind(_this);
+	        _this.handleAnswerReady = _this.handleAnswerReady.bind(_this);
 	        return _this;
 	    }
 
 	    _createClass(Question, [{
-	        key: 'click',
-	        value: function click() {
-	            //        this.props.registerAnswer(this.);
+	        key: 'handleAnswerChange',
+	        value: function handleAnswerChange(answerText) {
+	            this.setState({
+	                hasAnswerTextErrors: !answerText.match(/^[ A-Za-z]*$/),
+	                answerText: answerText
+	            });
+	        }
+	    }, {
+	        key: 'handleAnswerReady',
+	        value: function handleAnswerReady() {
+	            if (!this.state.hasAnswerTextErrors) {
+	                window.alert(this.state.answerText);
+	            }
 	        }
 	    }, {
 	        key: 'render',
@@ -22062,9 +22076,15 @@
 	                outlineCcolor: 'darkred'
 	            } : {};
 
-	            return _react2.default.createElement('tr', null, _react2.default.createElement('td', null, this.props.index), _react2.default.createElement('td', null, this.props.question.text), _react2.default.createElement('td', null, _react2.default.createElement(_Answer.Answer, { processAnswer: this.props.processAnswer })), _react2.default.createElement('td', null, _react2.default.createElement('button', {
+	            return _react2.default.createElement('tr', null, _react2.default.createElement('td', null, this.props.index), _react2.default.createElement('td', null, this.props.question.text), _react2.default.createElement('td', null, _react2.default.createElement(_Answer.Answer, {
+	                hasAnswerTextErrors: this.state.hasAnswerTextErrors,
+	                answerText: this.state.answerText,
+	                onAnswerChange: this.handleAnswerChange,
+	                onAnswerReady: this.handleAnswerReady
+	            })), _react2.default.createElement('td', null, _react2.default.createElement('button', {
 	                type: 'button',
-	                onClick: this.click
+	                disabled: this.state.hasAnswerTextErrors,
+	                onClick: this.handleAnswerReady
 	            }, 'Check')));
 	        }
 	    }]);
@@ -22124,19 +22144,10 @@
 	var Answer = exports.Answer = function (_Component) {
 	    _inherits(Answer, _Component);
 
-	    function Answer(props) {
+	    function Answer() {
 	        _classCallCheck(this, Answer);
 
-	        var _this = _possibleConstructorReturn(this, (Answer.__proto__ || Object.getPrototypeOf(Answer)).call(this, props));
-
-	        _this.state = {
-	            isError: false,
-	            value: ""
-	        };
-
-	        _this.handleKeyDown = _this.handleKeyDown.bind(_this);
-	        _this.handleChange = _this.handleChange.bind(_this);
-	        return _this;
+	        return _possibleConstructorReturn(this, (Answer.__proto__ || Object.getPrototypeOf(Answer)).apply(this, arguments));
 	    }
 
 	    _createClass(Answer, [{
@@ -22145,36 +22156,11 @@
 	            this.inputObj.focus();
 	        }
 	    }, {
-	        key: 'handleKeyDown',
-	        value: function handleKeyDown(event) {
-	            if (event.keyCode === 13) {
-	                this.props.processAnswer({
-	                    answer: this.state.value,
-	                    isError: this.state.isError
-	                });
-	                return false;
-	            }
-
-	            return true;
-	        }
-	    }, {
-	        key: 'handleChange',
-	        value: function handleChange(event) {
-	            var value = event.target.value;
-
-	            var isError = !value.match(/^[ A-Za-z]*$/);
-
-	            this.setState({
-	                isError: isError,
-	                value: event.target.value
-	            });
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this2 = this;
 
-	            var style = this.state.isError ? {
+	            var style = this.props.hasAnswerTextErrors ? {
 	                backgroundColor: 'rgb(242, 222, 222)',
 	                outlineColor: 'darkred'
 	            } : {};
@@ -22184,10 +22170,16 @@
 	                ref: function ref(x) {
 	                    _this2.inputObj = x;
 	                },
-	                onKeyDown: this.handleKeyDown,
-	                onChange: this.handleChange,
+	                onKeyDown: function onKeyDown(event) {
+	                    if (event.keyCode === 13) {
+	                        _this2.props.onAnswerReady();return false;
+	                    }return true;
+	                },
+	                onChange: function onChange(event) {
+	                    _this2.props.onAnswerChange(event.target.value);return true;
+	                },
 	                style: style,
-	                value: this.state.value
+	                value: this.props.answerText
 	            });
 	        }
 	    }]);

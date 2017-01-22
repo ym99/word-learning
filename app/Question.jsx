@@ -6,12 +6,25 @@ export class Question extends Component  {
         super(props);
 
         this.state ={
-            isError: false            
+            hasAnswerTextErrors: false,
+            answerText: ""
         };
+
+        this.handleAnswerChange = this.handleAnswerChange.bind(this);
+        this.handleAnswerReady = this.handleAnswerReady.bind(this);
     }
 
-    click(){
-//        this.props.registerAnswer(this.);
+    handleAnswerChange(answerText){
+        this.setState({
+            hasAnswerTextErrors: !answerText.match(/^[ A-Za-z]*$/),
+            answerText: answerText
+        })
+    }
+
+    handleAnswerReady(){
+        if (!this.state.hasAnswerTextErrors){
+            window.alert(this.state.answerText);
+        }
     }
 
     render(){
@@ -25,12 +38,18 @@ export class Question extends Component  {
                 <td>{this.props.index}</td>
                 <td>{this.props.question.text}</td>
                 <td>
-                    <Answer processAnswer={this.props.processAnswer}/>
+                    <Answer 
+                        hasAnswerTextErrors={this.state.hasAnswerTextErrors}
+                        answerText={this.state.answerText}
+                        onAnswerChange={this.handleAnswerChange}
+                        onAnswerReady={this.handleAnswerReady}
+                    />
                 </td>
                 <td>
                     <button
                         type='button'
-                        onClick={this.click}
+                        disabled={this.state.hasAnswerTextErrors}
+                        onClick={this.handleAnswerReady}
                     >
                         Check
                     </button>
