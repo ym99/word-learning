@@ -62,7 +62,7 @@
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
-	_reactDom2.default.render(_react2.default.createElement(_App.App, { words: _words.words }), document.getElementById('test'));
+	_reactDom2.default.render(_react2.default.createElement(_App.App, { words: _words.words }), document.getElementById('app'));
 
 /***/ },
 /* 1 */
