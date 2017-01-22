@@ -18,7 +18,7 @@ export class History extends Component  {
                 </thead>
                 <tbody>
                     {this.props.history.map(function(obj, index) {
-                        return (<Record index={index + 1} record={obj}/>);
+                        return (<Record key={index + 1} index={index + 1} record={obj}/>);
                     })}
                     <Question question={this.props.question} />
                 </tbody>

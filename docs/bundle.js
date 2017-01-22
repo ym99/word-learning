@@ -267,17 +267,17 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	var newWords = exports.newWords = [{ spanish: "ir", english: "to go" }, { spanish: "tener", english: "to have", englishComment: " (to possess)" }, { spanish: "ver", english: "to see" }, { spanish: "conocer", english: "to know", englishComment: " (familiar with a person or place)" }, { spanish: "entender", english: "to understand" }, { spanish: "ver", english: "to see" }];
+	var newWords = exports.newWords = [{ spanish: "decir", english: "to say" }, { spanish: "creer", english: "to believe" }, { spanish: "encontrar", english: "to find" }];
 
 	var words = exports.words = [
 	// -- AR ----------------------------
-	{ spanish: "estar", english: "to be", englishComment: " (place, feeling)" }, { spanish: "pensar", english: "to think" }, { spanish: "llevar", english: "to wear" }, { spanish: "amar", english: "to love" }, { spanish: "gustar", english: "to be pleasing" }, { spanish: "dar", english: "to give" }, { spanish: "empezar", english: "to begin" }, { spanish: "andar", english: "to walk" }, { spanish: "trabajar", english: "to work" }, { spanish: "escuechar", english: "to listen" }, { spanish: "echar", english: "to throw" }, { spanish: "sacar", english: "to take out" },
+	{ spanish: "estar", english: "to be", englishComment: " (location, feeling)" }, { spanish: "pensar", english: "to think" }, { spanish: "llevar", english: "to wear" }, { spanish: "amar", english: "to love" }, { spanish: "gustar", english: "to like", englishComment: " (to be pleasing)" }, { spanish: "dar", english: "to give" }, { spanish: "empezar", english: "to begin" }, { spanish: "andar", english: "to walk" }, { spanish: "trabajar", english: "to work" }, { spanish: "escuchar", english: "to listen" }, { spanish: "echar", english: "to throw" }, { spanish: "sacar", english: "to take out" },
 
 	// -- ER ----------------------------
-	{ spanish: "ser", english: "to be", englishComment: " (somebody)" }, { spanish: "hacer", english: "to do" }, { spanish: "haber", english: "to have", englishComment: " (auxiliary, supportive verb)" }, { spanish: "saber", english: "to know", englishComment: " (fact or skill)" }, { spanish: "querer", english: "to want" }, { spanish: "poder", english: "to be able" }, { spanish: "poner", english: "to put" }, { spanish: "deber", english: "to owe" }, { spanish: "leer", english: "to read" }, { spanish: "comer", english: "to eat" }, { spanish: "beber", english: "to drink" },
+	{ spanish: "ser", english: "to be", englishComment: " (somebody)" }, { spanish: "hacer", english: "to do" }, { spanish: "haber", english: "to have", englishComment: " (auxiliary, supportive verb)" }, { spanish: "saber", english: "to know", englishComment: " (fact or skill)" }, { spanish: "querer", english: "to want" }, { spanish: "poder", english: "to be able" }, { spanish: "poner", english: "to put" }, { spanish: "deber", english: "to owe" }, { spanish: "leer", english: "to read" }, { spanish: "comer", english: "to eat" }, { spanish: "beber", english: "to drink" }, { spanish: "tener", english: "to have", englishComment: " (to possess)" }, { spanish: "ver", english: "to see" }, { spanish: "conocer", english: "to know", englishComment: " (person or place)" }, { spanish: "entender", english: "to understand" }, { spanish: "ver", english: "to see" },
 
 	// -- IR ----------------------------
-	{ spanish: "salir", english: "to leave" }, { spanish: "venir", english: "to come" }];
+	{ spanish: "ir", english: "to go" }, { spanish: "salir", english: "to leave" }, { spanish: "venir", english: "to come" }];
 
 /***/ },
 /* 2 */
@@ -21875,7 +21875,7 @@
 	            return _react2.default.createElement('table', {
 	                className: 'table table-striped table-bordered',
 	                style: { textAlign: 'center' } }, _react2.default.createElement('thead', null, _react2.default.createElement('tr', null, _react2.default.createElement('th', { className: 'col-md-3', style: { textAlign: 'center' } }, 'Number'), _react2.default.createElement('th', { className: 'col-md-3', style: { textAlign: 'center' } }, 'Question'), _react2.default.createElement('th', { className: 'col-md-3', style: { textAlign: 'center' } }, 'Answer'), _react2.default.createElement('th', { className: 'col-md-3', style: { textAlign: 'center' } }, 'Correct Answer'))), _react2.default.createElement('tbody', null, this.props.history.map(function (obj, index) {
-	                return _react2.default.createElement(_Record.Record, { index: index + 1, record: obj });
+	                return _react2.default.createElement(_Record.Record, { key: index + 1, index: index + 1, record: obj });
 	            }), _react2.default.createElement(_Question.Question, { question: this.props.question })));
 	        }
 	    }]);
@@ -22127,6 +22127,9 @@
 	            return true;
 	        }
 	    }, {
+	        key: 'change',
+	        value: function change() {}
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this2 = this;
@@ -22143,6 +22146,7 @@
 	                },
 	                onKeyDown: this.keyDown,
 	                onKeyPress: this.keyPress,
+	                onChange: this.change,
 	                style: style
 	            });
 	        }
