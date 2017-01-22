@@ -48,44 +48,7 @@
 
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-bar" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Word Learning</a>
-            </div>
-
-            <div class="navbar-text navbar-right">
-                <span id="grade"></span>
-                <span id="percent" class="badge"></span>
-                <b><span id="new-words"></span></b> new and
-                <b><span id="words"></span></b> known words
-                &nbsp;
-                &nbsp;
-            </div>
-
-            <div class="collapse navbar-collapse" id="nav-bar">
-                <ul class="nav navbar-nav">
-                    <li id="mode-new"><a href="#" onclick="runNew(); return false;">New Words Only</a></li>
-                    <li id="mode-mix"><a href="#" onclick="runMix(); return false;">Mix of New and Old Words</a></li>
-                    <li id="mode-test" class="active"><a href="#" onclick="runTest(); return false;">Test</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </nav>
-
-    <div id="app"></div>
-
-    <div id="final-grade"></div>
-
+<body id="app">
     <script src="bundle.js"></script>
 </body>
 </html>

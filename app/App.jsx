@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Navbar } from 'react-bootstrap';
 import { History } from 'History';
 
 export class App extends Component  {
@@ -60,12 +61,44 @@ export class App extends Component  {
         return questions;
     }
 
+    static getStats({questions, history}) {
+        const total = history.length;
+        const correct = history.reduce(function(accum, record) { return accum + record.isCorrectAnswer ? 1 : 0; }, 0);
+        const percent = correct / total;
+        const grade = 
+                percent >= 0.94 ? "A" :
+                percent >= 0.90 ? "A-" :
+                percent >= 0.87 ? "B+" :
+                percent >= 0.83 ? "B" :
+                percent >= 0.80 ? "B-" :
+                percent >= 0.77 ? "C+" :
+                percent >= 0.73 ? "C" :
+                percent >= 0.70 ? "C-" :
+                percent >= 0.67 ? "D+" :
+                percent >= 0.60 ? "D" :
+                                  "F"
+        ;
+        
+        return {
+            total,
+            correct,
+            percentInfo: (percent * 100).toFixed(0) + "%",
+            grade,
+            gradeClass: grade.startsWith("A") ? "label label-success" :
+                grade.startsWith("B") ? "label label-info" :
+                grade.startsWith("C") ? "label label-warning" :
+                "label label-danger"
+        };
+    }
+
     processAnswer(answer){
         this.setState((prevState) => {
             var question = prevState.questions[prevState.questionIndex];
 
             var newQuestions = [...prevState.questions];
+            console.info(newQuestions.length);
             newQuestions.splice(prevState.questionIndex, 1);
+            console.info(newQuestions.length);
 
             return {
                 questions: newQuestions, 
@@ -80,12 +113,31 @@ export class App extends Component  {
     }
 
     render(){
+        const stats = App.getStats(this.state);
+
         return (
-            <History 
-                question={this.state.questionIndex ? this.state.questions[this.state.questionIndex] : null}
-                history={this.state.history}
-                processAnswer={this.processAnswer}
-            />
+            <div>
+                <Navbar fixedTop={true} inverse={true}>
+                    <Navbar.Header>
+                        <Navbar.Brand>
+                            <a href="#">Word Learning</a>
+                        </Navbar.Brand>
+                    </Navbar.Header>
+                    <Navbar.Text pullRight={true}>
+                        <span className={stats.gradeClass} style={({fontSize: "large"})}>{stats.grade}</span>
+                        <span className="badge">{stats.percentInfo}</span>
+                        <b>{this.props.words.new.length}</b> new and
+                        <b>{this.props.words.old.length}</b> known words
+                        &nbsp;
+                        &nbsp;                    
+                    </Navbar.Text>
+                </Navbar>
+                <History 
+                    question={this.state.questionIndex ? this.state.questions[this.state.questionIndex] : null}
+                    history={this.state.history}
+                    processAnswer={this.processAnswer}
+                />
+            </div>
         );
     }
 }
