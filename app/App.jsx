@@ -100,7 +100,7 @@ export class App extends Component  {
         return {
             total,
             correct,
-            percentInfo: percent === null ? "" : (percent * 100).toFixed(0) + "%",
+            percentInfo: percent === null ? "" : (percent * 100).toFixed(0) + "% correct",
             grade,
             gradeClass: 
                 percent === null ? "" :
