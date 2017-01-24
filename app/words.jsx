@@ -52,7 +52,7 @@ export const words = {
         { spanish: "ver", english: "to see" },
         { spanish: "creer", english: "to believe" },
 
-        // -- IR vreb ----------------------------
+        // -- IR verb ----------------------------
         { spanish: "ir", english: "to go" },
         { spanish: "salir", english: "to leave" },
         { spanish: "venir", english: "to come" },
