@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { History } from 'History';
+import { Info } from 'Info';
+import { FinalInfo } from 'FinalInfo';
 
 export class App extends Component  {
     constructor(props){
@@ -9,7 +10,7 @@ export class App extends Component  {
         this.switchTo  = this.switchTo.bind(this);
         this.processAnswer = this.processAnswer.bind(this);
 
-        const mode = "new";
+        const mode = "test";
         const questions = App.generateQuestions(this.props, mode);
         const questionIndex = App.generateQuestionIndex(questions);
 
@@ -145,38 +146,23 @@ export class App extends Component  {
     }
 
     render(){
+        const noQuestions = this.state.questionIndex === null;
+
         const stats = App.getStats(this.state);
 
         return (
             <div>
-                <Navbar fixedTop inverse collapseOnSelect>
-                    <Navbar.Header>
-                        <Navbar.Brand>
-                            <a href="#">Word Learning</a>
-                        </Navbar.Brand>
-                        <Navbar.Toggle />
-                    </Navbar.Header>
-                    <Navbar.Collapse>
-                        <Nav>
-                            <NavItem href="#" onClick={() => this.switchTo("new")} active={this.state.mode === "new"}>New Words Only</NavItem>
-                            <NavItem href="#" onClick={() => this.switchTo("mix")} active={this.state.mode === "mix"}>Mix of New and Old Words</NavItem>
-                            <NavItem href="#" onClick={() => this.switchTo("test")} active={this.state.mode === "test"}>Test</NavItem>
-                        </Nav>
-                    </Navbar.Collapse>
-                    <Navbar.Text pullRight>
-                        <span className={stats.gradeClass} style={({fontSize: "large"})}>{stats.grade}</span>
-                        <span className="badge">{stats.percentInfo}</span>
-                        <b>{this.props.words.new.length}</b> new and
-                        <b>{this.props.words.old.length}</b> known words
-                        &nbsp;
-                        &nbsp;                    
-                    </Navbar.Text>
-                </Navbar>
                 <History 
-                    question={this.state.questionIndex ? this.state.questions[this.state.questionIndex] : null}
+                    question={noQuestions ? null : this.state.questions[this.state.questionIndex] }
                     history={this.state.history}
                     processAnswer={this.processAnswer}
                 />
+                {!noQuestions &&
+                    <Info stats={stats} words={this.props.words}/>
+                }
+                {noQuestions &&
+                     <FinalInfo stats={stats} words={this.props.words}/>
+                }
             </div>
         );
     }
