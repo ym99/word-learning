@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { History } from 'History';
+import { Progress } from 'Progress';
 import { Info } from 'Info';
+import { History } from 'History';
 import { FinalInfo } from 'FinalInfo';
 
 export class App extends Component  {
@@ -152,6 +153,7 @@ export class App extends Component  {
 
         return (
             <div>
+                <Progress history={this.state.history} questions={this.state.questions} />
                 <History 
                     question={noQuestions ? null : this.state.questions[this.state.questionIndex] }
                     history={this.state.history}
