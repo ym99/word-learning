@@ -7,3 +7,7 @@ ReactDOM.render(
     <App words={words}/>,
     document.getElementById('app')
 );    
+
+if (module.hot) {
+  module.hot.accept();
+}
