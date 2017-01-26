@@ -9,6 +9,15 @@
   },
   "author": "ym99",
   "license": "GNU-3",
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-es2015-arrow-functions",
+      "transform-react-jsx"
+    ]
+  },
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-loader": "^6.2.10",
@@ -19,15 +28,6 @@
     "webpack": "^1.14.0",
     "webpack-dev-middleware": "^1.9.0",
     "webpack-hot-middleware": "^2.15.0"
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ],
-    "plugins": [
-      "transform-es2015-arrow-functions",
-      "transform-react-jsx"
-    ]
   },
   "dependencies": {
     "react": "^15.4.2",
