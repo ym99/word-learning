@@ -1,23 +1,28 @@
 const path = require('path');
 const express = require('express');
+const webpack = require('webpack');
+const config = require('./webpack.config');
+
+const compiler = webpack(config);
 
 const app = express();
-const compiler = require('webpack')(require('./webpack.config'));
-app.use(require('webpack-dev-middleware')(
-    compiler, {
-        noInfo: true,
-        quiet: true,
+app.use(require('webpack-dev-middleware')(compiler, {
+        //noInfo: true,
+        //quiet: true,
         hot: true,
         inline: true,
         lazy: false,
-        publicPath: '../docs/',
+        publicPath: config.output.publicPath,
         stats: { colors: true },
 }));
 
-app.use(require('webpack-hot-middleware')(compiler));
+app.use(require('webpack-hot-middleware')(compiler, {
+    log: console.log
+}));
+
 app.use(express.static('lib'));
+
 app.get('/', (request, response) => {
-  response.sendFile(path.resolve(__dirname, '../docs/index.html'));
 });
 
 require('http')
