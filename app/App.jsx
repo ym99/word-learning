@@ -103,7 +103,7 @@ export default class App extends React.Component {
 
   static getStats({ history }) {
     const total = history.length;
-    const correct = history.reduce((accum, record) => (accum + record.isCorrectAnswer ? 1 : 0), 0);
+    const correct = history.reduce((accum, record) => accum + (record.isCorrectAnswer ? 1 : 0), 0);
     const percent = total === 0 ? null : correct / total;
     const grade =
       percent === null ? null :
