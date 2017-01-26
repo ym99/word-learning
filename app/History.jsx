@@ -8,7 +8,7 @@ export default class History extends React.Component {
       React.PropTypes.object.isRequired,
     ).isRequired,
     question: React.PropTypes.shape({
-    }).isRequired,
+    }),
     processAnswer: React.PropTypes.func.isRequired,
   }
 
