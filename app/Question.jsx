@@ -1,65 +1,68 @@
-import React, { Component } from 'react';
-import { Answer } from 'Answer';
+import React from 'react';
+import Answer from './Answer';
 
-export class Question extends Component  {
-    constructor(props){
-        super(props);
+export default class Question extends React.Component {
+  static propTypes = {
+    index: React.PropTypes.number.isRequired,
+    question: React.PropTypes.shape({
+      text: React.PropTypes.string.isRequired,
+    }).isRequired,
+    processAnswer: React.PropTypes.func.isRequired,
+  };
 
-        this.state ={
-            hasAnswerTextErrors: false,
-            answerText: ""
-        };
+  constructor(props) {
+    super(props);
 
-        this.handleAnswerChange = this.handleAnswerChange.bind(this);
-        this.handleAnswerReady = this.handleAnswerReady.bind(this);
+    this.state = {
+      hasAnswerTextErrors: false,
+      answerText: '',
+    };
+
+    this.handleAnswerChange = this.handleAnswerChange.bind(this);
+    this.handleAnswerReady = this.handleAnswerReady.bind(this);
+  }
+
+  handleAnswerChange(answerText) {
+    this.setState({
+      hasAnswerTextErrors: !answerText.match(/^[ A-Za-z]*$/),
+      answerText,
+    });
+  }
+
+  handleAnswerReady() {
+    if (!this.state.hasAnswerTextErrors) {
+      this.props.processAnswer(this.state.answerText);
+
+      this.setState({
+        hasAnswerTextErrors: false,
+        answerText: '',
+      });
     }
+  }
 
-    handleAnswerChange(answerText){
-        this.setState({
-            hasAnswerTextErrors: !answerText.match(/^[ A-Za-z]*$/),
-            answerText: answerText
-        })
-    }
-
-    handleAnswerReady(){
-        if (!this.state.hasAnswerTextErrors){
-            this.props.processAnswer(this.state.answerText);
-
-            this.setState({
-                hasAnswerTextErrors: false,
-                answerText: ""
-            });
-        }
-    }
-
-    render(){
-        const style = this.state.isError ? {
-            backgroundColor: 'rgb(242, 222, 222)',
-            outlineCcolor: 'darkred'
-        } : {};
-
-        return (
-            <tr>
-                <td>{this.props.index}</td>
-                <td>{this.props.question.text}</td>
-                <td>
-                    <Answer 
-                        hasAnswerTextErrors={this.state.hasAnswerTextErrors}
-                        answerText={this.state.answerText}
-                        onAnswerChange={this.handleAnswerChange}
-                        onAnswerReady={this.handleAnswerReady}
-                    />
-                </td>
-                <td>
-                    <button
-                        type='button'
-                        disabled={this.state.hasAnswerTextErrors}
-                        onClick={this.handleAnswerReady}
-                    >
-                        Check
-                    </button>
-                </td>
-            </tr>
-        );
-    }
+  render() {
+    return (
+      <tr>
+        <td>{this.props.index}</td>
+        <td>{this.props.question.text}</td>
+        <td>
+          <Answer
+            hasAnswerTextErrors={this.state.hasAnswerTextErrors}
+            answerText={this.state.answerText}
+            onAnswerChange={this.handleAnswerChange}
+            onAnswerReady={this.handleAnswerReady}
+          />
+        </td>
+        <td>
+          <button
+            type="button"
+            disabled={this.state.hasAnswerTextErrors}
+            onClick={this.handleAnswerReady}
+          >
+            Check
+          </button>
+        </td>
+      </tr>
+    );
+  }
 }
