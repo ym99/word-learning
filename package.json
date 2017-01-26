@@ -3,9 +3,7 @@
   "version": "2.1.0",
   "description": "word-learning.",
   "scripts": {
-    "build-dev": "webpack --config dev-tools/webpack.config.dev.js",
-    "build-prod": "set NODE_ENV=production & webpack --config dev-tools/webpack.config.prod.js",
-    "start": "npm run build-dev & node dev-tools/server.js"
+    "build-dev": "webpack --config compiler/webpack.config.dev.js",
   },
   "author": "ym99",
   "license": "GNU-3",
