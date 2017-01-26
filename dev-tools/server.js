@@ -17,7 +17,7 @@ app.use(require('webpack-dev-middleware')(
 app.use(require('webpack-hot-middleware')(compiler));
 app.use(express.static('lib'));
 app.get('/', (request, response) => {
-  response.sendFile(path.join(__dirname, '../docs/index.html'));
+  response.sendFile(path.resolve(__dirname, '../docs/index.html'));
 });
 
 require('http')

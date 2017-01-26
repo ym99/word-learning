@@ -1,7 +1,11 @@
 var path = require("path");
+var webpack = require('webpack');
 
 module.exports = {
-    entry: "index",
+    entry: [
+        'webpack-hot-middleware/client',
+        './src/index',
+    ],
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "docs")
