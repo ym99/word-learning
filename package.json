@@ -3,7 +3,7 @@
   "version": "2.1.0",
   "description": "word-learning.",
   "scripts": {
-    "build": "webpack app/index.jsx --config dev-tools/webpack.config.js",
+    "build": "webpack app/index.jsx --config dev-tools/webpack.config.dev.js",
     "start": "npm run build & node dev-tools/server.js"
   },
   "author": "ym99",
