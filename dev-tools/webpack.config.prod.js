@@ -1,8 +1,6 @@
 var path = require("path");
 var webpack = require('webpack');
 
-// var package = require('../package.json');
-
 module.exports = {
     devtool: 'source-map',
     entry: [
@@ -10,7 +8,7 @@ module.exports = {
     ],
     output: {
         path: path.resolve(__dirname, "../docs"),
-        filename: 'bundle_' + package.version + '.js',
+        filename: 'bundle.js',
         publicPath: '/'
     },
     plugins: [
