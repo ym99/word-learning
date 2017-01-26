@@ -3,7 +3,6 @@ import Answer from './Answer';
 
 export default class Question extends React.Component {
   static propTypes = {
-    index: React.PropTypes.number.isRequired,
     question: React.PropTypes.shape({
       text: React.PropTypes.string.isRequired,
     }).isRequired,
@@ -43,7 +42,7 @@ export default class Question extends React.Component {
   render() {
     return (
       <tr>
-        <td>{this.props.index}</td>
+        <td />
         <td>{this.props.question.text}</td>
         <td>
           <Answer

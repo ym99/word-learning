@@ -3,7 +3,7 @@ import React from 'react';
 export default class Info extends React.Component {
   static propTypes = {
     stats: React.PropTypes.shape({
-      grade: React.PropTypes.string.isRequired,
+      grade: React.PropTypes.string,
       gradeClass: React.PropTypes.string.isRequired,
       percentInfo: React.PropTypes.string.isRequired,
     }).isRequired,

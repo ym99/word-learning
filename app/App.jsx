@@ -8,10 +8,20 @@ import FinalInfo from './FinalInfo';
 export default class App extends React.Component {
   static propTypes = {
     words: React.PropTypes.shape({
-      spanish: React.PropTypes.string.isRequired,
-      spanishComment: React.PropTypes.string,
-      english: React.PropTypes.string.isRequired,
-      englishComment: React.PropTypes.string,
+      old: React.PropTypes.arrayOf(
+        React.PropTypes.shape({
+          spanish: React.PropTypes.string.isRequired,
+          spanishComment: React.PropTypes.string,
+          english: React.PropTypes.string.isRequired,
+          englishComment: React.PropTypes.string,
+        })).isRequired,
+      new: React.PropTypes.arrayOf(
+        React.PropTypes.shape({
+          spanish: React.PropTypes.string.isRequired,
+          spanishComment: React.PropTypes.string,
+          english: React.PropTypes.string.isRequired,
+          englishComment: React.PropTypes.string,
+        })).isRequired,
     }).isRequired,
   }
 
@@ -173,7 +183,7 @@ export default class App extends React.Component {
           processAnswer={this.processAnswer}
         />
         {!noQuestions &&
-          <Info stats={stats} words={this.props.words} />
+          <Info stats={stats} />
         }
         {noQuestions &&
           <FinalInfo stats={stats} words={this.props.words} />
