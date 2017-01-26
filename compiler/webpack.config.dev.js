@@ -33,7 +33,7 @@ module.exports = {
         modulesDirectories: ['node_modules', 'app'],
     },
     eslint: {
-        configFile: './.eslintrc.json'
-    },    
+        configFile: './compiler/.eslintrc.json'
+    },
     progress: true
 };
