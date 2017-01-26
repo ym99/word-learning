@@ -23,11 +23,8 @@ module.exports = {
         loaders: [
             {
                 test: /\.(js|jsx)$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015']
-                }
+                loaders: ['babel', 'eslint-loader'],
+                exclude: /node_modules/
             }
         ],
     },
@@ -35,5 +32,8 @@ module.exports = {
         extensions: ['', '.js', '.jsx'],
         modulesDirectories: ['node_modules', 'app'],
     },
+    eslint: {
+        configFile: './.eslintrc.json'
+    },    
     progress: true
 };

@@ -1,9 +1,9 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
-import { Progress } from './Progress';
-import { Info } from './Info';
-import { History } from './History';
-import { FinalInfo } from './FinalInfo';
+import Progress from './Progress';
+import Info from './Info';
+import History from './History';
+import FinalInfo from './FinalInfo';
 
 export default class App extends React.Component {
   static propTypes = {
