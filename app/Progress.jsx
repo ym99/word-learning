@@ -27,10 +27,13 @@ export default class Progress extends React.Component {
     });
 
     return (
-      <div className="progress">
-        {records.map(record => (
+      <div
+        className="progress"
+      >
+        {records.map((record, index) => (
           <div
-            key={`${record.isCorrectAnswer ? 'c' : 'i'}-${record.count}`}
+            // eslint-disable-next-line react/no-array-index-key
+            key={`${record.isCorrectAnswer ? 'c' : 'i'}-${record.count}-${index}`}
             className={record.isCorrectAnswer ? 'progress-bar progress-bar-success' : 'progress-bar progress-bar-danger'}
             role="progressbar"
             style={({

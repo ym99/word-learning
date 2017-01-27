@@ -15,8 +15,9 @@ export default class Menu extends React.Component {
           top: '0px',
           width: '100%',
         })}
+        className="well well-sm"
       >
-        <ul className="nav nav-tabs">
+        <ul className="nav nav-pills">
           <li
             role="presentation"
             className="disabled"

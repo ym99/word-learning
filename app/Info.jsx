@@ -20,8 +20,9 @@ export default class Info extends React.Component {
           position: 'fixed',
           right: '0px',
           top: '0px',
+          paddingTop: '20px',
+          paddingRight: '20px',
         })}
-        className="well well-sm"
       >
         {this.props.stats.grade &&
           <span>

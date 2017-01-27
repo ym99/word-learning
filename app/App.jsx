@@ -180,12 +180,12 @@ export default class App extends React.Component {
       <div>
         <Menu mode={this.state.mode} changeMode={this.changeMode} />
         <Info stats={stats} words={this.props.words} />
-        <Progress history={this.state.history} questions={this.state.questions} />
         <History
           question={noQuestions ? null : this.state.questions[this.state.questionIndex]}
           history={this.state.history}
           processAnswer={this.processAnswer}
         />
+        <Progress history={this.state.history} questions={this.state.questions} />
         {noQuestions &&
           <FinalInfo stats={stats} words={this.props.words} />
         }
