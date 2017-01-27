@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React from 'react';
+import Menu from './Menu';
 import Progress from './Progress';
 import Info from './Info';
 import History from './History';
@@ -176,15 +177,14 @@ export default class App extends React.Component {
 
     return (
       <div>
+        <Menu />
+        <Info stats={stats} words={this.props.words} />
         <Progress history={this.state.history} questions={this.state.questions} />
         <History
           question={noQuestions ? null : this.state.questions[this.state.questionIndex]}
           history={this.state.history}
           processAnswer={this.processAnswer}
         />
-        {!noQuestions &&
-          <Info stats={stats} />
-        }
         {noQuestions &&
           <FinalInfo stats={stats} words={this.props.words} />
         }
