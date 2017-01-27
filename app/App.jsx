@@ -140,7 +140,7 @@ export default class App extends React.Component {
   }
 
   changeMode(mode) {
-    return (prevState, props) => {
+    this.setState((prevState, props) => {
       const questions = App.generateQuestions(props, mode);
       const questionIndex = App.generateQuestionIndex(questions);
 
@@ -150,7 +150,7 @@ export default class App extends React.Component {
         questionIndex,
         history: [],
       };
-    };
+    });
   }
 
   processAnswer(answer) {
