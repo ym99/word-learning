@@ -88,20 +88,6 @@ export default class App extends React.Component {
     return questions;
   }
 
-  static switchTo(mode) {
-    return (prevState, props) => {
-      const questions = App.generateQuestions(props, mode);
-      const questionIndex = App.generateQuestionIndex(questions);
-
-      return {
-        mode,
-        questions,
-        questionIndex,
-        history: [],
-      };
-    };
-  }
-
   static getStats({ history }) {
     const total = history.length;
     const correct = history.reduce((accum, record) => accum + (record.isCorrectAnswer ? 1 : 0), 0);
@@ -138,9 +124,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.processAnswer = this.processAnswer.bind(this);
-
-    const mode = 'test';
+    const mode = 'new';
     const questions = App.generateQuestions(this.props, mode);
     const questionIndex = App.generateQuestionIndex(questions);
 
@@ -149,6 +133,23 @@ export default class App extends React.Component {
       questions,
       questionIndex,
       history: [],
+    };
+
+    this.processAnswer = this.processAnswer.bind(this);
+    this.changeMode = this.changeMode.bind(this);
+  }
+
+  changeMode(mode) {
+    return (prevState, props) => {
+      const questions = App.generateQuestions(props, mode);
+      const questionIndex = App.generateQuestionIndex(questions);
+
+      return {
+        mode,
+        questions,
+        questionIndex,
+        history: [],
+      };
     };
   }
 
@@ -177,7 +178,7 @@ export default class App extends React.Component {
 
     return (
       <div>
-        <Menu />
+        <Menu mode={this.state.mode} changeMode={this.changeMode} />
         <Info stats={stats} words={this.props.words} />
         <Progress history={this.state.history} questions={this.state.questions} />
         <History
