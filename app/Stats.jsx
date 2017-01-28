@@ -49,8 +49,6 @@ export default class Stats extends React.Component {
                                 'label label-danger'
     ;
 
-    const percentInfo = percent === null ? '' : `${(percent * 100).toFixed(0)}% correct`;
-
     return (
       <div
         style={({
@@ -60,30 +58,46 @@ export default class Stats extends React.Component {
           borderRadius: '0.5em',
         })}
       >
-        {grade &&
+        {total !== 0 &&
+          <div
+            className={gradeClass}
+            style={({
+              display: 'inline-block',
+              fontSize: '3em',
+              float: 'left',
+            })}
+          >{grade}</div>
+        }
+        {total !== 0 &&
           <div
             style={({
-              paddingBottom: '1em',
-              textAlign: 'center',
+              display: 'inline-block',
+              paddingLeft: '0.5em',
             })}
           >
-            <span
-              className={gradeClass}
-              style={({
-                fontSize: 'large',
-              })}
-            >{grade}</span>
-            &nbsp;
-            <span
-              className="badge"
-            >{percentInfo}</span>
-            &nbsp;
+            <b>{`${(percent * 100).toFixed(0)}%`}</b> correct
           </div>
         }
-        <div>
+        {total !== 0 &&
+          <br />
+        }
+        <div
+          style={({
+            display: 'inline-block',
+            paddingLeft: '0.5em',
+          })}
+        >
           <b>
             {this.props.words.new.length}
-          </b> new and <b>
+          </b> new words
+        </div>
+        <div
+          style={({
+            display: 'inline-block',
+            paddingLeft: '0.5em',
+          })}
+        >
+          <b>
             {this.props.words.old.length}
           </b> known words
         </div>
