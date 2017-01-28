@@ -1,0 +1,23 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "env": {
+        "browser": true
+    },
+    "ecmaFeatures": {
+        "experimentalObjectRestSpread": true,
+        "destructuring": true,
+        "spread": true,
+        "jsx": true
+    },
+    "rules": {
+        "react/prefer-stateless-function" : 0,
+        "react/require-default-props": 0,
+        "jsx-a11y/href-no-hash": 0
+    }
+}
