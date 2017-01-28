@@ -17,11 +17,19 @@ export default class History extends React.Component {
   }
 
   render() {
-    return (
+    const incorrectRecords = [];
+    this.props.history.forEach((record) => {
+      if (!record.isCorrectAnswer) {
+        incorrectRecords.push(record);
+      }
+    });
+
+    return incorrectRecords.length === 0 ? null : (
       <table
         className="table table-striped table-bordered"
         style={({
           textAlign: 'center',
+          marginTop: '20px',
         })}
       >
         <thead>
@@ -47,6 +55,7 @@ export default class History extends React.Component {
           </tr>
         </thead>
         <tbody>
+          {incorrectRecords.map(record => (<Record key={record.id} record={record} />))}
         </tbody>
       </table>
     );
