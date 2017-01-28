@@ -20,8 +20,6 @@ app.use(require('webpack-hot-middleware')(compiler, {
     log: console.log
 }));
 
-app.use(express.static('favicon.ico'));
-
 app.get('/', (request, response) => {
   response.sendFile(path.resolve(__dirname, '../docs/index.html'));
 });
