@@ -24,48 +24,46 @@ export default class History extends React.Component {
     });
 
     return incorrectRecords.length === 0 ? null : (
-      <table
-        className="table table-striped table-bordered"
+      <div
         style={({
-          textAlign: 'center',
+          align: 'center',
           marginTop: '20px',
         })}
       >
-        <thead>
-          <tr>
-            <th
-              className="col-md-3"
+        {incorrectRecords.map(record => (
+          <div
+            key={record.id}
+            style={({
+              border: '1px solid rgb(217, 83, 79)',
+              borderRadius: '10px',
+              display: 'inline-block',
+              padding: '5px',
+            })}
+          >
+            <span
               style={({
-                textAlign: 'center',
+                padding: '5px',
               })}
-            >Question</th>
-            <th
-              className="col-md-3"
+            >{record.question.text}</span>
+            <span
+              className="glyphicon glyphicon-arrow-right"
+            />
+            {record.answer !== '' &&
+              <span
+                style={({
+                  paddingLeft: '5px',
+                  textDecoration: 'line-through',
+                })}
+              >{record.answer}</span>
+            }
+            <span
               style={({
-                textAlign: 'center',
+                padding: '5px',
               })}
-            >Answer</th>
-            <th
-              className="col-md-3"
-              style={({
-                textAlign: 'center',
-              })}
-            >Correct Answer</th>
-          </tr>
-        </thead>
-        <tbody>
-          {incorrectRecords.map(record => (
-            <tr
-              key={record.id}
-              className="danger"
-            >
-              <td>{record.question.text}</td>
-              <td>{record.answer}</td>
-              <td>{record.question.answer}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            >{record.question.answer}</span>
+          </div>
+        ))}
+      </div>
     );
   }
 }
