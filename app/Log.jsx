@@ -1,7 +1,7 @@
 import React from 'react';
-import Info from './Info';
+import Stats from './Stats';
 
-export default class History extends React.Component {
+export default class Log extends React.Component {
   static propTypes = {
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({
@@ -14,11 +14,6 @@ export default class History extends React.Component {
         answer: React.PropTypes.string.isRequired,
       }).isRequired,
     ).isRequired,
-    stats: React.PropTypes.shape({
-      grade: React.PropTypes.string,
-      gradeClass: React.PropTypes.string.isRequired,
-      percentInfo: React.PropTypes.string.isRequired,
-    }).isRequired,
     words: React.PropTypes.shape({
       old: React.PropTypes.array.isRequired,
       new: React.PropTypes.array.isRequired,
@@ -40,7 +35,7 @@ export default class History extends React.Component {
           marginTop: '1em',
         })}
       >
-        <Info stats={this.props.stats} words={this.props.words} />
+        <Stats history={this.props.history} words={this.props.words} />
         {incorrectRecords.map(record => (
           <div
             key={record.id}

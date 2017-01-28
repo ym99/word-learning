@@ -1,10 +1,8 @@
-/* eslint-disable no-nested-ternary */
 import React from 'react';
 import Menu from './Menu';
 import Progress from './Progress';
 import Question from './Question';
-import History from './History';
-import FinalInfo from './FinalInfo';
+import Log from './Log';
 
 export default class App extends React.Component {
   static propTypes = {
@@ -101,39 +99,6 @@ export default class App extends React.Component {
     return App.previousUniqueId;
   }
 
-  static getStats({ history }) {
-    const total = history.length;
-    const correct = history.reduce((accum, record) => accum + (record.isCorrectAnswer ? 1 : 0), 0);
-    const percent = total === 0 ? null : correct / total;
-    const grade =
-      percent === null ? null :
-      percent >= 0.94 ? 'A' :
-      percent >= 0.90 ? 'A-' :
-      percent >= 0.87 ? 'B+' :
-      percent >= 0.83 ? 'B' :
-      percent >= 0.80 ? 'B-' :
-      percent >= 0.77 ? 'C+' :
-      percent >= 0.73 ? 'C' :
-      percent >= 0.70 ? 'C-' :
-      percent >= 0.67 ? 'D+' :
-      percent >= 0.60 ? 'D' :
-                        'F'
-    ;
-
-    return {
-      total,
-      correct,
-      percentInfo: percent === null ? '' : `${(percent * 100).toFixed(0)}% correct`,
-      grade,
-      gradeClass:
-        percent === null ? '' :
-        grade.startsWith('A') ? 'label label-success' :
-        grade.startsWith('B') ? 'label label-info' :
-        grade.startsWith('C') ? 'label label-warning' :
-                                'label label-danger',
-    };
-  }
-
   constructor(props) {
     super(props);
 
@@ -187,28 +152,21 @@ export default class App extends React.Component {
   }
 
   render() {
-    const noQuestions = this.state.questionIndex === null;
-    const stats = App.getStats(this.state);
-
     return (
       <div>
         <Menu mode={this.state.mode} changeMode={this.changeMode} />
         <Progress history={this.state.history} questions={this.state.questions} />
-        {!noQuestions &&
+        {this.state.questionIndex !== null &&
           <Question
             question={this.state.questions[this.state.questionIndex]}
             processAnswer={this.processAnswer}
           />
         }
-        <History
+        <Log
           history={this.state.history}
-          stats={stats}
           words={this.props.words}
           processAnswer={this.processAnswer}
         />
-        {noQuestions &&
-          <FinalInfo stats={stats} words={this.props.words} />
-        }
       </div>
     );
   }
