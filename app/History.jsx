@@ -8,12 +8,17 @@ export default class History extends React.Component {
       React.PropTypes.shape({
         id: React.PropTypes.number.isRequired,
         isCorrectAnswer: React.PropTypes.bool.isRequired,
-        question: React.PropTypes.string.isRequired,
+        question: React.PropTypes.shape({
+          text: React.PropTypes.string.isRequired,
+          answer: React.PropTypes.string.isRequired,
+        }).isRequired,
         answer: React.PropTypes.string.isRequired,
       }).isRequired,
     ).isRequired,
     question: React.PropTypes.shape({
-    }),
+      text: React.PropTypes.string.isRequired,
+      answer: React.PropTypes.string.isRequired,
+    }).isRequired,
     processAnswer: React.PropTypes.func.isRequired,
   }
 

@@ -6,16 +6,23 @@ export default class Progress extends React.Component {
       React.PropTypes.shape({
         id: React.PropTypes.number.isRequired,
         isCorrectAnswer: React.PropTypes.bool.isRequired,
-        question: React.PropTypes.string.isRequired,
+        question: React.PropTypes.shape({
+          text: React.PropTypes.string.isRequired,
+          answer: React.PropTypes.string.isRequired,
+        }).isRequired,
         answer: React.PropTypes.string.isRequired,
       }).isRequired,
     ).isRequired,
     questions: React.PropTypes.arrayOf(
-      React.PropTypes.object.isRequired,
+      React.PropTypes.shape({
+        text: React.PropTypes.string.isRequired,
+        answer: React.PropTypes.string.isRequired,
+      }).isRequired,
     ).isRequired,
   }
 
   render() {
+    console.info(this.props.questions);
     const total = this.props.history.length + this.props.questions.length;
 
     const records = [];
@@ -28,10 +35,11 @@ export default class Progress extends React.Component {
           count: 1,
         });
       } else {
+        records[records.length - 1].id = record.id;
         records[records.length - 1].count += 1;
       }
     });
-
+    console.info(records);
     return (
       <div
         className="progress"
