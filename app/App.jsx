@@ -153,6 +153,12 @@ export default class App extends React.Component {
     });
   }
 
+  // componentDidMount() {
+  //   if (this.state.history.length > 0) {
+  //     this.state.history[]
+  //   }
+  // }
+
   render() {
     return (
       <div>
@@ -169,7 +175,7 @@ export default class App extends React.Component {
           words={this.props.words}
           processAnswer={this.processAnswer}
         />
-        <Reaction reaction={this.state.reaction} />
+        <Reaction history={this.state.history} />
       </div>
     );
   }

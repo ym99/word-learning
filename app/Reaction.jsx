@@ -2,13 +2,24 @@ import React from 'react';
 
 export default class Reaction extends React.Component {
   static propTypes = {
-    reaction: React.PropTypes.oneOf(['correct', 'incorrect']),
+    history: React.PropTypes.arrayOf(
+      React.PropTypes.shape({
+        id: React.PropTypes.number.isRequired,
+        isCorrectAnswer: React.PropTypes.bool.isRequired,
+        question: React.PropTypes.shape({
+          text: React.PropTypes.string.isRequired,
+          answer: React.PropTypes.string.isRequired,
+        }).isRequired,
+        answer: React.PropTypes.string.isRequired,
+      }).isRequired,
+    ).isRequired,
   };
 
   render() {
-    const isCorrect = this.props.reaction === 'correct';
+    const isCorrect = this.props.history.length === 0 ? null :
+      this.props.history[this.props.history.length - 1].isCorrectAnswer;
 
-    return this.props.reaction === null ? null : (
+    return isCorrect === null ? null : (
       <div
         style={({
           position: 'fixed',
