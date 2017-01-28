@@ -27,7 +27,7 @@ export default class History extends React.Component {
       <div
         style={({
           align: 'center',
-          marginTop: '20px',
+          marginTop: '1em',
         })}
       >
         {incorrectRecords.map(record => (
@@ -35,14 +35,15 @@ export default class History extends React.Component {
             key={record.id}
             style={({
               border: '1px solid rgb(217, 83, 79)',
-              borderRadius: '10px',
+              borderRadius: '0.5em',
               display: 'inline-block',
-              padding: '5px',
+              padding: '0.25em',
+              margin: '0.25em',
             })}
           >
             <span
               style={({
-                padding: '5px',
+                padding: '0.25em',
               })}
             >{record.question.text}</span>
             <span
@@ -51,14 +52,14 @@ export default class History extends React.Component {
             {record.answer !== '' &&
               <span
                 style={({
-                  paddingLeft: '5px',
+                  paddingLeft: '0.25em',
                   textDecoration: 'line-through',
                 })}
               >{record.answer}</span>
             }
             <span
               style={({
-                padding: '5px',
+                padding: '0.25em',
               })}
             >{record.question.answer}</span>
           </div>
