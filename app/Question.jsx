@@ -42,15 +42,31 @@ export default class Question extends React.Component {
 
   render() {
     return (
-      <div className="input-group">
-        <span className="input-group-addon">{this.props.question.text}</span>
-        <Answer
-          hasAnswerTextErrors={this.state.hasAnswerTextErrors}
-          answerText={this.state.answerText}
-          onAnswerChange={this.handleAnswerChange}
-          onAnswerReady={this.handleAnswerReady}
-        />
-        <span className="input-group-btn">
+      <div
+        className="input-group"
+        style={({
+          width: '100%',
+        })}
+      >
+        <div
+          style={({
+            display: 'table',
+            margin: '0 auto',
+          })}
+        >
+          <span
+            className="input-group-addon"
+            style={({
+              width: '300px',
+              textAlign: 'right',
+            })}
+          >{this.props.question.text}</span>
+          <Answer
+            hasAnswerTextErrors={this.state.hasAnswerTextErrors}
+            answerText={this.state.answerText}
+            onAnswerChange={this.handleAnswerChange}
+            onAnswerReady={this.handleAnswerReady}
+          />
           <button
             className="btn btn-default"
             type="button"
@@ -59,7 +75,7 @@ export default class Question extends React.Component {
           >
             Check
           </button>
-        </span>
+        </div>
       </div>
     );
   }

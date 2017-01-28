@@ -14,7 +14,7 @@ export default class Answer extends React.Component {
   }
 
   render() {
-    const style = this.props.hasAnswerTextErrors ? {
+    const errorStyle = this.props.hasAnswerTextErrors ? {
       backgroundColor: 'rgb(242, 222, 222)',
       outlineColor: 'darkred',
     } : {};
@@ -36,7 +36,10 @@ export default class Answer extends React.Component {
           this.props.onAnswerChange(event.target.value);
           return true;
         }}
-        style={style}
+        style={({
+          ...errorStyle,
+          width: '300px',
+        })}
         value={this.props.answerText}
       />
     );
