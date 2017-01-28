@@ -22,7 +22,6 @@ export default class Progress extends React.Component {
   }
 
   render() {
-    console.info(this.props.questions);
     const total = this.props.history.length + this.props.questions.length;
 
     const records = [];
@@ -39,7 +38,7 @@ export default class Progress extends React.Component {
         records[records.length - 1].count += 1;
       }
     });
-    console.info(records);
+
     return (
       <div
         className="progress"
