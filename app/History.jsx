@@ -1,4 +1,5 @@
 import React from 'react';
+import Info from './Info';
 
 export default class History extends React.Component {
   static propTypes = {
@@ -13,6 +14,15 @@ export default class History extends React.Component {
         answer: React.PropTypes.string.isRequired,
       }).isRequired,
     ).isRequired,
+    stats: React.PropTypes.shape({
+      grade: React.PropTypes.string,
+      gradeClass: React.PropTypes.string.isRequired,
+      percentInfo: React.PropTypes.string.isRequired,
+    }).isRequired,
+    words: React.PropTypes.shape({
+      old: React.PropTypes.array.isRequired,
+      new: React.PropTypes.array.isRequired,
+    }).isRequired,
   }
 
   render() {
@@ -23,13 +33,14 @@ export default class History extends React.Component {
       }
     });
 
-    return incorrectRecords.length === 0 ? null : (
+    return (
       <div
         style={({
           align: 'center',
           marginTop: '1em',
         })}
       >
+        <Info stats={this.props.stats} words={this.props.words} />
         {incorrectRecords.map(record => (
           <div
             key={record.id}

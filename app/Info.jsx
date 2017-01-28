@@ -17,15 +17,19 @@ export default class Info extends React.Component {
     return (
       <div
         style={({
-          position: 'fixed',
-          right: '0px',
-          top: '0px',
-          paddingTop: '20px',
-          paddingRight: '20px',
+          float: 'right',
+          padding: '1em',
+          border: '1px solid black',
+          borderRadius: '0.5em',
         })}
       >
         {this.props.stats.grade &&
-          <span>
+          <div
+            style={({
+              paddingBottom: '1em',
+              textAlign: 'center',
+            })}
+          >
             <span
               className={this.props.stats.gradeClass}
               style={({
@@ -37,13 +41,15 @@ export default class Info extends React.Component {
               className="badge"
             >{this.props.stats.percentInfo}</span>
             &nbsp;
-          </span>
+          </div>
         }
-        <b>
-          {this.props.words.new.length}
-        </b> new and <b>
-          {this.props.words.old.length}
-        </b> known words
+        <div>
+          <b>
+            {this.props.words.new.length}
+          </b> new and <b>
+            {this.props.words.old.length}
+          </b> known words
+        </div>
       </div>
     );
   }

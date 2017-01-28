@@ -2,7 +2,6 @@
 import React from 'react';
 import Menu from './Menu';
 import Progress from './Progress';
-import Info from './Info';
 import Question from './Question';
 import History from './History';
 import FinalInfo from './FinalInfo';
@@ -194,7 +193,6 @@ export default class App extends React.Component {
     return (
       <div>
         <Menu mode={this.state.mode} changeMode={this.changeMode} />
-        <Info stats={stats} words={this.props.words} />
         <Progress history={this.state.history} questions={this.state.questions} />
         {!noQuestions &&
           <Question
@@ -204,6 +202,8 @@ export default class App extends React.Component {
         }
         <History
           history={this.state.history}
+          stats={stats}
+          words={this.props.words}
           processAnswer={this.processAnswer}
         />
         {noQuestions &&
