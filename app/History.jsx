@@ -47,13 +47,6 @@ export default class History extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.history.map((record) => {
-            if (!record.isCorrectAnswer) {
-              return (<Record key={record.id} record={record} />);
-            }
-
-            return [];
-          })}
         </tbody>
       </table>
     );
