@@ -8,11 +8,6 @@ export default class Answer extends React.Component {
     onAnswerChange: React.PropTypes.func.isRequired,
   };
 
-  componentDidMount() {
-    this.inputObj.focus();
-    this.inputObj.scrollIntoView();
-  }
-
   render() {
     const errorStyle = this.props.hasAnswerTextErrors ? {
       backgroundColor: 'rgb(242, 222, 222)',
@@ -21,9 +16,9 @@ export default class Answer extends React.Component {
 
     return (
       <input
+        autoFocus
         type="text"
         className="form-control"
-        ref={(x) => { this.inputObj = x; }}
         onKeyDown={(event) => {
           if (event.keyCode === 13) {
             this.props.onAnswerReady();
