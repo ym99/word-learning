@@ -88,6 +88,19 @@ export default class App extends React.Component {
     return questions;
   }
 
+  static previousUniqueId = 0;
+  static generateUniqueId() {
+    const date = Date.now();
+
+    if (date <= App.previousUniqueId) {
+      App.previousUniqueId += 1;
+    } else {
+      App.previousUniqueId = date;
+    }
+
+    return App.previousUniqueId;
+  }
+
   static getStats({ history }) {
     const total = history.length;
     const correct = history.reduce((accum, record) => accum + (record.isCorrectAnswer ? 1 : 0), 0);
@@ -164,6 +177,7 @@ export default class App extends React.Component {
         questions: newQuestions,
         questionIndex: App.generateQuestionIndex(newQuestions),
         history: [...prevState.history, {
+          id: App.generateUniqueId(),
           isCorrectAnswer: answer.trim().toUpperCase() === question.answer.trim().toUpperCase(),
           question,
           answer,

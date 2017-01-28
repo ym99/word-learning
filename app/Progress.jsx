@@ -3,7 +3,12 @@ import React from 'react';
 export default class Progress extends React.Component {
   static propTypes = {
     history: React.PropTypes.arrayOf(
-      React.PropTypes.object.isRequired,
+      React.PropTypes.shape({
+        id: React.PropTypes.number.isRequired,
+        isCorrectAnswer: React.PropTypes.bool.isRequired,
+        question: React.PropTypes.string.isRequired,
+        answer: React.PropTypes.string.isRequired,
+      }).isRequired,
     ).isRequired,
     questions: React.PropTypes.arrayOf(
       React.PropTypes.object.isRequired,
@@ -18,6 +23,7 @@ export default class Progress extends React.Component {
       if (records.length === 0 ||
           records[records.length - 1].isCorrectAnswer !== record.isCorrectAnswer) {
         records.push({
+          id: record.id,
           isCorrectAnswer: record.isCorrectAnswer,
           count: 1,
         });
@@ -30,10 +36,9 @@ export default class Progress extends React.Component {
       <div
         className="progress"
       >
-        {records.map((record, index) => (
+        {records.map(record => (
           <div
-            // eslint-disable-next-line react/no-array-index-key
-            key={`${record.isCorrectAnswer ? 'c' : 'i'}-${record.count}-${index}`}
+            key={record.id}
             className={record.isCorrectAnswer ? 'progress-bar progress-bar-success' : 'progress-bar progress-bar-danger'}
             role="progressbar"
             style={({
