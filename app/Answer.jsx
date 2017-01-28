@@ -22,6 +22,7 @@ export default class Answer extends React.Component {
     return (
       <input
         type="text"
+        className="form-control"
         ref={(x) => { this.inputObj = x; }}
         onKeyDown={(event) => {
           if (event.keyCode === 13) {

@@ -1,6 +1,5 @@
 import React from 'react';
 import Record from './Record';
-import Question from './Question';
 
 export default class History extends React.Component {
   static propTypes = {
@@ -15,11 +14,6 @@ export default class History extends React.Component {
         answer: React.PropTypes.string.isRequired,
       }).isRequired,
     ).isRequired,
-    question: React.PropTypes.shape({
-      text: React.PropTypes.string.isRequired,
-      answer: React.PropTypes.string.isRequired,
-    }).isRequired,
-    processAnswer: React.PropTypes.func.isRequired,
   }
 
   render() {
@@ -32,12 +26,6 @@ export default class History extends React.Component {
       >
         <thead>
           <tr>
-            <th
-              className="col-md-3"
-              style={({
-                textAlign: 'center',
-              })}
-            >Number</th>
             <th
               className="col-md-3"
               style={({
@@ -59,12 +47,13 @@ export default class History extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.history.map((record, index) => (
-            <Record key={record.id} index={index + 1} record={record} />
-          ))}
-          {this.props.question &&
-            <Question question={this.props.question} processAnswer={this.props.processAnswer} />
-          }
+          {this.props.history.map((record) => {
+            if (!record.isCorrectAnswer) {
+              return (<Record key={record.id} record={record} />);
+            }
+
+            return [];
+          })}
         </tbody>
       </table>
     );

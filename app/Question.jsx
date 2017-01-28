@@ -5,6 +5,7 @@ export default class Question extends React.Component {
   static propTypes = {
     question: React.PropTypes.shape({
       text: React.PropTypes.string.isRequired,
+      answer: React.PropTypes.string.isRequired,
     }).isRequired,
     processAnswer: React.PropTypes.func.isRequired,
   };
@@ -41,27 +42,25 @@ export default class Question extends React.Component {
 
   render() {
     return (
-      <tr>
-        <td />
-        <td>{this.props.question.text}</td>
-        <td>
-          <Answer
-            hasAnswerTextErrors={this.state.hasAnswerTextErrors}
-            answerText={this.state.answerText}
-            onAnswerChange={this.handleAnswerChange}
-            onAnswerReady={this.handleAnswerReady}
-          />
-        </td>
-        <td>
+      <div className="input-group">
+        <span className="input-group-addon">{this.props.question.text}</span>
+        <Answer
+          hasAnswerTextErrors={this.state.hasAnswerTextErrors}
+          answerText={this.state.answerText}
+          onAnswerChange={this.handleAnswerChange}
+          onAnswerReady={this.handleAnswerReady}
+        />
+        <span className="input-group-btn">
           <button
+            className="btn btn-default"
             type="button"
             disabled={this.state.hasAnswerTextErrors}
             onClick={this.handleAnswerReady}
           >
             Check
           </button>
-        </td>
-      </tr>
+        </span>
+      </div>
     );
   }
 }

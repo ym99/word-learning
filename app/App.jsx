@@ -3,6 +3,7 @@ import React from 'react';
 import Menu from './Menu';
 import Progress from './Progress';
 import Info from './Info';
+import Question from './Question';
 import History from './History';
 import FinalInfo from './FinalInfo';
 
@@ -195,17 +196,13 @@ export default class App extends React.Component {
         <Menu mode={this.state.mode} changeMode={this.changeMode} />
         <Info stats={stats} words={this.props.words} />
         <Progress history={this.state.history} questions={this.state.questions} />
-        <div className="input-group">
-          <span className="input-group-addon">Some words in spanish</span>
-          <input type="text" className="form-control" />
-          <span className="input-group-btn">
-            <button className="btn btn-default" type="button">
-              Check
-            </button>
-          </span>
-        </div>
+        {!noQuestions &&
+          <Question
+            question={this.state.questions[this.state.questionIndex]}
+            processAnswer={this.processAnswer}
+          />
+        }
         <History
-          question={noQuestions ? null : this.state.questions[this.state.questionIndex]}
           history={this.state.history}
           processAnswer={this.processAnswer}
         />
