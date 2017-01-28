@@ -57,7 +57,7 @@ export default class Question extends React.Component {
           <span
             className="input-group-addon"
             style={({
-              width: '20em',
+              width: '10em',
               textAlign: 'right',
             })}
           >{this.props.question.text}</span>

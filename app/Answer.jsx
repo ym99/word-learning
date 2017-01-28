@@ -38,7 +38,7 @@ export default class Answer extends React.Component {
         }}
         style={({
           ...errorStyle,
-          width: '20em',
+          width: '10em',
         })}
         value={this.props.answerText}
       />
