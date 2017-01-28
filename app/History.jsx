@@ -1,5 +1,4 @@
 import React from 'react';
-import Record from './Record';
 
 export default class History extends React.Component {
   static propTypes = {
@@ -55,7 +54,16 @@ export default class History extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {incorrectRecords.map(record => (<Record key={record.id} record={record} />))}
+          {incorrectRecords.map(record => (
+            <tr
+              key={record.id}
+              className="danger"
+            >
+              <td>{record.question.text}</td>
+              <td>{record.answer}</td>
+              <td>{record.question.answer}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     );
