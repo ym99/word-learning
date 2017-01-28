@@ -50,7 +50,7 @@ export default class Progress extends React.Component {
             className={record.isCorrectAnswer ? 'progress-bar progress-bar-success' : 'progress-bar progress-bar-danger'}
             role="progressbar"
             style={({
-              width: (`${((record.count * 100) / total).toFixed(0)}%`),
+              width: (`${((record.count * 100) / total).toString()}%`),
             })}
           />
         ))}
