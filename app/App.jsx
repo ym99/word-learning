@@ -3,6 +3,7 @@ import Menu from './Menu';
 import Progress from './Progress';
 import Question from './Question';
 import Log from './Log';
+import Reaction from './Reaction';
 
 export default class App extends React.Component {
   static propTypes = {
@@ -111,6 +112,7 @@ export default class App extends React.Component {
       questions,
       questionIndex,
       history: [],
+      reaction: null,
     };
 
     this.processAnswer = this.processAnswer.bind(this);
@@ -167,6 +169,7 @@ export default class App extends React.Component {
           words={this.props.words}
           processAnswer={this.processAnswer}
         />
+        <Reaction reaction={this.state.reaction} />
       </div>
     );
   }
