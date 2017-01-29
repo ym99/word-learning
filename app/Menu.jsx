@@ -8,15 +8,7 @@ export default class Menu extends React.Component {
 
   render() {
     return (
-      <div
-        style={({
-          position: 'fixed',
-          left: '0px',
-          top: '0px',
-          width: '100%',
-        })}
-        className="well well-sm"
-      >
+      <div className="well well-sm">
         <ul className="nav nav-pills">
           <li
             role="presentation"
