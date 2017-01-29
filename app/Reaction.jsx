@@ -33,7 +33,7 @@ export default class Reaction extends React.Component {
         <span
           className={isCorrect ? 'glyphicon glyphicon-ok-circle' : 'glyphicon glyphicon-ban-circle'}
           style={({
-            fontSize: '20em',
+            fontSize: '15em',
             color: (isCorrect ? '#5cb85c' : 'rgb(217, 83, 79)'),
           })}
         />
