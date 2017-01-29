@@ -1,5 +1,13 @@
 export default {
   new: [
+    { spanish: 'mirar', english: 'to look' },
+    { spanish: 'hablar', english: 'to talk' },
+    { spanish: 'oir', english: 'to hear' },
+    { spanish: 'rapido', english: 'fast' },
+    { spanish: 'lento', english: 'slow' },
+    { spanish: 'tuerte', english: 'strong', spanishComment: ' (when speaking)' },
+    { spanish: 'suave', english: 'soft' },
+    { spanish: 'caro', english: 'car' },
     { spanish: 'hombre', english: 'man' },
     { spanish: 'mujer', english: 'woman' },
     { spanish: 'pais', english: 'country' },
