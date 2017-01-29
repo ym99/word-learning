@@ -112,11 +112,21 @@ export default class App extends React.Component {
       questions,
       questionIndex,
       history: [],
-      reaction: null,
+      showReaction: false,
     };
 
-    this.processAnswer = this.processAnswer.bind(this);
     this.changeMode = this.changeMode.bind(this);
+    this.processAnswer = this.processAnswer.bind(this);
+  }
+
+  componentDidUpdate() {
+    if (this.state.showReaction) {
+      setTimeout(() => {
+        this.setState({
+          showReaction: false,
+        });
+      }, 500);
+    }
   }
 
   changeMode(mode) {
@@ -149,15 +159,10 @@ export default class App extends React.Component {
           question,
           answer,
         }],
+        showReaction: true,
       };
     });
   }
-
-  // componentDidMount() {
-  //   if (this.state.history.length > 0) {
-  //     this.state.history[]
-  //   }
-  // }
 
   render() {
     return (
@@ -175,7 +180,9 @@ export default class App extends React.Component {
           words={this.props.words}
           processAnswer={this.processAnswer}
         />
-        <Reaction history={this.state.history} />
+        {this.state.showReaction &&
+          <Reaction history={this.state.history} />
+        }
       </div>
     );
   }
