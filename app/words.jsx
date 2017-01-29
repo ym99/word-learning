@@ -1,15 +1,10 @@
 export default {
   new: [
-    { spanish: 'gracias', english: 'thanks' },
-    { spanish: 'bueno', english: 'good' },
-    { spanish: 'amigo', english: 'friend' },
-    { spanish: 'por favor', english: 'please' },
-    { spanish: 'ahora', english: 'now' },
-    { spanish: 'feliz', english: 'happy' },
-    { spanish: 'todo', english: 'all' },
-    { spanish: 'mismo', english: 'same' },
-    { spanish: 'muy', english: 'very' },
-    { spanish: 'nunca', english: 'never' },
+    { spanish: 'hombre', english: 'man' },
+    { spanish: 'mujer', english: 'woman' },
+    { spanish: 'pais', english: 'country' },
+    { spanish: 'triste', english: 'sad' },
+    { spanish: 'cosa', english: 'thing' },
   ],
   old: [
     // -- AR verb ----------------------------
@@ -56,5 +51,17 @@ export default {
     { spanish: 'salir', english: 'to leave' },
     { spanish: 'venir', english: 'to come' },
     { spanish: 'decir', english: 'to say' },
+
+    // words ---------------------------------
+    { spanish: 'gracias', english: 'thanks' },
+    { spanish: 'bueno', english: 'good' },
+    { spanish: 'amigo', english: 'friend' },
+    { spanish: 'por favor', english: 'please' },
+    { spanish: 'ahora', english: 'now' },
+    { spanish: 'feliz', english: 'happy' },
+    { spanish: 'todo', english: 'all' },
+    { spanish: 'mismo', english: 'same' },
+    { spanish: 'muy', english: 'very' },
+    { spanish: 'nunca', english: 'never' },
   ],
 };
