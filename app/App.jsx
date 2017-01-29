@@ -102,6 +102,13 @@ export default class App extends React.Component {
     return questions;
   }
 
+  static isCorrectAnswer(question, answer) {
+    const adjuestedAnswer = answer.replace(/ /g, '');
+    const adjuestedCorrectAnswer = question.answer.replace(/ /g, '');
+
+    return adjuestedAnswer.toUpperCase() === adjuestedCorrectAnswer.toUpperCase();
+  }
+
   constructor(props) {
     super(props);
 
@@ -157,7 +164,7 @@ export default class App extends React.Component {
         questionIndex: App.generateQuestionIndex(newQuestions),
         history: [...prevState.history, {
           id: App.generateUniqueId(),
-          isCorrectAnswer: answer.trim().toUpperCase() === question.answer.trim().toUpperCase(),
+          isCorrectAnswer: App.isCorrectAnswer(question, answer),
           question,
           answer,
         }],
