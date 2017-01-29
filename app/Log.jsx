@@ -8,6 +8,7 @@ export default class Log extends React.Component {
         id: React.PropTypes.number.isRequired,
         isCorrectAnswer: React.PropTypes.bool.isRequired,
         question: React.PropTypes.shape({
+          id: React.PropTypes.string.isRequired,
           text: React.PropTypes.string.isRequired,
           answer: React.PropTypes.string.isRequired,
         }).isRequired,

@@ -4,6 +4,7 @@ import Answer from './Answer';
 export default class Question extends React.Component {
   static propTypes = {
     question: React.PropTypes.shape({
+      id: React.PropTypes.number.isRequired,
       text: React.PropTypes.string.isRequired,
       answer: React.PropTypes.string.isRequired,
     }).isRequired,
@@ -43,6 +44,7 @@ export default class Question extends React.Component {
   render() {
     return (
       <div
+        key={this.props.question.id}
         className="input-group"
         style={({
           width: '100%',

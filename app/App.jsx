@@ -25,6 +25,19 @@ export default class App extends React.Component {
     }).isRequired,
   }
 
+  static previousUniqueId = 0;
+  static generateUniqueId() {
+    const date = Date.now();
+
+    if (date <= App.previousUniqueId) {
+      App.previousUniqueId += 1;
+    } else {
+      App.previousUniqueId = date;
+    }
+
+    return App.previousUniqueId;
+  }
+
   static generateQuestionIndex(questions) {
     return questions.length === 0 ? null : Math.floor(Math.random() * questions.length);
   }
@@ -32,6 +45,7 @@ export default class App extends React.Component {
   static generateQuestions({ words }, mode) {
     function createSpanishQuestion(word) {
       return {
+        id: App.generateUniqueId(),
         text: word.spanish + (word.spanishComment || ''),
         answer: word.english,
       };
@@ -39,6 +53,7 @@ export default class App extends React.Component {
 
     function createEnglishQuestion(word) {
       return {
+        id: App.generateUniqueId(),
         text: word.english + (word.englishComment || ''),
         answer: word.spanish,
       };
@@ -85,19 +100,6 @@ export default class App extends React.Component {
     }
 
     return questions;
-  }
-
-  static previousUniqueId = 0;
-  static generateUniqueId() {
-    const date = Date.now();
-
-    if (date <= App.previousUniqueId) {
-      App.previousUniqueId += 1;
-    } else {
-      App.previousUniqueId = date;
-    }
-
-    return App.previousUniqueId;
   }
 
   constructor(props) {
