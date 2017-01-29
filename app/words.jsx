@@ -6,15 +6,14 @@ export default {
     { spanish: 'sentir', english: 'feel' },
     { spanish: 'rapido', english: 'fast' },
     { spanish: 'lento', english: 'slow' },
-    { spanish: 'tuerte', english: 'strong', spanishComment: ' (when speaking)' },
+    { spanish: 'tuerte', english: 'strong', englishComment: ' (when speaking)' },
     { spanish: 'suave', english: 'soft' },
     { spanish: 'caro', english: 'car' },
-
-//    { spanish: 'hombre', english: 'man' },
-//    { spanish: 'mujer', english: 'woman' },
-//    { spanish: 'pais', english: 'country' },
-//    { spanish: 'triste', english: 'sad' },
-//    { spanish: 'cosa', english: 'thing' },
+    { spanish: 'hombre', english: 'man' },
+    { spanish: 'mujer', english: 'woman' },
+    { spanish: 'pais', english: 'country' },
+    { spanish: 'triste', english: 'sad' },
+    { spanish: 'cosa', english: 'thing' },
   ],
   old: [
     // -- AR verb ----------------------------
