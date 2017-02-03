@@ -1,19 +1,5 @@
 export default {
   new: [
-    { spanish: 'mirar', english: 'to look' },
-    { spanish: 'hablar', english: 'to talk' },
-    { spanish: 'oir', english: 'to hear' },
-    { spanish: 'sentir', english: 'feel' },
-    { spanish: 'rapido', english: 'fast' },
-    { spanish: 'lento', english: 'slow' },
-    { spanish: 'tuerte', english: 'strong', englishComment: ' (when speaking)' },
-    { spanish: 'suave', english: 'soft' },
-    { spanish: 'caro', english: 'car' },
-    { spanish: 'hombre', english: 'man' },
-    { spanish: 'mujer', english: 'woman' },
-    { spanish: 'pais', english: 'country' },
-    { spanish: 'triste', english: 'sad' },
-    { spanish: 'cosa', english: 'thing' },
   ],
   old: [
     // -- AR verb ----------------------------
@@ -32,6 +18,8 @@ export default {
     { spanish: 'echar', english: 'to throw' },
     { spanish: 'sacar', english: 'to take out' },
     { spanish: 'encontrar', english: 'to find' },
+    { spanish: 'mirar', english: 'to look' },
+    { spanish: 'hablar', english: 'to talk' },
 
     // -- ER verb ----------------------------
     { spanish: 'ser', english: 'to be', englishComment: ' (somebody)' },
@@ -60,6 +48,9 @@ export default {
     { spanish: 'salir', english: 'to leave' },
     { spanish: 'venir', english: 'to come' },
     { spanish: 'decir', english: 'to say' },
+    { spanish: 'sentir', english: 'feel' },
+
+    { spanish: 'oir', english: 'to hear' },
 
     // words ---------------------------------
     { spanish: 'gracias', english: 'thanks' },
@@ -67,10 +58,23 @@ export default {
     { spanish: 'amigo', english: 'friend' },
     { spanish: 'por favor', english: 'please' },
     { spanish: 'ahora', english: 'now' },
+
     { spanish: 'feliz', english: 'happy' },
     { spanish: 'todo', english: 'all' },
     { spanish: 'mismo', english: 'same' },
     { spanish: 'muy', english: 'very' },
     { spanish: 'nunca', english: 'never' },
+
+    { spanish: 'rapido', english: 'fast' },
+    { spanish: 'lento', english: 'slow' },
+    { spanish: 'tuerte', english: 'strong', englishComment: ' (when speaking)' },
+    { spanish: 'suave', english: 'soft' },
+    { spanish: 'caro', english: 'car' },
+
+    { spanish: 'hombre', english: 'man' },
+    { spanish: 'mujer', english: 'woman' },
+    { spanish: 'pais', english: 'country' },
+    { spanish: 'triste', english: 'sad' },
+    { spanish: 'cosa', english: 'thing' },
   ],
 };
