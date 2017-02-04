@@ -15,18 +15,10 @@ export default class App extends React.Component {
           React.PropTypes.string,
           React.PropTypes.arrayOf(React.PropTypes.string),
         ]).isRequired,
-        spanishComment: React.PropTypes.oneOfType([
-          React.PropTypes.string,
-          React.PropTypes.arrayOf(React.PropTypes.string),
-        ]),
         english: React.PropTypes.oneOfType([
           React.PropTypes.string,
           React.PropTypes.arrayOf(React.PropTypes.string),
         ]).isRequired,
-        englishComment: React.PropTypes.oneOfType([
-          React.PropTypes.string,
-          React.PropTypes.arrayOf(React.PropTypes.string),
-        ]),
       })).isRequired,
   }
 
@@ -48,20 +40,29 @@ export default class App extends React.Component {
   }
 
   static generateQuestions({ words }, mode) {
-    function pushQuestions(arr, count, source, comment, target) {
+    function pushQuestions(arr, count, source, target) {
+      function getQuestionText(value) {
+        const splitValue = value.split('+', 2);
+        return splitValue[0].trim() + (splitValue.length > 1 ? ` (${splitValue[1].trim()})` : '');
+      }
+
+      function getAnswerText(value) {
+        return value.split('+', 1)[0].trim();
+      }
+
       for (let c = 0; c < count; c += 1) {
         if (typeof source === 'string') {
           arr.push({
             id: App.generateUniqueId(),
-            text: source + (comment || ''),
-            answers: (typeof target === 'string' ? [target] : target),
+            text: getQuestionText(source),
+            answers: (typeof target === 'string' ? [target] : target).map(answer => getAnswerText(answer)),
           });
         } else {
-          source.forEach((sourceItem, index) => {
+          source.forEach((sourceItem) => {
             arr.push({
               id: App.generateUniqueId(),
-              text: sourceItem + (comment ? comment[index] : ''),
-              answers: (typeof target === 'string' ? [target] : target),
+              text: getQuestionText(sourceItem),
+              answers: (typeof target === 'string' ? [target] : target).map(answer => getAnswerText(answer)),
             });
           });
         }
@@ -102,7 +103,6 @@ export default class App extends React.Component {
           questions,
           (word.new ? newRatio : oldRatio),
           word.spanish,
-          word.spanishComment,
           word.english,
         );
 
@@ -110,7 +110,6 @@ export default class App extends React.Component {
           questions,
           (word.new ? newRatio : oldRatio),
           word.english,
-          word.englishComment,
           word.spanish,
         );
       }
