@@ -8,17 +8,17 @@ export default class Log extends React.Component {
         id: React.PropTypes.number.isRequired,
         isCorrectAnswer: React.PropTypes.bool.isRequired,
         question: React.PropTypes.shape({
-          id: React.PropTypes.string.isRequired,
           text: React.PropTypes.string.isRequired,
-          answer: React.PropTypes.string.isRequired,
+          answers: React.PropTypes.arrayOf(React.PropTypes.string),
         }).isRequired,
         answer: React.PropTypes.string.isRequired,
       }).isRequired,
     ).isRequired,
-    words: React.PropTypes.shape({
-      old: React.PropTypes.array.isRequired,
-      new: React.PropTypes.array.isRequired,
-    }).isRequired,
+    words: React.PropTypes.arrayOf(
+      React.PropTypes.shape({
+        new: React.PropTypes.bool,
+        hide: React.PropTypes.bool,
+      })).isRequired,
   }
 
   render() {
@@ -68,7 +68,7 @@ export default class Log extends React.Component {
               style={({
                 padding: '0.25em',
               })}
-            >{record.question.answer}</span>
+            >{record.question.answers.join(', ')}</span>
           </div>
         ))}
       </div>

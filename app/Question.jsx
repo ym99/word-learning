@@ -6,7 +6,6 @@ export default class Question extends React.Component {
     question: React.PropTypes.shape({
       id: React.PropTypes.number.isRequired,
       text: React.PropTypes.string.isRequired,
-      answer: React.PropTypes.string.isRequired,
     }).isRequired,
     processAnswer: React.PropTypes.func.isRequired,
   };

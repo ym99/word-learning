@@ -6,19 +6,9 @@ export default class Progress extends React.Component {
       React.PropTypes.shape({
         id: React.PropTypes.number.isRequired,
         isCorrectAnswer: React.PropTypes.bool.isRequired,
-        question: React.PropTypes.shape({
-          text: React.PropTypes.string.isRequired,
-          answer: React.PropTypes.string.isRequired,
-        }).isRequired,
-        answer: React.PropTypes.string.isRequired,
       }).isRequired,
     ).isRequired,
-    questions: React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-        text: React.PropTypes.string.isRequired,
-        answer: React.PropTypes.string.isRequired,
-      }).isRequired,
-    ).isRequired,
+    questions: React.PropTypes.arrayOf(React.PropTypes.any).isRequired,
   }
 
   render() {

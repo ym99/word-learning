@@ -7,22 +7,21 @@ import Reaction from './Reaction';
 
 export default class App extends React.Component {
   static propTypes = {
-    words: React.PropTypes.shape({
-      old: React.PropTypes.arrayOf(
-        React.PropTypes.shape({
-          spanish: React.PropTypes.string.isRequired,
-          spanishComment: React.PropTypes.string,
-          english: React.PropTypes.string.isRequired,
-          englishComment: React.PropTypes.string,
-        })).isRequired,
-      new: React.PropTypes.arrayOf(
-        React.PropTypes.shape({
-          spanish: React.PropTypes.string.isRequired,
-          spanishComment: React.PropTypes.string,
-          english: React.PropTypes.string.isRequired,
-          englishComment: React.PropTypes.string,
-        })).isRequired,
-    }).isRequired,
+    words: React.PropTypes.arrayOf(
+      React.PropTypes.shape({
+        hide: React.PropTypes.bool,
+        new: React.PropTypes.bool,
+        spanish: React.PropTypes.oneOfType([
+          React.PropTypes.string,
+          React.PropTypes.arrayOf(React.PropTypes.string),
+        ]).isRequired,
+        spanishComment: React.PropTypes.string,
+        english: React.PropTypes.oneOfType([
+          React.PropTypes.string,
+          React.PropTypes.arrayOf(React.PropTypes.string),
+        ]).isRequired,
+        englishComment: React.PropTypes.string,
+      })).isRequired,
   }
 
   static previousUniqueId = 0;
@@ -43,20 +42,24 @@ export default class App extends React.Component {
   }
 
   static generateQuestions({ words }, mode) {
-    function createSpanishQuestion(word) {
-      return {
-        id: App.generateUniqueId(),
-        text: word.spanish + (word.spanishComment || ''),
-        answer: word.english,
-      };
-    }
-
-    function createEnglishQuestion(word) {
-      return {
-        id: App.generateUniqueId(),
-        text: word.english + (word.englishComment || ''),
-        answer: word.spanish,
-      };
+    function pushQuestions(arr, count, source, comment, target) {
+      for (let c = 0; c < count; c += 1) {
+        if (typeof source === 'string') {
+          arr.push({
+            id: App.generateUniqueId(),
+            text: source + (comment || ''),
+            answers: (typeof target === 'string' ? [target] : target),
+          });
+        } else {
+          source.forEach((sourceItem) => {
+            arr.push({
+              id: App.generateUniqueId(),
+              text: sourceItem + (comment || ''),
+              answers: (typeof target === 'string' ? [target] : target),
+            });
+          });
+        }
+      }
     }
 
     let newRatio;
@@ -85,17 +88,25 @@ export default class App extends React.Component {
 
     const questions = [];
 
-    for (let i = 0; i < (words.new || []).length; i += 1) {
-      for (let c = 0; c < newRatio; c += 1) {
-        questions.push(createSpanishQuestion(words.new[i]));
-        questions.push(createEnglishQuestion(words.new[i]));
-      }
-    }
+    for (let i = 0; i < words.length; i += 1) {
+      const word = words[i];
 
-    for (let i = 0; i < (words.old || []).length; i += 1) {
-      for (let c = 0; c < oldRatio; c += 1) {
-        questions.push(createSpanishQuestion(words.old[i]));
-        questions.push(createEnglishQuestion(words.old[i]));
+      if (!word.hide) {
+        pushQuestions(
+          questions,
+          (word.new ? newRatio : oldRatio),
+          word.spanish,
+          word.spanishComment,
+          word.english,
+        );
+
+        pushQuestions(
+          questions,
+          (word.new ? newRatio : oldRatio),
+          word.english,
+          word.englishComment,
+          word.spanish,
+        );
       }
     }
 
@@ -103,10 +114,7 @@ export default class App extends React.Component {
   }
 
   static isCorrectAnswer(question, answer) {
-    const adjuestedAnswer = answer.replace(/ /g, '');
-    const adjuestedCorrectAnswer = question.answer.replace(/ /g, '');
-
-    return adjuestedAnswer.toUpperCase() === adjuestedCorrectAnswer.toUpperCase();
+    return question.answers.some(_answer => _answer.replace(/ /g, '').toUpperCase() === answer.replace(/ /g, '').toUpperCase());
   }
 
   constructor(props) {

@@ -4,13 +4,7 @@ export default class Reaction extends React.Component {
   static propTypes = {
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({
-        id: React.PropTypes.number.isRequired,
         isCorrectAnswer: React.PropTypes.bool.isRequired,
-        question: React.PropTypes.shape({
-          text: React.PropTypes.string.isRequired,
-          answer: React.PropTypes.string.isRequired,
-        }).isRequired,
-        answer: React.PropTypes.string.isRequired,
       }).isRequired,
     ).isRequired,
   };

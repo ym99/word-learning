@@ -4,19 +4,14 @@ export default class Stats extends React.Component {
   static propTypes = {
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({
-        id: React.PropTypes.number.isRequired,
         isCorrectAnswer: React.PropTypes.bool.isRequired,
-        question: React.PropTypes.shape({
-          text: React.PropTypes.string.isRequired,
-          answer: React.PropTypes.string.isRequired,
-        }).isRequired,
-        answer: React.PropTypes.string.isRequired,
       }).isRequired,
     ).isRequired,
-    words: React.PropTypes.shape({
-      old: React.PropTypes.array.isRequired,
-      new: React.PropTypes.array.isRequired,
-    }).isRequired,
+    words: React.PropTypes.arrayOf(
+      React.PropTypes.shape({
+        new: React.PropTypes.bool,
+        hide: React.PropTypes.bool,
+      })).isRequired,
   }
 
   render() {
@@ -88,7 +83,7 @@ export default class Stats extends React.Component {
           })}
         >
           <b>
-            {this.props.words.new.length}
+            {this.props.words.reduce((accum, word) => accum + (!word.hide && word.new ? 1 : 0), 0)}
           </b> new words
         </div>
         <div
@@ -98,7 +93,7 @@ export default class Stats extends React.Component {
           })}
         >
           <b>
-            {this.props.words.old.length}
+            {this.props.words.reduce((accum, word) => accum + (!word.hide && !word.new ? 1 : 0), 0)}
           </b> known words
         </div>
       </div>
