@@ -15,12 +15,18 @@ export default class App extends React.Component {
           React.PropTypes.string,
           React.PropTypes.arrayOf(React.PropTypes.string),
         ]).isRequired,
-        spanishComment: React.PropTypes.string,
+        spanishComment: React.PropTypes.oneOfType([
+          React.PropTypes.string,
+          React.PropTypes.arrayOf(React.PropTypes.string),
+        ]),
         english: React.PropTypes.oneOfType([
           React.PropTypes.string,
           React.PropTypes.arrayOf(React.PropTypes.string),
         ]).isRequired,
-        englishComment: React.PropTypes.string,
+        englishComment: React.PropTypes.oneOfType([
+          React.PropTypes.string,
+          React.PropTypes.arrayOf(React.PropTypes.string),
+        ]),
       })).isRequired,
   }
 
@@ -51,10 +57,10 @@ export default class App extends React.Component {
             answers: (typeof target === 'string' ? [target] : target),
           });
         } else {
-          source.forEach((sourceItem) => {
+          source.forEach((sourceItem, index) => {
             arr.push({
               id: App.generateUniqueId(),
-              text: sourceItem + (comment || ''),
+              text: sourceItem + (comment ? comment[index] : ''),
               answers: (typeof target === 'string' ? [target] : target),
             });
           });
