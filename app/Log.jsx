@@ -25,7 +25,7 @@ export default class Log extends React.Component {
     const incorrectRecords = [];
     this.props.history.forEach((record) => {
       if (!record.isCorrectAnswer) {
-        incorrectRecords.push(record);
+        incorrectRecords.unshift(record);
       }
     });
 
