@@ -140,6 +140,10 @@ export default class App extends React.Component {
 
   changeMode(mode) {
     this.setState((prevState, props) => {
+      if (!window.confirm('Start over ?')) {
+        return {};
+      }
+
       const questions = App.generateQuestions(props, mode);
       const questionIndex = App.generateQuestionIndex(questions);
 
