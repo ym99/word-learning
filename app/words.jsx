@@ -1,5 +1,6 @@
 export default {
   new: [
+    { spanish: 'guineo', english: 'banana' },
   ],
   old: [
     // -- AR verb ----------------------------
