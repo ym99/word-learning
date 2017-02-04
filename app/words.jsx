@@ -1,6 +1,7 @@
 export default {
   new: [
     { spanish: 'guineo', english: 'banana' },
+    { spanish: 'cambur', english: 'banana', englishComment: ' (only in Venezuela)' },
   ],
   old: [
     // -- AR verb ----------------------------
