@@ -11,7 +11,7 @@ export default [
 
     /* 010 */ { spanish: 'amigo', english: 'friend' },
     /* 011 */ { spanish: 'por favor', english: 'please' },
-    /* 012 */ { hide: true, spanish: 'no', spanishComment: ' (from Spanish to English)', english: 'no', englishComment: ' (from English to Spanish)' },
+    /* 012 */ { spanish: 'no', spanishComment: ' (from Spanish to English)', english: 'no', englishComment: ' (from English to Spanish)' },
     /* 013 */ { hide: true, spanish: 'en', english: ['on', 'in'] },
     /* 014 */ { spanish: 'haber', english: 'to have', englishComment: ' (auxiliary, supportive verb)' },
     /* 015 */ { spanish: 'tener', english: ['to have', 'to possess'], englishComment: [' (to possess)', ''] },
@@ -77,7 +77,7 @@ export default [
     /* 068 */ { spanish: 'pensar', english: 'to think' },
     /* 069 */ { hide: true, spanish: 'hasta', english: 'until' },
 
-    /* 070 */ // { hide: true, spanish: ['tanto', 'tan'], english: '?', englishComment: ' (used in making comparison' },
+    /* 070 */ // ['tanto', 'tan'], '?', ' (used in making comparison' },
     /* 071 */ { hide: true, spanish: 'entre', english: ['between', 'among'] },
     /* 072 */ { hide: true, spanish: 'durante', english: 'during' },
     /* 073 */ { spanish: 'llevar', english: ['to wear', 'to carry'] },
@@ -125,10 +125,10 @@ export default [
     { spanish: 'caro', english: 'car' },
 
     { new: true, spanish: 'caminar', english: 'to walk', englishComment: ' (to some location)' },
-    { new: true, spanish: 'guineo', english: 'banana' },
+    { new: true, spanish: 'platanos', english: 'banana' },
     { new: true, spanish: 'respuesta', english: 'answer' },
     { new: true, spanish: 'esta', english: 'this', englishComment: ' (if you can touch it)' },
-    { new: true, spanish: 'esa', english: 'this', englishComment: ' (if you can\'t touch it' },
+    { new: true, spanish: 'esa', english: 'this', englishComment: ' (if you can\'t touch it)' },
     { new: true, spanish: 'con', english: 'with' },
     { new: true, spanish: 'salud', english: 'health' },
     { new: true, spanish: 'perfecta', english: 'perfect' },
