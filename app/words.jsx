@@ -1,11 +1,5 @@
 export default {
   new: [
-    { spanish: 'antes', english: 'before' },
-    { spanish: 'mas', english: 'more' },
-    { spanish: 'bien', english: 'well' },
-    { spanish: 'aqui', english: 'here' },
-    { spanish: 'alli', english: 'there' },
-    { spanish: 'casi', english: 'almost' },
   ],
   old: [
     // -- AR verb ----------------------------
@@ -82,5 +76,13 @@ export default {
     { spanish: 'pais', english: 'country' },
     { spanish: 'triste', english: 'sad' },
     { spanish: 'cosa', english: 'thing' },
+
+    { spanish: 'antes', english: 'before' },
+    { spanish: 'mas', english: 'more' },
+    { spanish: 'bien', english: 'well' },
+    { spanish: 'aqui', english: 'here' },
+    { spanish: 'alli', english: 'there' },
+
+    { spanish: 'casi', english: 'almost' },
   ],
 };
