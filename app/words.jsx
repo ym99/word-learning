@@ -1,5 +1,7 @@
 export default {
   new: [
+    { spanish: 'deber', english: 'should' },
+
     { spanish: 'guineo', english: 'banana' },
     { spanish: 'cambur', english: 'banana', englishComment: ' (only in Venezuela)' },
     { spanish: 'como', english: 'how' },
@@ -35,7 +37,7 @@ export default {
 
     { spanish: 'poder', english: 'to be able' },
     { spanish: 'poner', english: 'to put' },
-    { spanish: 'deber', english: 'to owe' },
+    // deber ... should
     { spanish: 'leer', english: 'to read' },
     { spanish: 'comer', english: 'to eat' },
 
