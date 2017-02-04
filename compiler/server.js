@@ -21,7 +21,7 @@ app.use(require('webpack-hot-middleware')(compiler, {
 }));
 
 app.get('/', (request, response) => {
-  response.sendFile(path.resolve(__dirname, '../docs/index.html'));
+  response.sendFile(path.resolve(__dirname, '../app/index-dev.html'));
 });
 
 require('http')

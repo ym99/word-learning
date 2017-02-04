@@ -1,5 +1,7 @@
 var path = require("path");
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var packageJson = require('../package.json');
 
 module.exports = {
     entry: [
@@ -23,7 +25,13 @@ module.exports = {
             }
         }),
         new webpack.optimize.DedupePlugin(),
-        new webpack.IgnorePlugin(/regenerator|nodent|js-beautify/, /ajv/)
+        new webpack.IgnorePlugin(/regenerator|nodent|js-beautify/, /ajv/),
+        new HtmlWebpackPlugin({
+            title: packageJson.description + ' ' + packageJson.version,
+            filename: 'index.html',
+            template: './app/index-prod.html',
+            hash: true,
+        })
     ],
     resolve: {
         extensions: ['', '.js', '.jsx'],
@@ -31,7 +39,10 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.(js|jsx)$/, loaders: ['babel'], exclude: /node_modules/ }
+            { test: /\.(js|jsx)$/, loaders: ['babel'], exclude: /node_modules/ },
+            { test: /\.html$/, loader: 'html', query: {
+                minimize: true
+            }}
         ]
     }
 };

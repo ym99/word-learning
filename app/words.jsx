@@ -2,6 +2,9 @@ export default {
   new: [
     { spanish: 'guineo', english: 'banana' },
     { spanish: 'cambur', english: 'banana', englishComment: ' (only in Venezuela)' },
+    { spanish: 'como', english: 'how' },
+    { spanish: 'donde', english: 'where' },
+    { spanish: 'cuando', english: 'when' },
   ],
   old: [
     // -- AR verb ----------------------------
