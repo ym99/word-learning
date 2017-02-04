@@ -5,7 +5,7 @@
   "scripts": {
     "build-dev": "webpack --config compiler/webpack.config.dev.js",
     "build-prod": "set NODE_ENV=production & webpack --config compiler/webpack.config.prod.js",
-    "start": "npm run build-dev & node compiler/server.js"
+    "start": "node compiler/server.js"
   },
   "author": "ym99",
   "license": "GNU-3",
