@@ -92,7 +92,7 @@ export default [
 
     /* 080 */ { spanish: 'conocer', english: 'to know + person or place' },
     /* 081 */ { hide: true, spanish: 'primero', english: 'first' },
-    /* 082 */ { new: true, spanish: 'andar', english: 'to walk + when enjoying...' },
+    /* 082 */ { new: true, spanish: 'andar', english: 'to walk + when enjoying ...' },
     /* 083 */ { hide: true, spanish: 'sobre', english: ['over', 'about'] },
     /* 084 */ { spanish: 'echar', english: 'to throw' },
     /* 085 */ { new: true, spanish: 'sin', english: 'without' },
