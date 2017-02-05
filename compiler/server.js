@@ -24,6 +24,14 @@ app.get('/', (request, response) => {
   response.sendFile(path.resolve(__dirname, '../app/index-dev.html'));
 });
 
+app.get('/es.svg', (request, response) => {
+  response.sendFile(path.resolve(__dirname, '../docs/es.svg'));
+});
+
+app.get('/us.svg', (request, response) => {
+  response.sendFile(path.resolve(__dirname, '../docs/us.svg'));
+});
+
 require('http')
   .createServer(app)
   .listen(5000, (error) => {

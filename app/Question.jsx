@@ -1,4 +1,5 @@
 import React from 'react';
+import Flag from './Flag';
 import Answer from './Answer';
 
 export default class Question extends React.Component {
@@ -6,6 +7,8 @@ export default class Question extends React.Component {
     question: React.PropTypes.shape({
       id: React.PropTypes.number.isRequired,
       text: React.PropTypes.string.isRequired,
+      lang: React.PropTypes.string.isRequired,
+      answerLang: React.PropTypes.string.isRequired,
     }).isRequired,
     processAnswer: React.PropTypes.func.isRequired,
   };
@@ -55,6 +58,7 @@ export default class Question extends React.Component {
             margin: '0 auto',
           })}
         >
+          <Flag lang={this.props.question.lang} />
           <span
             className="input-group-addon"
             style={({
@@ -76,6 +80,7 @@ export default class Question extends React.Component {
           >
             Check
           </button>
+          <Flag lang={this.props.question.answerLang} />
         </div>
       </div>
     );

@@ -1,7 +1,7 @@
 export default [
     /* 001 */ { spanish: 'gracias', english: 'thanks' },
     /* 002 */ { spanish: 'ser', english: 'to be + somebody' },
-    /* 003 */ { hide: true, spanish: 'a + from Spanish to English', english: 'to + from English to Spanish' },
+    /* 003 */ { hide: true, spanish: 'a', english: 'to' },
     /* 004 */ { spanish: 'ir', english: 'to go' },
     /* 005 */ { spanish: 'estar', english: 'to be + location, feeling' },
     /* 006 */ { spanish: 'bueno', english: 'good' },
@@ -11,7 +11,7 @@ export default [
 
     /* 010 */ { spanish: 'amigo', english: 'friend' },
     /* 011 */ { spanish: 'por favor', english: 'please' },
-    /* 012 */ { spanish: 'no + from Spanish to English', english: 'no + from English to Spanish' },
+    /* 012 */ { spanish: 'no', english: 'no' },
     /* 013 */ { hide: true, spanish: 'en', english: ['on', 'in'] },
     /* 014 */ { spanish: 'haber', english: 'to have + auxiliary, supportive verb' },
     /* 015 */ { spanish: 'tener', english: ['to have + to possess', 'to possess'] },

@@ -40,7 +40,7 @@ export default class App extends React.Component {
   }
 
   static generateQuestions({ words }, mode) {
-    function pushQuestions(arr, count, source, target) {
+    function pushQuestions(arr, count, textAndComment, lang, answerOrFew, answerLang) {
       function getQuestionText(value) {
         const splitValue = value.split('+', 2);
         return splitValue[0].trim() + (splitValue.length > 1 ? ` (${splitValue[1].trim()})` : '');
@@ -51,18 +51,22 @@ export default class App extends React.Component {
       }
 
       for (let c = 0; c < count; c += 1) {
-        if (typeof source === 'string') {
+        if (typeof textAndComment === 'string') {
           arr.push({
             id: App.generateUniqueId(),
-            text: getQuestionText(source),
-            answers: (typeof target === 'string' ? [target] : target).map(answer => getAnswerText(answer)),
+            text: getQuestionText(textAndComment),
+            lang,
+            answers: (typeof answerOrFew === 'string' ? [answerOrFew] : answerOrFew).map(answer => getAnswerText(answer)),
+            answerLang,
           });
         } else {
-          source.forEach((sourceItem) => {
+          textAndComment.forEach((sourceItem) => {
             arr.push({
               id: App.generateUniqueId(),
               text: getQuestionText(sourceItem),
-              answers: (typeof target === 'string' ? [target] : target).map(answer => getAnswerText(answer)),
+              lang,
+              answers: (typeof answerOrFew === 'string' ? [answerOrFew] : answerOrFew).map(answer => getAnswerText(answer)),
+              answerLang,
             });
           });
         }
@@ -103,14 +107,18 @@ export default class App extends React.Component {
           questions,
           (word.new ? newRatio : oldRatio),
           word.spanish,
+          'spanish',
           word.english,
+          'english',
         );
 
         pushQuestions(
           questions,
           (word.new ? newRatio : oldRatio),
           word.english,
+          'english',
           word.spanish,
+          'spanish',
         );
       }
     }
