@@ -1,5 +1,6 @@
 import React from 'react';
 import Stats from './Stats';
+import Speech from './Speech';
 
 export default class Log extends React.Component {
   static propTypes = {
@@ -9,6 +10,8 @@ export default class Log extends React.Component {
         isCorrectAnswer: React.PropTypes.bool.isRequired,
         question: React.PropTypes.shape({
           text: React.PropTypes.string.isRequired,
+          lang: React.PropTypes.string.isRequired,
+          answerLang: React.PropTypes.string.isRequired,
           answers: React.PropTypes.arrayOf(React.PropTypes.string),
         }).isRequired,
         answer: React.PropTypes.string.isRequired,
@@ -46,7 +49,13 @@ export default class Log extends React.Component {
               display: 'inline-block',
               padding: '0.25em',
               margin: '0.25em',
+              cursor: 'pointer',
             })}
+            onClick={() => {
+              Speech.say(record.question.text, record.question.lang);
+              Speech.say('means');
+              Speech.say(record.question.answers.join(', '), record.answer.lang);
+            }}
           >
             <span
               style={({

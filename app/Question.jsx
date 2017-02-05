@@ -1,6 +1,7 @@
 import React from 'react';
 import Flag from './Flag';
 import Answer from './Answer';
+import Speech from './Speech';
 
 export default class Question extends React.Component {
   static propTypes = {
@@ -64,7 +65,9 @@ export default class Question extends React.Component {
             style={({
               width: '10em',
               textAlign: 'right',
+              cursor: 'pointer',
             })}
+            onClick={() => { Speech.say(this.props.question.text, this.props.question.lang); }}
           >{this.props.question.text}</span>
           <Answer
             hasAnswerTextErrors={this.state.hasAnswerTextErrors}
