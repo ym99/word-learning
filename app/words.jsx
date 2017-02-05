@@ -22,19 +22,19 @@ export default [
 
     /* 020 */ { hide: true, spanish: 'por', english: ['for', 'by'] },  // PROBLEM
     /* 021 */ { spanish: 'amar', english: 'to love' },
-    /* 022 */ { hide: true, spanish: 'quien', english: 'who' },
+    /* 022 */ { hide: true, spanish: 'quién', english: 'who' },
     /* 023 */ { hide: true, spanish: 'para', english: ['for', 'to'] },  // 2x PROBLEMs
     /* 024 */ { spanish: 'venir', english: 'to come' },
     /* 025 */ { hide: true, spanish: 'porque', english: 'because' },
     /* 026 */ { hide: true, spanish: ['el', 'la', 'los', 'las'], english: 'the' },
     /* 027 */ { spanish: 'antes', english: 'before' },
-    /* 028 */ { spanish: 'mas', english: 'more' },
+    /* 028 */ { spanish: 'más', english: 'more' },
     /* 029 */ { spanish: 'bien', english: 'well' },
 
     /* 030 */ { new: true, spanish: ['aqui', 'alli'], english: ['here', 'there'] },
     /* 031 */ { spanish: 'querer', english: 'to want' },
     /* 032 */ { hide: true, spanish: 'hola', english: 'hello' },
-    /* 033 */ { spanish: 'tu', english: 'you + singular' },
+    /* 033 */ { spanish: 'tú', english: 'you + singular' },
     /* 034 */ { spanish: 'poder', english: 'to be able' },
     /* 035 */ { spanish: 'gustar', english: ['to be pleasing', 'to like'] },
     /* 036 */ { spanish: 'poner', english: 'to put' },
@@ -83,7 +83,7 @@ export default [
     /* 073 */ { spanish: 'llevar', english: ['to wear', 'to carry'] },
     /* 074 */ { hide: true, spanish: 'siempre', english: 'always' },
     /* 075 */ { spanish: 'empezar', english: 'to begin' },
-    /* 076a*/ { spanish: 'el', english: 'he' },
+    /* 076a*/ { spanish: 'él', english: 'he' },
     /* 076b*/ { spanish: 'ella', english: 'she' },
     /* 076c*/ { spanish: ['ellos', 'ellas'], english: 'they' },
     /* 077 */ { spanish: 'leer', english: 'to read' },
@@ -101,7 +101,7 @@ export default [
     /* 088 */ { spanish: 'nosotros', english: 'we' },
     /* 089 */ { hide: true, spanish: 'tambien', english: 'also' },
 
-    /* 090 */ { hide: true, spanish: 'adios', english: 'goodbye' },
+    /* 090 */ { hide: true, spanish: 'adiós', english: 'goodbye' },
     /* 091 */ { spanish: 'comer', english: 'to eat' },
     /* 092 */ { spanish: 'triste', english: 'sad' },
     /* 093 */ { spanish: 'pais', english: 'country' },
@@ -133,3 +133,14 @@ export default [
     { new: true, spanish: 'salud', english: 'health' },
     { new: true, spanish: 'perfecta', english: 'perfect' },
 ];
+/*
+    á Alt + 0225
+    é Alt + 0233
+    í Alt + 0237
+    ó Alt + 0243
+    ú Alt + 0250
+    ñ Alt + 0241
+    ü Alt + 0252
+    ¡ Alt + 0161
+    ¿ Alt + 0191
+*/
