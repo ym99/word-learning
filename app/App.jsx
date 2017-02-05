@@ -118,10 +118,6 @@ export default class App extends React.Component {
     return questions;
   }
 
-  static isCorrectAnswer(question, answer) {
-    return question.answers.some(_answer => _answer.replace(/ /g, '').toUpperCase() === answer.replace(/ /g, '').toUpperCase());
-  }
-
   constructor(props) {
     super(props);
 
@@ -170,6 +166,23 @@ export default class App extends React.Component {
   }
 
   processAnswer(answer) {
+    function isCorrectAnswer(question) {
+      function generalize(value) {
+        return value
+          .replace(/ /g, '')
+          .replace(/á/g, 'a')
+          .replace(/é/g, 'e')
+          .replace(/í/g, 'i')
+          .replace(/ó/g, 'o')
+          .replace(/ú/g, 'u')
+          .replace(/ñ/g, 'n')
+          .replace(/ü/g, 'u')
+          .toUpperCase();
+      }
+
+      return question.answers.some(_answer => generalize(_answer) === generalize(answer));
+    }
+
     this.setState((prevState) => {
       const question = prevState.questions[prevState.questionIndex];
 
@@ -181,7 +194,7 @@ export default class App extends React.Component {
         questionIndex: App.generateQuestionIndex(newQuestions),
         history: [...prevState.history, {
           id: App.generateUniqueId(),
-          isCorrectAnswer: App.isCorrectAnswer(question, answer),
+          isCorrectAnswer: isCorrectAnswer(question, answer),
           question,
           answer,
         }],
