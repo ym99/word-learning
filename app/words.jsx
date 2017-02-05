@@ -18,7 +18,7 @@ export default [
     /* 016 */ { hide: true, spanish: ['un', 'uno', 'una'], english: ['a', 'one'] },
     /* 017 */ { spanish: 'ahora', english: 'now' },
     /* 018 */ { hide: true, spanish: 'y', english: 'and' },
-    /* 019 */ { new: true, spanish: 'que', english: ['what', 'that'] },
+    /* 019 */ { new: true, spanish: 'qué', english: 'what' },
 
     /* 020 */ { hide: true, spanish: 'por', english: ['for', 'by'] },  // PROBLEM
     /* 021 */ { spanish: 'amar', english: 'to love' },
@@ -127,8 +127,8 @@ export default [
     { new: true, spanish: 'caminar', english: 'to walk + to some location' },
     { new: true, spanish: 'platanos', english: 'banana' },
     { new: true, spanish: 'respuesta', english: 'answer' },
-    { new: true, spanish: 'esta', english: 'this + if you can touch it' },
-    { new: true, spanish: 'esa', english: 'this + if you can\'t touch it' },
+    { new: true, spanish: 'esta', english: 'this + you can touch it' },
+    { new: true, spanish: 'esa', english: 'that + you can\'t touch it' },
     { new: true, spanish: 'con', english: 'with' },
     { new: true, spanish: 'salud', english: 'health' },
     { new: true, spanish: 'perfecta', english: 'perfect' },
