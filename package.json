@@ -1,6 +1,6 @@
 {
   "name": "word-learning",
-  "version": "4.0.0",
+  "version": "4.2.0",
   "description": "Word Learning",
   "scripts": {
     "build-dev": "webpack --config compiler/webpack.config.dev.js",
@@ -36,6 +36,7 @@
     "express": "^4.14.0",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.28.0",
+    "json-loader": "^0.5.4",
     "react-jsx": "^1.0.0",
     "webpack": "^1.14.0",
     "webpack-dev-middleware": "^1.9.0",
