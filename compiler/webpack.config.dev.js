@@ -21,11 +21,8 @@ module.exports = {
     ],
     module: {
         loaders: [
-            {
-                test: /\.(js|jsx)$/,
-                loaders: ['babel', 'eslint-loader'],
-                exclude: /node_modules/
-            }
+            { test: /\.(js|jsx)$/, loaders: ['babel', 'eslint-loader'], exclude: /node_modules/ },
+            { test: /\.json$/, loaders: ['json-loader'], exclude: /node_modules/ }
         ],
     },
     resolve: {
