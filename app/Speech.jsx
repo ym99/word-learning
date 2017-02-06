@@ -1,6 +1,7 @@
 export default class Speech {
   static speechSynthesis = window.speechSynthesis;
 
+  static say(text, lang) {
     const utterance = new SpeechSynthesisUtterance(text);
 
     switch (lang) {
