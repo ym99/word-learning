@@ -53,8 +53,8 @@ export default class Log extends React.Component {
             })}
             onClick={() => {
               Speech.say(record.question.text, record.question.lang);
-              Speech.say('means');
-              Speech.say(record.question.answers.join(', '), record.answer.lang);
+              Speech.say('is', 'english');
+              Speech.say(record.question.answers.join(', '), record.question.answerLang);
             }}
           >
             <span
