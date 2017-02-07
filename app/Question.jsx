@@ -5,13 +5,14 @@ import Speech from './Speech';
 
 export default class Question extends React.Component {
   static propTypes = {
+    reviewMode: React.PropTypes.bool.isRequired,
     question: React.PropTypes.shape({
       id: React.PropTypes.number.isRequired,
       text: React.PropTypes.string.isRequired,
       lang: React.PropTypes.string.isRequired,
       answerLang: React.PropTypes.string.isRequired,
     }).isRequired,
-    processAnswer: React.PropTypes.func.isRequired,
+    processAnswer: React.PropTypes.func,
   };
 
   constructor(props) {
@@ -24,6 +25,18 @@ export default class Question extends React.Component {
 
     this.handleAnswerChange = this.handleAnswerChange.bind(this);
     this.handleAnswerReady = this.handleAnswerReady.bind(this);
+  }
+
+  componentDidMount() {
+    Speech.sayQuestion(this.props.question);
+  }
+
+  componentDidUpdate() {
+    if (this.props.reviewMode) {
+      Speech.sayAnswers(this.props.question);
+    } else {
+      Speech.sayQuestion(this.props.question);
+    }
   }
 
   handleAnswerChange(answerText) {
@@ -65,11 +78,16 @@ export default class Question extends React.Component {
             style={({
               width: '10em',
               textAlign: 'right',
-              cursor: 'pointer',
+              cursor: (this.props.reviewMode ? 'default' : 'pointer'),
             })}
-            onClick={() => { Speech.say(this.props.question.text, this.props.question.lang); }}
+            onClick={() => {
+              if (!this.props.reviewMode) {
+                Speech.sayQuestion(this.props.question);
+              }
+            }}
           >{this.props.question.text}</span>
           <Answer
+            reviewMode={this.props.reviewMode}
             hasAnswerTextErrors={this.state.hasAnswerTextErrors}
             answerText={this.state.answerText}
             onAnswerChange={this.handleAnswerChange}
@@ -78,7 +96,7 @@ export default class Question extends React.Component {
           <button
             className="btn btn-default"
             type="button"
-            disabled={this.state.hasAnswerTextErrors}
+            disabled={this.props.reviewMode || this.state.hasAnswerTextErrors}
             onClick={this.handleAnswerReady}
           >
             Check

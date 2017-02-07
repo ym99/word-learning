@@ -2,6 +2,7 @@ import React from 'react';
 
 export default class Answer extends React.Component {
   static propTypes = {
+    reviewMode: React.PropTypes.bool.isRequired,
     hasAnswerTextErrors: React.PropTypes.bool.isRequired,
     answerText: React.PropTypes.string.isRequired,
     onAnswerReady: React.PropTypes.func.isRequired,
@@ -19,6 +20,7 @@ export default class Answer extends React.Component {
         autoFocus
         type="text"
         className="form-control"
+        disabled={this.props.reviewMode}
         onKeyDown={(event) => {
           if (event.keyCode === 13) {
             this.props.onAnswerReady();

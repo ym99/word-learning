@@ -148,7 +148,12 @@ export default class App extends React.Component {
   componentDidUpdate() {
     if (this.state.showReaction) {
       setTimeout(() => {
+        const newQuestions = [...this.state.questions];
+        newQuestions.splice(this.state.questionIndex, 1);
+
         this.setState({
+          questions: newQuestions,
+          questionIndex: App.generateQuestionIndex(newQuestions),
           showReaction: false,
         });
       }, 500);
@@ -194,12 +199,7 @@ export default class App extends React.Component {
     this.setState((prevState) => {
       const question = prevState.questions[prevState.questionIndex];
 
-      const newQuestions = [...prevState.questions];
-      newQuestions.splice(prevState.questionIndex, 1);
-
       return {
-        questions: newQuestions,
-        questionIndex: App.generateQuestionIndex(newQuestions),
         history: [...prevState.history, {
           id: App.generateUniqueId(),
           isCorrectAnswer: isCorrectAnswer(question, answer),
@@ -218,6 +218,7 @@ export default class App extends React.Component {
         <Progress history={this.state.history} questions={this.state.questions} />
         {this.state.questionIndex !== null &&
           <Question
+            reviewMode={this.state.showReaction}
             question={this.state.questions[this.state.questionIndex]}
             processAnswer={this.processAnswer}
           />

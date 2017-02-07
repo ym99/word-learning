@@ -12,4 +12,16 @@ export default class Speech {
 
     speechSynthesis.speak(utterance);
   }
+
+  static sayQuestion(question) {
+    Speech.say(question.text, question.lang);
+  }
+
+  static sayIs() {
+    Speech.say('is', 'english');
+  }
+
+  static sayAnswers(question) {
+    Speech.say(question.answers.join(', '), question.answerLang);
+  }
 }
