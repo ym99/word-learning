@@ -27,18 +27,6 @@ export default class Question extends React.Component {
     this.handleAnswerReady = this.handleAnswerReady.bind(this);
   }
 
-  componentDidMount() {
-    Speech.sayQuestion(this.props.question);
-  }
-
-  componentDidUpdate() {
-    if (this.props.reviewMode) {
-      Speech.sayAnswers(this.props.question);
-    } else {
-      Speech.sayQuestion(this.props.question);
-    }
-  }
-
   handleAnswerChange(answerText) {
     this.setState({
       hasAnswerTextErrors: !answerText.match(/^[ A-Za-z]*$/),

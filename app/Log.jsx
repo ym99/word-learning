@@ -53,7 +53,7 @@ export default class Log extends React.Component {
             })}
             onClick={() => {
               Speech.sayQuestion(record.question);
-              Speech.sayIs();
+              Speech.say('is');
               Speech.sayAnswers(record.question);
             }}
           >

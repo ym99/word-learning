@@ -1,7 +1,7 @@
 export default class Speech {
   static speechSynthesis = window.speechSynthesis;
 
-  static say(text, lang) {
+  static say({ text, lang, callback }) {
     const utterance = new SpeechSynthesisUtterance(text);
 
     switch (lang) {
@@ -10,18 +10,26 @@ export default class Speech {
       default: break;
     }
 
+    if (callback) {
+      utterance.onend = callback;
+    }
+
     speechSynthesis.speak(utterance);
   }
 
-  static sayQuestion(question) {
-    Speech.say(question.text, question.lang);
+  static sayQuestion({ question, callback }) {
+    Speech.say({
+      text: question.text,
+      lang: question.lang,
+      callback,
+    });
   }
 
-  static sayIs() {
-    Speech.say('is', 'english');
-  }
-
-  static sayAnswers(question) {
-    Speech.say(question.answers.join(', '), question.answerLang);
+  static sayAnswers({ question, callback }) {
+    Speech.say({
+      text: question.answers.join(', '),
+      lang: question.answerLang,
+      callback,
+    });
   }
 }

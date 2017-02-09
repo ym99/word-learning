@@ -4,6 +4,7 @@ import Progress from './Progress';
 import Question from './Question';
 import Log from './Log';
 import Reaction from './Reaction';
+import Speech from './Speech';
 
 export default class App extends React.Component {
   static propTypes = {
@@ -138,25 +139,56 @@ export default class App extends React.Component {
       questions,
       questionIndex,
       history: [],
-      showReaction: false,
+      reviewMode: false,
     };
 
     this.changeMode = this.changeMode.bind(this);
     this.processAnswer = this.processAnswer.bind(this);
   }
 
-  componentDidUpdate() {
-    if (this.state.showReaction) {
-      setTimeout(() => {
-        const newQuestions = [...this.state.questions];
-        newQuestions.splice(this.state.questionIndex, 1);
+  componentDidMount() {
+    this.componentDidUpdate();
+  }
 
-        this.setState({
-          questions: newQuestions,
-          questionIndex: App.generateQuestionIndex(newQuestions),
-          showReaction: false,
-        });
-      }, 500);
+  componentDidUpdate() {
+    if (this.state.reviewMode) {
+      if (this.state.history.length > 0) {
+        if (this.state.history[this.state.history.length - 1].isCorrectAnswer) {
+          Speech.say({
+            text: 'Correct !',
+            callback: () => Speech.sayAnswers({
+              text: this.state.questions[this.state.questionIndex],
+            }),
+          });
+        } else {
+          Speech.say({
+            text: 'Wrong! It really is',
+            callback: Speech.sayAnswers({
+              question: this.state.questions[this.state.questionIndex],
+              callback: () => {
+                const newQuestions = [...this.state.questions];
+                newQuestions.splice(this.state.questionIndex, 1);
+                const newQuesitonIndex = App.generateQuestionIndex(newQuestions);
+
+                this.setState({
+                  questions: newQuestions,
+                  questionIndex: newQuesitonIndex,
+                  reviewMode: false,
+                });
+              },
+            }),
+          });
+        }
+      }
+    } else {
+      Speech.say({
+        text: 'Translate',
+        callback: () => {
+          Speech.sayQuestion({
+            question: this.state.questions[this.state.questionIndex],
+          });
+        },
+      });
     }
   }
 
@@ -201,12 +233,12 @@ export default class App extends React.Component {
 
       return {
         history: [...prevState.history, {
-          id: App.generateUniqueId(),
+          id: question.id,
           isCorrectAnswer: isCorrectAnswer(question, answer),
           question,
           answer,
         }],
-        showReaction: true,
+        reviewMode: true,
       };
     });
   }
@@ -218,7 +250,7 @@ export default class App extends React.Component {
         <Progress history={this.state.history} questions={this.state.questions} />
         {this.state.questionIndex !== null &&
           <Question
-            reviewMode={this.state.showReaction}
+            reviewMode={this.state.reviewMode}
             question={this.state.questions[this.state.questionIndex]}
             processAnswer={this.processAnswer}
           />
@@ -228,7 +260,7 @@ export default class App extends React.Component {
           words={this.props.words}
           processAnswer={this.processAnswer}
         />
-        {this.state.showReaction &&
+        {this.state.reviewMode &&
           <Reaction history={this.state.history} />
         }
       </div>
