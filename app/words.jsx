@@ -18,7 +18,7 @@ export default [
     /* 016 */ { hide: true, spanish: ['un', 'uno', 'una'], english: ['a', 'one'] },
     /* 017 */ { spanish: 'ahora', english: 'now' },
     /* 018 */ { hide: true, spanish: 'y', english: 'and' },
-    /* 019 */ { new: true, spanish: 'qué', english: 'what' },
+    /* 019 */ { spanish: 'qué', english: 'what' },
 
     /* 020 */ { hide: true, spanish: 'por', english: ['for', 'by'] },  // PROBLEM
     /* 021 */ { spanish: 'amar', english: 'to love' },
@@ -31,7 +31,7 @@ export default [
     /* 028 */ { spanish: 'más', english: 'more' },
     /* 029 */ { spanish: 'bien', english: 'well' },
 
-    /* 030 */ { new: true, spanish: ['aqui', 'alli'], english: ['here', 'there'] },
+    /* 030 */ { spanish: ['aqui', 'alli'], english: ['here', 'there'] },
     /* 031 */ { spanish: 'querer', english: 'to want' },
     /* 032 */ { hide: true, spanish: 'hola', english: 'hello' },
     /* 033 */ { spanish: 'tú', english: 'you + singular' },
@@ -48,7 +48,7 @@ export default [
     /* 043 */ { hide: true, spanish: 'se', english: ['itself', 'herself', 'himself', 'themselves'] },
     /* 044 */ { hide: true, spanish: 'mucho', english: 'much' },
     /* 045 */ { hide: true, spanish: 'nuevo', english: 'new' },
-    /* 046 */ { new: true, spanish: 'cuando', english: 'when' },
+    /* 046 */ { spanish: 'cuando', english: 'when' },
     /* 047a*/ { hide: true, spanish: 'chico', english: 'boy' },
     /* 047b*/ { hide: true, spanish: 'chica', english: 'girl' },
     /* 048 */ { spanish: 'entender', english: 'to understand' },
@@ -64,7 +64,7 @@ export default [
     /* 057 */ // coded in 049:si -> yes
     /* 058a*/ { hide: true, spanish: 'grande', english: 'big' },
     /* 058b*/ { hide: true, spanish: 'gran', english: 'great' },
-    /* 059 */ { new: true, spanish: 'deber', english: ['to owe', 'should'] },
+    /* 059 */ { spanish: 'deber', english: ['to owe', 'should'] },
 
     /* 060 */ { spanish: 'usted', english: 'you + plural' },
     /* 061 */ { hide: true, spanish: 'bajo', english: ['low', 'under'] },
@@ -92,10 +92,10 @@ export default [
 
     /* 080 */ { spanish: 'conocer', english: 'to know + person or place' },
     /* 081 */ { hide: true, spanish: 'primero', english: 'first' },
-    /* 082 */ { new: true, spanish: 'andar', english: 'to walk + when enjoying ...' },
+    /* 082 */ { spanish: 'andar', english: 'to walk + when enjoying ...' },
     /* 083 */ { hide: true, spanish: 'sobre', english: ['over', 'about'] },
     /* 084 */ { spanish: 'echar', english: 'to throw' },
-    /* 085 */ { new: true, spanish: 'sin', english: 'without' },
+    /* 085 */ { spanish: 'sin', english: 'without' },
     /* 086 */ { spanish: 'decir', english: 'to say' },
     /* 087 */ { spanish: 'trabajar', english: 'to work' },
     /* 088 */ { spanish: 'nosotros', english: 'we' },
@@ -109,7 +109,7 @@ export default [
     /* 095 */ { spanish: 'hombre', english: 'man' },
     /* 096 */ { spanish: 'mujer', english: 'woman' },
     /* 097 */ // le
-    /* 098 */ { spanish: 'creer', english: ['to believe', 'to think'] },
+    /* 098 */ { spanish: 'creer', english: ['to believe', 'to think + (to believe)'] },
     /* 099 */ { spanish: 'encontrar', english: 'to find' },
 
     /* 100 */ { spanish: 'beber', english: 'to drink' },
@@ -124,14 +124,14 @@ export default [
     { spanish: 'suave', english: 'soft' },
     { spanish: 'caro', english: 'car' },
 
-    { new: true, spanish: 'caminar', english: 'to walk + to some location' },
-    { new: true, spanish: 'platanos', english: 'banana' },
-    { new: true, spanish: 'respuesta', english: 'answer' },
-    { new: true, spanish: 'esta', english: 'this + you can touch it' },
-    { new: true, spanish: 'esa', english: 'that + you can\'t touch it' },
-    { new: true, spanish: 'con', english: 'with' },
-    { new: true, spanish: 'salud', english: 'health' },
-    { new: true, spanish: 'perfecta', english: 'perfect' },
+    { spanish: 'caminar', english: 'to walk + to some location' },
+    { spanish: 'platanos', english: 'banana' },
+    { spanish: 'respuesta', english: 'answer' },
+    { spanish: 'esta', english: 'this + you can touch it' },
+    { spanish: 'esa', english: 'that + you can\'t touch it' },
+    { spanish: 'con', english: 'with' },
+    { spanish: 'salud', english: 'health' },
+    { spanish: 'perfecta', english: 'perfect' },
 ];
 /*
     á Alt + 0225
