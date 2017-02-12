@@ -2,7 +2,7 @@ import React from 'react';
 import Stats from './Stats';
 import * as Speech from './Speech';
 
-export default class Log extends React.Component {
+export default class History extends React.Component {
   static propTypes = {
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({

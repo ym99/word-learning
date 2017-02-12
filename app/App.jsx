@@ -2,7 +2,7 @@ import React from 'react';
 import Menu from './Menu';
 import Progress from './Progress';
 import Question from './Question';
-import Log from './Log';
+import History from './History';
 import Reaction from './Reaction';
 import { say } from './Speech';
 
@@ -239,7 +239,7 @@ export default class App extends React.Component {
             processAnswer={this.processAnswer}
           />
         }
-        <Log
+        <History
           history={this.state.history}
           words={this.props.words}
           processAnswer={this.processAnswer}
