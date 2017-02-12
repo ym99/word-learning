@@ -1,7 +1,7 @@
 import React from 'react';
 import Flag from './Flag';
 import Answer from './Answer';
-import Speech from './Speech';
+import * as Speech from './Speech';
 
 export default class Question extends React.Component {
   static propTypes = {
@@ -70,7 +70,9 @@ export default class Question extends React.Component {
             })}
             onClick={() => {
               if (!this.props.reviewMode) {
-                Speech.sayQuestion(this.props.question);
+                Speech.say([
+                  { question: this.props.question },
+                ]);
               }
             }}
           >{this.props.question.text}</span>

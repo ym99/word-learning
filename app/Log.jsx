@@ -1,6 +1,6 @@
 import React from 'react';
 import Stats from './Stats';
-import Speech from './Speech';
+import * as Speech from './Speech';
 
 export default class Log extends React.Component {
   static propTypes = {
@@ -51,11 +51,11 @@ export default class Log extends React.Component {
               margin: '0.25em',
               cursor: 'pointer',
             })}
-            onClick={() => {
-              Speech.sayQuestion(record.question);
-              Speech.say('is');
-              Speech.sayAnswers(record.question);
-            }}
+            onClick={() => Speech.say([
+              { question: record.question },
+              { english: 'is' },
+              { answers: (record.question) },
+            ])}
           >
             <span
               style={({

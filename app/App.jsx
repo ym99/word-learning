@@ -4,7 +4,7 @@ import Progress from './Progress';
 import Question from './Question';
 import Log from './Log';
 import Reaction from './Reaction';
-import Speech from './Speech';
+import { say } from './Speech';
 
 export default class App extends React.Component {
   static propTypes = {
@@ -153,42 +153,26 @@ export default class App extends React.Component {
   componentDidUpdate() {
     if (this.state.reviewMode) {
       if (this.state.history.length > 0) {
-        if (this.state.history[this.state.history.length - 1].isCorrectAnswer) {
-          Speech.say({
-            text: 'Correct !',
-            callback: () => Speech.sayAnswers({
-              text: this.state.questions[this.state.questionIndex],
-            }),
-          });
-        } else {
-          Speech.say({
-            text: 'Wrong! It really is',
-            callback: Speech.sayAnswers({
-              question: this.state.questions[this.state.questionIndex],
-              callback: () => {
-                const newQuestions = [...this.state.questions];
-                newQuestions.splice(this.state.questionIndex, 1);
-                const newQuesitonIndex = App.generateQuestionIndex(newQuestions);
+        say([
+            { english: this.state.history[this.state.history.length - 1].isCorrectAnswer ? 'Correct !' : 'Wrong! It really is' },
+            { answers: this.state.questions[this.state.questionIndex] },
+        ], () => {
+          const newQuestions = [...this.state.questions];
+          newQuestions.splice(this.state.questionIndex, 1);
+          const newQuesitonIndex = App.generateQuestionIndex(newQuestions);
 
-                this.setState({
-                  questions: newQuestions,
-                  questionIndex: newQuesitonIndex,
-                  reviewMode: false,
-                });
-              },
-            }),
+          this.setState({
+            questions: newQuestions,
+            questionIndex: newQuesitonIndex,
+            reviewMode: false,
           });
-        }
+        });
       }
     } else {
-      Speech.say({
-        text: 'Translate',
-        callback: () => {
-          Speech.sayQuestion({
-            question: this.state.questions[this.state.questionIndex],
-          });
-        },
-      });
+      say([
+        { english: 'Translate' },
+        { question: this.state.questions[this.state.questionIndex] },
+      ]);
     }
   }
 

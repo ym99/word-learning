@@ -1,35 +1,74 @@
-export default class Speech {
-  static speechSynthesis = window.speechSynthesis;
+function sayText(text, lang, callback) {
+  const utterance = new SpeechSynthesisUtterance();
+  utterance.text = text;
 
-  static say({ text, lang, callback }) {
-    const utterance = new SpeechSynthesisUtterance(text);
+  switch (lang) {
+    case 'spanish': utterance.lang = 'es'; break;
+    case 'english': utterance.lang = 'en'; break;
+    default: break;
+  }
 
-    switch (lang) {
-      case 'spanish': utterance.lang = 'es'; break;
-      case 'english': utterance.lang = 'en'; break;
-      default: break;
-    }
+  if (callback) {
+    utterance.addEventListener('end', callback);
+  }
 
+  window.speechSynthesis.speak(utterance);
+}
+
+export function say(entities, callback) {
+  console.info('say:', entities);
+  if (entities.length === 0) {
     if (callback) {
-      utterance.onend = callback;
+      callback();
     }
 
-    speechSynthesis.speak(utterance);
+    return;
   }
 
-  static sayQuestion({ question, callback }) {
-    Speech.say({
-      text: question.text,
-      lang: question.lang,
-      callback,
-    });
+  const entity = entities[0];
+
+  const others = [...entities];
+  others.splice(0, 1);
+
+  if (entity.question) {
+    sayText(
+      entity.question.text,
+      entity.question.lang,
+      () => say(others, callback),
+    );
+
+    return;
   }
 
-  static sayAnswers({ question, callback }) {
-    Speech.say({
-      text: question.answers.join(', '),
-      lang: question.answerLang,
-      callback,
-    });
+  if (entity.answers) {
+    sayText(
+      entity.answers.answers.join(', '),
+      entity.answerLang,
+      () => say(others, callback),
+    );
+
+    return;
   }
+
+  if (entity.english) {
+    sayText(
+      entity.english,
+      'english',
+      () => say(others, callback),
+    );
+
+    return;
+  }
+
+  if (entity.spanish) {
+    sayText(
+      entity.spanish,
+      'spanish',
+      () => say(others, callback),
+    );
+
+    return;
+  }
+
+  say(others, callback);
 }
