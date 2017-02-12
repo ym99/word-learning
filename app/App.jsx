@@ -247,6 +247,7 @@ export default class App extends React.Component {
           />
         }
         <History
+          reviewMode={this.state.reviewMode}
           history={this.state.history}
           words={this.props.words}
           processAnswer={this.processAnswer}

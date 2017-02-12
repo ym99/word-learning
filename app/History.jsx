@@ -5,6 +5,7 @@ import * as Speech from './Speech';
 
 export default class History extends React.Component {
   static propTypes = {
+    reviewMode: React.PropTypes.bool.isRequired,
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({
         id: React.PropTypes.number.isRequired,
@@ -37,6 +38,10 @@ export default class History extends React.Component {
       }
     });
 
+    const emphasis = this.props.reviewMode && this.props.history.length > 0
+      ? this.props.history[this.props.history.length - 1]
+      : null;
+
     return (
       <div
         style={({
@@ -55,6 +60,7 @@ export default class History extends React.Component {
               padding: '0.25em',
               margin: '0.25em',
               cursor: 'pointer',
+              fontSize: (record === emphasis ? 'xx-large' : 'medium'),
             })}
             onClick={() => Speech.say([
               { question: record.question },
