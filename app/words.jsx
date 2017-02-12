@@ -67,21 +67,21 @@ export default [
     /* 059 */ { spanish: 'deber', english: ['to owe', 'should'] },
 
     /* 060 */ { spanish: 'usted', english: 'you + plural' },
-    /* 061 */ { new: true, spanish: 'bajo', english: ['low', 'under'] },
-    /* 062 */ { new: true, spanish: 'otro', english: 'other' },
+    /* 061 */ { hide: true, spanish: 'bajo', english: ['low', 'under'] },
+    /* 062 */ { hide: true, spanish: 'otro', english: 'other' },
     /* 063 */ { spanish: 'salir', english: 'to leave' },
-    /* 064 */ { new: true, spanish: 'hora', english: 'hour' },
-    /* 065 */ { new: true, spanish: 'desde', english: 'from' },
+    /* 064 */ { hide: true, spanish: 'hora', english: 'hour' },
+    /* 065 */ { hide: true, spanish: 'desde', english: 'from' },
     /* 066 */ { spanish: 'ver', english: 'to see' },
-    /* 067 */ { new: true, spanish: ['malo', 'mal'], english: 'bad' },
+    /* 067 */ { hide: true, spanish: ['malo', 'mal'], english: 'bad' },
     /* 068 */ { spanish: 'pensar', english: 'to think' },
-    /* 069 */ { new: true, spanish: 'hasta', english: 'until' },
+    /* 069 */ { hide: true, spanish: 'hasta', english: 'until' },
 
     /* 070 */ // ['tanto', 'tan'], '?', ' used in making comparison' },
-    /* 071 */ { new: true, spanish: 'entre', english: ['between', 'among'] },
-    /* 072 */ { new: true, spanish: 'durante', english: 'during' },
+    /* 071 */ { hide: true, spanish: 'entre', english: ['between', 'among'] },
+    /* 072 */ { hide: true, spanish: 'durante', english: 'during' },
     /* 073 */ { spanish: 'llevar', english: ['to wear', 'to carry'] },
-    /* 074 */ { new: true, spanish: 'siempre', english: 'always' },
+    /* 074 */ { hide: true, spanish: 'siempre', english: 'always' },
     /* 075 */ { spanish: 'empezar', english: 'to begin' },
     /* 076a*/ { spanish: 'él', english: 'he' },
     /* 076b*/ { spanish: 'ella', english: 'she' },
@@ -91,17 +91,17 @@ export default [
     /* 079 */ { spanish: 'sacar', english: ['to take out', 'to remove'] },
 
     /* 080 */ { spanish: 'conocer', english: 'to know + person or place' },
-    /* 081 */ { new: true, spanish: 'primero', english: 'first' },
+    /* 081 */ { hide: true, spanish: 'primero', english: 'first' },
     /* 082 */ { spanish: 'andar', english: 'to walk + when enjoying ...' },
-    /* 083 */ { new: true, spanish: 'sobre', english: ['over', 'about'] },
+    /* 083 */ { hide: true, spanish: 'sobre', english: ['over', 'about'] },
     /* 084 */ { spanish: 'echar', english: 'to throw' },
     /* 085 */ { spanish: 'sin', english: 'without' },
     /* 086 */ { spanish: 'decir', english: 'to say' },
     /* 087 */ { spanish: 'trabajar', english: 'to work' },
     /* 088 */ { spanish: 'nosotros', english: 'we' },
-    /* 089 */ { new: true, spanish: 'tambien', english: 'also' },
+    /* 089 */ { hide: true, spanish: 'tambien', english: 'also' },
 
-    /* 090 */ { new: true, spanish: 'adiós', english: 'goodbye' },
+    /* 090 */ { hide: true, spanish: 'adiós', english: 'goodbye' },
     /* 091 */ { spanish: 'comer', english: 'to eat' },
     /* 092 */ { spanish: 'triste', english: 'sad' },
     /* 093 */ { spanish: 'pais', english: 'country' },
@@ -132,6 +132,44 @@ export default [
     { spanish: 'con', english: 'with' },
     { spanish: 'salud', english: 'health' },
     { spanish: 'perfecta', english: 'perfect' },
+
+    { new: true, spanish: 'dulce', english: 'sweet' },
+    { new: true, spanish: 'salado', english: 'salty' },
+    { new: true, spanish: 'sabroso', english: 'tasty' },
+    { new: true, spanish: 'amargo', english: 'bitter' },
+    { new: true, spanish: 'agrio', english: 'sour' },
+
+    { new: true, spanish: 'huevo', english: 'egg' },
+    { new: true, spanish: 'leche', english: 'milk' },
+    { new: true, spanish: 'almuerzo', english: 'lunch' },
+    { new: true, spanish: 'desayuno', english: 'breakfast' },
+    { new: true, spanish: 'comida', english: 'food' },
+    { new: true, spanish: 'galleta', english: 'cookie' },
+    { new: true, spanish: 'limón', english: 'lemon' },
+    { new: true, spanish: 'espaguetis', english: 'spaghetti' },
+    { new: true, spanish: 'jugo', english: 'juice' },
+    { new: true, spanish: 'pescado', english: 'fish' },
+    { new: true, spanish: 'arroz', english: 'rice' },
+    { new: true, spanish: 'tomate', english: 'tomato' },
+    { new: true, spanish: 'cebolla', english: 'onion' },
+    { new: true, spanish: 'pollo', english: 'chicken' },
+    { new: true, spanish: 'carne', english: 'meat' },
+    { new: true, spanish: 'mantequilla', english: 'butter' },
+    { new: true, spanish: 'ensalada', english: 'salad' },
+    { new: true, spanish: 'calorías', english: 'calories' },
+    { new: true, spanish: 'grasa', english: 'grease' },
+    { new: true, spanish: 'sal', english: 'salt' },
+    { new: true, spanish: 'tostada', english: 'toast' },
+
+    { new: true, spanish: 'enfermo', english: 'sick' },
+    { new: true, spanish: 'cansado', english: 'tired' },
+    { new: true, spanish: 'triste', english: 'sad' },
+    { new: true, spanish: 'sediento', english: 'thirsty' },
+    { new: true, spanish: 'hambriento', english: 'hungry' },
+    { new: true, spanish: 'mejor', english: 'best' },
+
+    { new: true, spanish: 'pelar', english: 'to peel' },
+    { new: true, spanish: 'necesitar', english: 'to need' },
 ];
 /*
     á Alt + 0225
@@ -143,57 +181,4 @@ export default [
     ü Alt + 0252
     ¡ Alt + 0161
     ¿ Alt + 0191
-*/
-
-/*
-sweet - dulce
-salty salado
-chips -> cayeta
-lluevos
-leche
-sabrosa
-el almuergo
-el desayuno
-le gena
-heriendas
-el pan / toastada
-comida
-la cena
-bueno
-madola
-sobosa
-creer
-mejor
-galletas
-sour amargo
-lemon limonada
-lemon limon
-enfermo sick
-tired cansado
-sad triste
-senir
-hungry
-thirty sed
-mejor
-pelar
-need necesitar
-calories
-carbohidratos
-pasta
-espaguetis
-jugo
-galettas
-pescado
-arroz
-tomates
-cebolla
-pollo
-carne
-espaguetis
-mantequilla
-esalada
-pasta
-grasa
-azucata
-sal
 */
