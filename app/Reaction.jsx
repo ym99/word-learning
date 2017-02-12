@@ -4,16 +4,40 @@ export default class Reaction extends React.Component {
   static propTypes = {
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({
-        isCorrectAnswer: React.PropTypes.bool.isRequired,
+        correctAnswer: React.PropTypes.oneOf([
+          'correct',
+          'incorrect',
+          'empty',
+        ]).isRequired,
       }).isRequired,
     ).isRequired,
   };
 
   render() {
-    const isCorrect = this.props.history.length === 0 ? null :
-      this.props.history[this.props.history.length - 1].isCorrectAnswer;
+    if (this.props.history.length === 0) {
+      return null;
+    }
 
-    return isCorrect === null ? null : (
+    let className;
+    let color;
+    switch (this.props.history[this.props.history.length - 1].correctAnswer) {
+      case 'correct':
+        className = 'glyphicon glyphicon-ok-sign';
+        color = '#5cb85c';
+        break;
+
+      case 'incorrect':
+        className = 'glyphicon glyphicon-minus-sign';
+        color = '#d9534f';
+        break;
+
+      default:
+        className = 'glyphicon glyphicon-question-sign';
+        color = '#f0ad4e';
+        break;
+    }
+
+    return (
       <div
         style={({
           position: 'fixed',
@@ -25,10 +49,10 @@ export default class Reaction extends React.Component {
         })}
       >
         <span
-          className={isCorrect ? 'glyphicon glyphicon-ok-circle' : 'glyphicon glyphicon-ban-circle'}
+          className={className}
           style={({
             fontSize: '15em',
-            color: (isCorrect ? '#5cb85c' : 'rgb(217, 83, 79)'),
+            color,
           })}
         />
       </div>

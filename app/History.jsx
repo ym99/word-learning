@@ -7,7 +7,11 @@ export default class History extends React.Component {
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({
         id: React.PropTypes.number.isRequired,
-        isCorrectAnswer: React.PropTypes.bool.isRequired,
+        correctAnswer: React.PropTypes.oneOf([
+          'correct',
+          'incorrect',
+          'empty',
+        ]).isRequired,
         question: React.PropTypes.shape({
           text: React.PropTypes.string.isRequired,
           lang: React.PropTypes.string.isRequired,
@@ -27,7 +31,7 @@ export default class History extends React.Component {
   render() {
     const incorrectRecords = [];
     this.props.history.forEach((record) => {
-      if (!record.isCorrectAnswer) {
+      if (record.correctAnswer !== 'correct') {
         incorrectRecords.unshift(record);
       }
     });

@@ -4,7 +4,11 @@ export default class Stats extends React.Component {
   static propTypes = {
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({
-        isCorrectAnswer: React.PropTypes.bool.isRequired,
+        correctAnswer: React.PropTypes.oneOf([
+          'correct',
+          'incorrect',
+          'empty',
+        ]).isRequired,
       }).isRequired,
     ).isRequired,
     words: React.PropTypes.arrayOf(
@@ -17,7 +21,7 @@ export default class Stats extends React.Component {
   render() {
     const total = this.props.history.length;
     const correct = this.props.history.reduce((accum, record) =>
-      accum + (record.isCorrectAnswer ? 1 : 0), 0);
+      accum + (record.correctAnswer === 'correct' ? 1 : 0), 0);
 
     const percent = total === 0 ? null : correct / total;
 

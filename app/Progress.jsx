@@ -5,7 +5,11 @@ export default class Progress extends React.Component {
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({
         id: React.PropTypes.number.isRequired,
-        isCorrectAnswer: React.PropTypes.bool.isRequired,
+        correctAnswer: React.PropTypes.oneOf([
+          'correct',
+          'incorrect',
+          'empty',
+        ]).isRequired,
       }).isRequired,
     ).isRequired,
     questions: React.PropTypes.arrayOf(React.PropTypes.any).isRequired,
@@ -17,10 +21,10 @@ export default class Progress extends React.Component {
     const records = [];
     this.props.history.forEach((record) => {
       if (records.length === 0 ||
-          records[records.length - 1].isCorrectAnswer !== record.isCorrectAnswer) {
+          records[records.length - 1].correctAnswer !== record.correctAnswer) {
         records.push({
           id: record.id,
-          isCorrectAnswer: record.isCorrectAnswer,
+          correctAnswer: record.correctAnswer,
           count: 1,
         });
       } else {
@@ -36,7 +40,10 @@ export default class Progress extends React.Component {
         {records.map(record => (
           <div
             key={record.id}
-            className={record.isCorrectAnswer ? 'progress-bar progress-bar-success' : 'progress-bar progress-bar-danger'}
+            className={record.correctAnswer === 'correct' ? 'progress-bar progress-bar-success' :
+                       record.correctAnswer === 'incorrect' ? 'progress-bar progress-bar-danger' :
+                       'progress-bar progress-bar-warning'
+                      }
             role="progressbar"
             style={({
               width: (`${((record.count * 100) / total).toString()}%`),

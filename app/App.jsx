@@ -153,9 +153,9 @@ export default class App extends React.Component {
   componentDidUpdate() {
     if (this.state.reviewMode) {
       if (this.state.history.length > 0) {
-        say([{ english: this.state.history[this.state.history.length - 1].isCorrectAnswer ? 'Correct !' :
-                        this.state.history[this.state.history.length - 1].answer === '' ? 'It is' :
-                        'Wrong! It is' },
+        say([{ english: this.state.history[this.state.history.length - 1].correctAnswer === 'correct' ? 'Correct !' :
+                        this.state.history[this.state.history.length - 1].correctAnswer === 'incorrect' ? 'Wrong! It is' :
+                        'It is' },
             { answers: this.state.questions[this.state.questionIndex] },
         ], () => {
           const newQuestions = [...this.state.questions];
@@ -196,7 +196,7 @@ export default class App extends React.Component {
   }
 
   processAnswer(answer) {
-    function isCorrectAnswer(question) {
+    function checkAnswer(question) {
       function generalize(value) {
         return value
           .replace(/ /g, '')
@@ -210,7 +210,10 @@ export default class App extends React.Component {
           .toUpperCase();
       }
 
-      return question.answers.some(_answer => generalize(_answer) === generalize(answer));
+      const generalizedAnswer = generalize(answer);
+      return generalizedAnswer === '' ? 'empty' :
+             question.answers.some(x => generalize(x) === generalizedAnswer) ? 'correct' : 'incorrect'
+      ;
     }
 
     this.setState((prevState) => {
@@ -219,7 +222,7 @@ export default class App extends React.Component {
       return {
         history: [...prevState.history, {
           id: question.id,
-          isCorrectAnswer: isCorrectAnswer(question, answer),
+          correctAnswer: checkAnswer(question, answer),
           question,
           answer,
         }],

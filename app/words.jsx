@@ -144,3 +144,28 @@ export default [
     ¡ Alt + 0161
     ¿ Alt + 0191
 */
+
+/*
+sweet - dulce
+salty salado
+chips -> cayeta
+lluevos
+leche
+sabrosa
+el almuergo
+el desayuno
+le gena
+heriendas
+el pan / toastada
+comida
+la cena
+bueno
+madola
+sobosa
+creer
+mejor
+galletas
+sour amargo
+lemon limonada
+lemon limon
+*/
