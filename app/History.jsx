@@ -36,7 +36,7 @@ export default class History extends React.Component {
         incorrectRecords.unshift(record);
       }
     });
-    console.log(Colors);
+
     return (
       <div
         style={({

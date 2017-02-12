@@ -1,4 +1,5 @@
 import React from 'react';
+import Colors from './Colors';
 
 export default class Reaction extends React.Component {
   static propTypes = {
@@ -23,17 +24,17 @@ export default class Reaction extends React.Component {
     switch (this.props.history[this.props.history.length - 1].correctAnswer) {
       case 'correct':
         className = 'glyphicon glyphicon-ok-sign';
-        color = '#5cb85c';
+        color = Colors.green;
         break;
 
       case 'incorrect':
         className = 'glyphicon glyphicon-minus-sign';
-        color = '#d9534f';
+        color = Colors.red;
         break;
 
       default:
         className = 'glyphicon glyphicon-question-sign';
-        color = '#f0ad4e';
+        color = Colors.yellow;
         break;
     }
 

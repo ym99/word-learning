@@ -1,4 +1,5 @@
 import React from 'react';
+import Colors from './Colors';
 
 export default class Answer extends React.Component {
   static propTypes = {
@@ -11,8 +12,9 @@ export default class Answer extends React.Component {
 
   render() {
     const errorStyle = this.props.hasAnswerTextErrors ? {
-      backgroundColor: 'rgb(242, 222, 222)',
-      outlineColor: 'darkred',
+      color: Colors.white,
+      backgroundColor: Colors.red,
+      outlineColor: Colors.red,
     } : {};
 
     return (
