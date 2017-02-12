@@ -153,8 +153,9 @@ export default class App extends React.Component {
   componentDidUpdate() {
     if (this.state.reviewMode) {
       if (this.state.history.length > 0) {
-        say([
-            { english: this.state.history[this.state.history.length - 1].isCorrectAnswer ? 'Correct !' : 'Wrong! It really is' },
+        say([{ english: this.state.history[this.state.history.length - 1].isCorrectAnswer ? 'Correct !' :
+                        this.state.history[this.state.history.length - 1].answer === '' ? 'It is' :
+                        'Wrong! It is' },
             { answers: this.state.questions[this.state.questionIndex] },
         ], () => {
           const newQuestions = [...this.state.questions];
