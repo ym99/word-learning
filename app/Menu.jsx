@@ -1,4 +1,5 @@
 import React from 'react';
+import DateEx from './utils/DateEx';
 
 export default class Menu extends React.Component {
   static propTypes = {
@@ -7,8 +8,15 @@ export default class Menu extends React.Component {
   }
 
   render() {
+    const date = new DateEx();
+
     return (
-      <div className="well well-sm">
+      <div
+        className="well well-sm"
+        style={({
+          textAlign: 'center',
+        })}
+      >
         <ul className="nav nav-pills">
           <li
             role="presentation"
@@ -21,7 +29,7 @@ export default class Menu extends React.Component {
                 fontSize: 'large',
                 fontWeight: 'bold',
               })}
-            >Word Learning</a>
+            >Word<br />Learning</a>
           </li>
           <li
             role="presentation"
@@ -31,18 +39,7 @@ export default class Menu extends React.Component {
               href="#"
               onClick={() => { this.props.changeMode('new'); return false; }}
             >
-              New
-            </a>
-          </li>
-          <li
-            role="presentation"
-            className={this.props.mode === 'mix' ? 'active' : ''}
-          >
-            <a
-              href="#"
-              onClick={() => { this.props.changeMode('mix'); return false; }}
-            >
-              Mix
+              New<br />Words
             </a>
           </li>
           <li
@@ -53,7 +50,38 @@ export default class Menu extends React.Component {
               href="#"
               onClick={() => { this.props.changeMode('test'); return false; }}
             >
-              Test
+              Test<br />All
+            </a>
+          </li>
+          <li
+            role="presentation"
+            className="disabled"
+          >
+            <a href="#">
+              <div
+                style={({
+                  cursor: 'default',
+                  fontSize: 'x-small',
+                })}
+              >
+                {`${date.getDay()}`}
+              </div>
+              <div
+                style={({
+                  cursor: 'default',
+                  fontSize: 'x-small',
+                })}
+              >
+                {`${date.getDate()}`}
+              </div>
+              <div
+                style={({
+                  cursor: 'default',
+                  fontSize: 'small',
+                })}
+              >
+                {`${date.getTime()}`}
+              </div>
             </a>
           </li>
         </ul>

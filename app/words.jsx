@@ -176,4 +176,24 @@ hungry
 thirty sed
 mejor
 pelar
+need necesitar
+calories
+carbohidratos
+pasta
+espaguetis
+jugo
+galettas
+pescado
+arroz
+tomates
+cebolla
+pollo
+carne
+espaguetis
+mantequilla
+esalada
+pasta
+grasa
+azucata
+sal
 */

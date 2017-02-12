@@ -1,5 +1,5 @@
 import React from 'react';
-import Colors from './Colors';
+import Colors from './utils/Colors';
 
 export default class Answer extends React.Component {
   static propTypes = {

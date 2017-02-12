@@ -1,6 +1,6 @@
 import React from 'react';
 import Stats from './Stats';
-import Colors from './Colors';
+import Colors from './utils/Colors';
 import * as Speech from './Speech';
 
 export default class History extends React.Component {
