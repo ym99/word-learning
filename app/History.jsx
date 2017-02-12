@@ -49,7 +49,7 @@ export default class History extends React.Component {
           <div
             key={record.id}
             style={({
-              border: `1px solid ${Colors.red}`,
+              border: `1px solid ${record.correctAnswer === 'incorrect' ? Colors.red : Colors.yellow}`,
               borderRadius: '0.5em',
               display: 'inline-block',
               padding: '0.25em',
@@ -70,7 +70,7 @@ export default class History extends React.Component {
             <span
               className="glyphicon glyphicon-arrow-right"
             />
-            {record.answer !== '' &&
+            {record.correctAnswer === 'incorrect' &&
               <span
                 style={({
                   paddingLeft: '0.25em',
