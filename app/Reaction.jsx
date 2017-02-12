@@ -23,17 +23,17 @@ export default class Reaction extends React.Component {
     let color;
     switch (this.props.history[this.props.history.length - 1].correctAnswer) {
       case 'correct':
-        className = 'glyphicon glyphicon-ok-sign';
+        className = 'glyphicon glyphicon-ok-circle';
         color = Colors.green;
         break;
 
       case 'incorrect':
-        className = 'glyphicon glyphicon-minus-sign';
+        className = 'glyphicon glyphicon-ban-circle';
         color = Colors.red;
         break;
 
       default:
-        className = 'glyphicon glyphicon-question-sign';
+        className = 'glyphicon glyphicon-education';
         color = Colors.yellow;
         break;
     }
