@@ -22,7 +22,7 @@ function dontSayText(text, lang, callback) {
   window.setTimeout(callback, 500);
 }
 
-const mute = true;
+const mute = false;
 export function say(entities, callback) {
   if (entities.length === 0) {
     if (callback) {

@@ -185,6 +185,7 @@ export default class App extends React.Component {
       const questionIndex = App.generateQuestionIndex(questions);
 
       return {
+        startTime: new DateEx(),
         mode,
         questions,
         questionIndex,
