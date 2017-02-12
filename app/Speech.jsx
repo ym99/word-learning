@@ -9,14 +9,16 @@ function sayText(text, lang, callback) {
   }
 
   if (callback) {
-    utterance.addEventListener('end', callback);
+    utterance.addEventListener(
+      'end',
+      () => window.setTimeout(callback, 0),
+    );
   }
 
   window.speechSynthesis.speak(utterance);
 }
 
 export function say(entities, callback) {
-  console.info('say:', entities);
   if (entities.length === 0) {
     if (callback) {
       callback();
