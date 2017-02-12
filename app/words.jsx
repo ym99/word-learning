@@ -174,4 +174,6 @@ sad triste
 senir
 hungry
 thirty sed
+mejor
+pelar
 */

@@ -49,7 +49,7 @@ export default class History extends React.Component {
           <div
             key={record.id}
             style={({
-              border: `1px solid ${record.correctAnswer === 'incorrect' ? Colors.red : Colors.yellow}`,
+              border: (record.correctAnswer === 'incorrect' ? `2px solid ${Colors.red}` : `2px solid ${Colors.yellow}`),
               borderRadius: '0.5em',
               display: 'inline-block',
               padding: '0.25em',
