@@ -18,6 +18,11 @@ function sayText(text, lang, callback) {
   window.speechSynthesis.speak(utterance);
 }
 
+function dontSayText(text, lang, callback) {
+  window.setTimeout(callback, 500);
+}
+
+const mute = true;
 export function say(entities, callback) {
   if (entities.length === 0) {
     if (callback) {
@@ -33,7 +38,7 @@ export function say(entities, callback) {
   others.splice(0, 1);
 
   if (entity.question) {
-    sayText(
+    (mute ? dontSayText : sayText)(
       entity.question.text,
       entity.question.lang,
       () => say(others, callback),
@@ -43,7 +48,7 @@ export function say(entities, callback) {
   }
 
   if (entity.answers) {
-    sayText(
+    (mute ? dontSayText : sayText)(
       entity.answers.answers.join(', '),
       entity.answerLang,
       () => say(others, callback),
@@ -53,7 +58,7 @@ export function say(entities, callback) {
   }
 
   if (entity.english) {
-    sayText(
+    (mute ? dontSayText : sayText)(
       entity.english,
       'english',
       () => say(others, callback),
@@ -63,7 +68,7 @@ export function say(entities, callback) {
   }
 
   if (entity.spanish) {
-    sayText(
+    (mute ? dontSayText : sayText)(
       entity.spanish,
       'spanish',
       () => say(others, callback),
