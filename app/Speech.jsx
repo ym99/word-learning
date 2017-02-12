@@ -50,7 +50,7 @@ export function say(entities, callback) {
   if (entity.answers) {
     (mute ? dontSayText : sayText)(
       entity.answers.answers.join(', '),
-      entity.answerLang,
+      entity.answers.answerLang,
       () => say(others, callback),
     );
 
