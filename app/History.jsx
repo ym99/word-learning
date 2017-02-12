@@ -1,5 +1,6 @@
 import React from 'react';
 import Stats from './Stats';
+import Colors from './Colors';
 import * as Speech from './Speech';
 
 export default class History extends React.Component {
@@ -35,7 +36,7 @@ export default class History extends React.Component {
         incorrectRecords.unshift(record);
       }
     });
-
+    console.log(Colors);
     return (
       <div
         style={({
@@ -48,7 +49,7 @@ export default class History extends React.Component {
           <div
             key={record.id}
             style={({
-              border: '1px solid rgb(217, 83, 79)',
+              border: `1px solid ${Colors.red}`,
               borderRadius: '0.5em',
               display: 'inline-block',
               padding: '0.25em',

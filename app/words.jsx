@@ -168,4 +168,10 @@ galletas
 sour amargo
 lemon limonada
 lemon limon
+enfermo sick
+tired cansado
+sad triste
+senir
+hungry
+thirty sed
 */
