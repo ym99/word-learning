@@ -4,6 +4,7 @@ import Progress from './Progress';
 import Question from './Question';
 import History from './History';
 import Reaction from './Reaction';
+import DateEx from './utils/DateEx';
 import { say } from './Speech';
 
 export default class App extends React.Component {
@@ -82,11 +83,6 @@ export default class App extends React.Component {
         oldRatio = 0;
         break;
 
-      case 'mix':
-        newRatio = 5;
-        oldRatio = 1;
-        break;
-
       case 'test':
         newRatio = 1;
         oldRatio = 1;
@@ -130,11 +126,13 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
+    const startTime = new DateEx();
     const mode = 'new';
     const questions = App.generateQuestions(this.props, mode);
     const questionIndex = App.generateQuestionIndex(questions);
 
     this.state = {
+      startTime,
       mode,
       questions,
       questionIndex,
@@ -234,7 +232,11 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Menu mode={this.state.mode} changeMode={this.changeMode} />
+        <Menu
+          startTime={this.state.startTime}
+          mode={this.state.mode}
+          changeMode={this.changeMode}
+        />
         <Progress history={this.state.history} questions={this.state.questions} />
         {this.state.questionIndex !== null &&
           <Question

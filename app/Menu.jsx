@@ -3,13 +3,15 @@ import DateEx from './utils/DateEx';
 
 export default class Menu extends React.Component {
   static propTypes = {
-    mode: React.PropTypes.string.isRequired,
+    startTime: React.PropTypes.instanceOf(DateEx).isRequired,
+    mode: React.PropTypes.oneOf([
+      'new',
+      'test',
+    ]).isRequired,
     changeMode: React.PropTypes.func.isRequired,
   }
 
   render() {
-    const date = new DateEx();
-
     return (
       <div
         className="well well-sm"
@@ -55,32 +57,23 @@ export default class Menu extends React.Component {
           </li>
           <li
             role="presentation"
-            className="disabled"
+            className="disabled pull-right"
           >
-            <a href="#">
-              <div
-                style={({
-                  cursor: 'default',
-                  fontSize: 'x-small',
-                })}
-              >
-                {`${date.getDay()}`}
+            <a
+              href="#"
+              style={({
+                cursor: 'default',
+                fontSize: 'x-small',
+              })}
+            >
+              <div>
+                {`${this.props.startTime.getDay()}`}
               </div>
-              <div
-                style={({
-                  cursor: 'default',
-                  fontSize: 'x-small',
-                })}
-              >
-                {`${date.getDate()}`}
+              <div>
+                {`${this.props.startTime.getDate()}`}
               </div>
-              <div
-                style={({
-                  cursor: 'default',
-                  fontSize: 'small',
-                })}
-              >
-                {`${date.getTime()}`}
+              <div>
+                {`${this.props.startTime.getTime()}`}
               </div>
             </a>
           </li>
