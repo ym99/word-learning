@@ -42,4 +42,8 @@ export default class DateEx {
     return `${hours12 === 0 ? 12 : hours12}:${mins < 10 ? '0' : ''}${mins}${hours >= 12 ? 'pm' : 'am'}`;
   }
 
+  getAll() {
+    return `${this.getDay()}, ${this.getDate()}, ${this.getTime()}`;
+  }
+
 }

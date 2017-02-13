@@ -1,7 +1,11 @@
 import React from 'react';
+import EMail from './utils/EMail';
+import DateEx from './utils/DateEx';
 
 export default class Stats extends React.Component {
   static propTypes = {
+    finished: React.PropTypes.bool.isRequired,
+    startTime: React.PropTypes.instanceOf(DateEx).isRequired,
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({
         correctAnswer: React.PropTypes.oneOf([
@@ -100,6 +104,17 @@ export default class Stats extends React.Component {
             {this.props.words.reduce((accum, word) => accum + (!word.hide && !word.new ? 1 : 0), 0)}
           </b> known words
         </div>
+        {this.props.finished &&
+          <EMail
+            subject={`${document.title} (${this.props.startTime.getAll()} - ${new DateEx().getTime()}) Grade = ${grade} ${(percent * 100).toFixed(0)}%`}
+            body={this.props.history.reduce((accum, record) => (
+              record.correctAnswer === 'correct' ? accum :
+              record.correctAnswer === 'incorrect' ? `${accum}${record.question.text} -> WRONG: ${record.answer}\n` :
+                                                     `${accum}${record.question.text} -> NO IDEA\n`
+              ), '',
+            )}
+          />
+        }
       </div>
     );
   }

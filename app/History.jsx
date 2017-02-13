@@ -1,11 +1,14 @@
 import React from 'react';
 import Stats from './Stats';
 import Colors from './utils/Colors';
-import * as Speech from './Speech';
+import DateEx from './utils/DateEx';
+import { say } from './utils/Speech';
 
 export default class History extends React.Component {
   static propTypes = {
     reviewMode: React.PropTypes.bool.isRequired,
+    finished: React.PropTypes.bool.isRequired,
+    startTime: React.PropTypes.instanceOf(DateEx).isRequired,
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({
         id: React.PropTypes.number.isRequired,
@@ -49,7 +52,12 @@ export default class History extends React.Component {
           marginTop: '1em',
         })}
       >
-        <Stats history={this.props.history} words={this.props.words} />
+        <Stats
+          finished={this.props.finished}
+          startTime={this.props.startTime}
+          history={this.props.history}
+          words={this.props.words}
+        />
         {incorrectRecords.map(record => (
           <div
             key={record.id}
@@ -62,7 +70,7 @@ export default class History extends React.Component {
               cursor: 'pointer',
               fontSize: (record === emphasis ? 'xx-large' : 'medium'),
             })}
-            onClick={() => Speech.say([
+            onClick={() => say([
               { question: record.question },
               { english: 'is' },
               { answers: (record.question) },

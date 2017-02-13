@@ -5,7 +5,7 @@ import Question from './Question';
 import History from './History';
 import Reaction from './Reaction';
 import DateEx from './utils/DateEx';
-import { say } from './Speech';
+import { say } from './utils/Speech';
 
 export default class App extends React.Component {
   static propTypes = {
@@ -168,10 +168,12 @@ export default class App extends React.Component {
         });
       }
     } else {
-      say([
-        { english: 'Translate' },
-        { question: this.state.questions[this.state.questionIndex] },
-      ]);
+      if (this.state.questionIndex !== null) {
+        say([
+          { english: 'Translate' },
+          { question: this.state.questions[this.state.questionIndex] },
+        ]);
+      }
     }
   }
 
@@ -248,6 +250,8 @@ export default class App extends React.Component {
         }
         <History
           reviewMode={this.state.reviewMode}
+          finished={!this.state.reviewMode && this.state.questionIndex === null}
+          startTime={this.state.startTime}
           history={this.state.history}
           words={this.props.words}
           processAnswer={this.processAnswer}
