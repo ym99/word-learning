@@ -25,24 +25,17 @@ export default class Stats extends React.Component {
   constructor(props) {
     super(props);
 
-    this.emailSubject = this.emailSubject.bind(this);
-    this.emailBody = this.emailBody.bind(this);
+    this.getStats = this.getStats.bind(this);
+    this.sendEmail = this.sendEmail.bind(this);
   }
 
-  emailSubject(grade, percent) {
-    return `${document.title} (${this.props.startTime.getAll()} - ${new DateEx().getTime()}) Grade = ${grade} ${(percent * 100).toFixed(0)}%`;
+  componentDidUpdate() {
+    if (this.props.finished) {
+      this.sendEmail();
+    }
   }
 
-  emailBody() {
-    return this.props.history.reduce((accum, record) => (
-              record.correctAnswer === 'correct' ? accum :
-              record.correctAnswer === 'incorrect' ? `${accum}${record.question.text} -> WRONG: ${record.answer}\n` :
-                                                     `${accum}${record.question.text} -> NO IDEA\n`
-              ), '',
-            );
-  }
-
-  render() {
+  getStats() {
     const total = this.props.history.length;
     const correct = this.props.history.reduce((accum, record) =>
       accum + (record.correctAnswer === 'correct' ? 1 : 0), 0);
@@ -72,6 +65,31 @@ export default class Stats extends React.Component {
                                 'label label-danger'
     ;
 
+    return {
+      total,
+      percent: `${(percent * 100).toFixed(0)}%`,
+      grade,
+      gradeClass,
+    };
+  }
+
+  sendEmail() {
+    const stats = this.getStats();
+
+    EMail.send({
+      subject: `${document.title} (${this.props.startTime.getAll()} - ${new DateEx().getTime()}) Grade = ${stats.grade} ${stats.percent}`,
+      body: this.props.history.reduce((accum, record) => (
+              record.correctAnswer === 'correct' ? accum :
+              record.correctAnswer === 'incorrect' ? `${accum}${record.question.text} -> WRONG: ${record.answer}\n` :
+                                                     `${accum}${record.question.text} -> NO IDEA\n`
+              ), '',
+            ),
+    });
+  }
+
+  render() {
+    const stats = this.getStats();
+
     return (
       <div
         style={({
@@ -81,37 +99,39 @@ export default class Stats extends React.Component {
           borderRadius: '0.5em',
         })}
       >
-        {total !== 0 &&
+        {stats.total !== 0 &&
           <div
             className="glyphicon glyphicon-envelope"
             style={({
               float: 'right',
               padding: '0.2em',
               fontSize: 'large',
+              cursor: 'pointer',
             })}
+            onClick={() => this.sendEmail()}
           />
         }
-        {total !== 0 &&
+        {stats.total !== 0 &&
           <div
-            className={gradeClass}
+            className={stats.gradeClass}
             style={({
               display: 'inline-block',
               fontSize: '3em',
               float: 'left',
             })}
-          >{grade}</div>
+          >{stats.grade}</div>
         }
-        {total !== 0 &&
+        {stats.total !== 0 &&
           <div
             style={({
               display: 'inline-block',
               paddingLeft: '0.5em',
             })}
           >
-            <b>{`${(percent * 100).toFixed(0)}%`}</b> correct
+            <b>{`${stats.percent}`}</b> correct
           </div>
         }
-        {total !== 0 &&
+        {stats.total !== 0 &&
           <br />
         }
         <div
@@ -134,12 +154,6 @@ export default class Stats extends React.Component {
             {this.props.words.reduce((accum, word) => accum + (!word.hide && !word.new ? 1 : 0), 0)}
           </b> known words
         </div>
-        {this.props.finished &&
-          <EMail
-            subject={this.emailSubject(grade, percent)}
-            body={this.emailBody(grade, percent)}
-          />
-        }
       </div>
     );
   }
