@@ -1,3 +1,5 @@
+window.dummyUtterances = [];
+
 function sayText(text, lang, callback) {
   const utterance = new SpeechSynthesisUtterance();
   utterance.text = text;
@@ -13,7 +15,14 @@ function sayText(text, lang, callback) {
       'end',
       () => window.setTimeout(callback, 0),
     );
+
+    utterance.addEventListener(
+      'error',
+      () => window.setTimeout(callback, 0),
+    );
   }
+
+  window.dummyUtterances.push(utterance);
 
   window.speechSynthesis.speak(utterance);
 }
