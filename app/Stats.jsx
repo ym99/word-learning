@@ -22,6 +22,26 @@ export default class Stats extends React.Component {
       })).isRequired,
   }
 
+  constructor(props) {
+    super(props);
+
+    this.emailSubject = this.emailSubject.bind(this);
+    this.emailBody = this.emailBody.bind(this);
+  }
+
+  emailSubject(grade, percent) {
+    return `${document.title} (${this.props.startTime.getAll()} - ${new DateEx().getTime()}) Grade = ${grade} ${(percent * 100).toFixed(0)}%`;
+  }
+
+  emailBody() {
+    return this.props.history.reduce((accum, record) => (
+              record.correctAnswer === 'correct' ? accum :
+              record.correctAnswer === 'incorrect' ? `${accum}${record.question.text} -> WRONG: ${record.answer}\n` :
+                                                     `${accum}${record.question.text} -> NO IDEA\n`
+              ), '',
+            );
+  }
+
   render() {
     const total = this.props.history.length;
     const correct = this.props.history.reduce((accum, record) =>
@@ -116,13 +136,8 @@ export default class Stats extends React.Component {
         </div>
         {this.props.finished &&
           <EMail
-            subject={`${document.title} (${this.props.startTime.getAll()} - ${new DateEx().getTime()}) Grade = ${grade} ${(percent * 100).toFixed(0)}%`}
-            body={this.props.history.reduce((accum, record) => (
-              record.correctAnswer === 'correct' ? accum :
-              record.correctAnswer === 'incorrect' ? `${accum}${record.question.text} -> WRONG: ${record.answer}\n` :
-                                                     `${accum}${record.question.text} -> NO IDEA\n`
-              ), '',
-            )}
+            subject={this.emailSubject(grade, percent)}
+            body={this.emailBody(grade, percent)}
           />
         }
       </div>
