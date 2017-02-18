@@ -85,7 +85,7 @@ export default class Stats extends React.Component {
         return accum;
       }, []);
 
-      return array.length === 0 ? `None ${title}` : `${array.length} ${title}\n----------\n${array.join('\n')}`;
+      return array.length === 0 ? `None ${title}` : `${array.length} ${title}\n--------------------\n${array.join('\n')}`;
     };
 
     EMail.send({
