@@ -41,7 +41,7 @@ export default class App extends React.Component {
     return questions.length === 0 ? null : Math.floor(Math.random() * questions.length);
   }
 
-  static generateQuestions({ words }, mode) {
+  static generateQuestions(words, mode) {
     function pushQuestions(arr, count, textAndComment, lang, answerOrFew, answerLang) {
       function getQuestionText(value) {
         const splitValue = value.split('+', 2);
@@ -128,7 +128,7 @@ export default class App extends React.Component {
 
     const startTime = new DateEx();
     const mode = 'new';
-    const questions = App.generateQuestions(this.props, mode);
+    const questions = App.generateQuestions(this.props.words, mode);
     const questionIndex = App.generateQuestionIndex(questions);
 
     this.state = {
@@ -183,7 +183,7 @@ export default class App extends React.Component {
         return {};
       }
 
-      const questions = App.generateQuestions(props, mode);
+      const questions = App.generateQuestions(props.words, mode);
       const questionIndex = App.generateQuestionIndex(questions);
 
       return {
