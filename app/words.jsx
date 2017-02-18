@@ -144,7 +144,7 @@ export default [
     { new: true, spanish: 'almuerzo', english: 'lunch' },
     { new: true, spanish: 'desayuno', english: 'breakfast' },
     { new: true, spanish: 'cereal', english: 'cereal' },
-    { new: true, spanish: 'saichicha', english: 'sausage' },
+    { new: true, spanish: 'salchicha', english: 'sausage' },
     { new: true, spanish: 'tocino', english: 'bacon' },
     { new: true, spanish: 'yogur', english: 'yogurt' },
     { new: true, spanish: 'fresa', english: 'strawberry' },
