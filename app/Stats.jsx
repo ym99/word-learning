@@ -76,24 +76,21 @@ export default class Stats extends React.Component {
   sendEmail() {
     const stats = this.getStats();
 
-    const incorrect = this.props.history.reduce((accum, record, index) => (
-      record.correctAnswer !== 'incorrect' ? accum :
-        `${accum} ${index + 1}. ${record.question.text} -> ${record.answer} / ${record.question.answers.join(', ')}\n`
-    ), '');
+    const bodySection = (title, correctAnswerValue) => {
+      const array = this.props.history.reduce((accum, record, index) => {
+        if (record.correctAnswer === correctAnswerValue) {
+          accum.push(`${index + 1}. ${record.question.text} -> ${record.correctAnswer === 'empty' ? '?' : record.answer} / ${record.question.answers.join(', ')}`);
+        }
 
-    const empty = this.props.history.reduce((accum, record, index) => (
-      record.correctAnswer !== 'empty' ? accum :
-        `${accum} ${index + 1}. ${record.question.text} -> ? / ${record.question.answers.join(', ')}\n`
-    ), '');
+        return accum;
+      }, []);
 
-    const correct = this.props.history.reduce((accum, record, index) => (
-      record.correctAnswer !== 'correct' ? accum :
-        `${accum} ${index + 1}. ${record.question.text} -> ${record.answer} / ${record.question.answers.join(', ')}\n`
-    ), '');
+      return array.length === 0 ? `None ${title}` : `${array.length} ${title}\n----------\n${array.join('\n')}`;
+    };
 
     EMail.send({
       subject: `${document.title} (${this.props.startTime.getAll()} - ${new DateEx().getTime()}) Grade = ${stats.grade} ${stats.percent}`,
-      body: `${incorrect === '' ? '' : 'WRONG\n'}${incorrect}${empty === '' ? '' : '\nNO IDEA\n'}${empty}${correct === '' ? '' : '\nCORRECT\n'}${correct}`,
+      body: `${stats.total} answers total\n\n${bodySection('wrong', 'incorrect')}\n\n${bodySection('no idea', 'empty')}\n\n${bodySection('correct', 'correct')}`,
     });
   }
 
