@@ -63,6 +63,16 @@ export default class Stats extends React.Component {
       >
         {total !== 0 &&
           <div
+            className="glyphicon glyphicon-envelope"
+            style={({
+              float: 'right',
+              padding: '0.2em',
+              fontSize: 'large',
+            })}
+          />
+        }
+        {total !== 0 &&
+          <div
             className={gradeClass}
             style={({
               display: 'inline-block',
