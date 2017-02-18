@@ -76,14 +76,24 @@ export default class Stats extends React.Component {
   sendEmail() {
     const stats = this.getStats();
 
+    const incorrect = this.props.history.reduce((accum, record, index) => (
+      record.correctAnswer !== 'incorrect' ? accum :
+        `${accum} ${index + 1}. ${record.question.text} -> ${record.answer} / ${record.question.answers.join(', ')}\n`
+    ), '');
+
+    const empty = this.props.history.reduce((accum, record, index) => (
+      record.correctAnswer !== 'empty' ? accum :
+        `${accum} ${index + 1}. ${record.question.text} -> ? / ${record.question.answers.join(', ')}\n`
+    ), '');
+
+    const correct = this.props.history.reduce((accum, record, index) => (
+      record.correctAnswer !== 'correct' ? accum :
+        `${accum} ${index + 1}. ${record.question.text} -> ${record.answer} / ${record.question.answers.join(', ')}\n`
+    ), '');
+
     EMail.send({
       subject: `${document.title} (${this.props.startTime.getAll()} - ${new DateEx().getTime()}) Grade = ${stats.grade} ${stats.percent}`,
-      body: this.props.history.reduce((accum, record) => (
-              record.correctAnswer === 'correct' ? accum :
-              record.correctAnswer === 'incorrect' ? `${accum}${record.question.text} -> WRONG: ${record.answer}\n` :
-                                                     `${accum}${record.question.text} -> NO IDEA\n`
-              ), '',
-            ),
+      body: `${incorrect === '' ? '' : 'WRONG\n'}${incorrect}${empty === '' ? '' : '\nNO IDEA\n'}${empty}${correct === '' ? '' : '\nCORRECT\n'}${correct}`,
     });
   }
 
