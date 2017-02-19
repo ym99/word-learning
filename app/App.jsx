@@ -252,6 +252,7 @@ export default class App extends React.Component {
           reviewMode={this.state.reviewMode}
           finished={!this.state.reviewMode && this.state.questionIndex === null}
           startTime={this.state.startTime}
+          questions={this.state.questions}
           history={this.state.history}
           words={this.props.words}
           processAnswer={this.processAnswer}
