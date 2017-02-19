@@ -93,6 +93,14 @@ export default class App extends React.Component {
           'english',
         );
 
+        pushQuestions(
+          questions,
+          (mode === 'new' ? 3 : 1),
+          word.english,
+          'english',
+          word.spanish,
+          'spanish',
+        );
         tempWords.splice(i, 1);
       } else {
         i += 1;
@@ -100,6 +108,7 @@ export default class App extends React.Component {
     }
 
     if (mode === 'test') {
+      while (questions.length < 100 && tempWords.length > 0) {
         const i = Math.floor(Math.random() * tempWords.length);
         const word = tempWords[i];
 
@@ -110,6 +119,15 @@ export default class App extends React.Component {
           'spanish',
           word.english,
           'english',
+        );
+
+        pushQuestions(
+          questions,
+          1,
+          word.english,
+          'english',
+          word.spanish,
+          'spanish',
         );
 
         tempWords.splice(i, 1);
