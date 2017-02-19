@@ -102,8 +102,7 @@ export default class Stats extends React.Component {
     body += `${stats.totalAnswers} answers of ${stats.totalQuestions} questions made from ${stats.newWords} new and ${stats.oldWords} known words\n\n`;
     body += `Grade = ${stats.grade} (${stats.percent})\n\n`;
     body += `${bodySection('incorrect')}\n\n`;
-    body += `${bodySection('empty')}\n\n`;
-    body += `${bodySection('correct')}`;
+    body += `${bodySection('empty')}`;
 
     EMail.send({
       subject: `${document.title} (${this.props.startTime.getAll()} - ${new DateEx().getTime()}): Grade = ${stats.grade} (${stats.percent})`,
