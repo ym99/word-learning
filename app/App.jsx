@@ -79,7 +79,7 @@ export default class App extends React.Component {
     let oldRatio;
     switch (mode) {
       case 'new':
-        newRatio = 10;
+        newRatio = 3;
         oldRatio = 0;
         break;
 
