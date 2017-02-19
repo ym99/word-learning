@@ -9,6 +9,7 @@ export default class History extends React.Component {
     reviewMode: React.PropTypes.bool.isRequired,
     finished: React.PropTypes.bool.isRequired,
     startTime: React.PropTypes.instanceOf(DateEx).isRequired,
+    questions: React.PropTypes.arrayOf(React.PropTypes.any).isRequired,
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({
         id: React.PropTypes.number.isRequired,
@@ -55,6 +56,7 @@ export default class History extends React.Component {
         <Stats
           finished={this.props.finished}
           startTime={this.props.startTime}
+          questions={this.props.questions}
           history={this.props.history}
           words={this.props.words}
         />

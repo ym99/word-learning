@@ -6,6 +6,7 @@ export default class Stats extends React.Component {
   static propTypes = {
     finished: React.PropTypes.bool.isRequired,
     startTime: React.PropTypes.instanceOf(DateEx).isRequired,
+    questions: React.PropTypes.arrayOf(React.PropTypes.any).isRequired,
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({
         correctAnswer: React.PropTypes.oneOf([
@@ -36,11 +37,17 @@ export default class Stats extends React.Component {
   }
 
   getStats() {
-    const total = this.props.history.length;
-    const correct = this.props.history.reduce((accum, record) =>
+    const newWords = this.props.words.reduce(
+      (accum, word) => accum + (!word.hide && word.new ? 1 : 0), 0);
+
+    const oldWords = this.props.words.reduce(
+      (accum, word) => accum + (!word.hide && !word.new ? 1 : 0), 0);
+
+    const totalAnswers = this.props.history.length;
+    const correctAnswers = this.props.history.reduce((accum, record) =>
       accum + (record.correctAnswer === 'correct' ? 1 : 0), 0);
 
-    const percent = total === 0 ? null : correct / total;
+    const percent = totalAnswers === 0 ? null : correctAnswers / totalAnswers;
 
     const grade =
       percent === null ? null :
@@ -66,7 +73,10 @@ export default class Stats extends React.Component {
     ;
 
     return {
-      total,
+      newWords,
+      oldWords,
+      totalQuestions: this.props.questions.length + totalAnswers,
+      totalAnswers,
       percent: `${(percent * 100).toFixed(0)}%`,
       grade,
       gradeClass,
@@ -76,7 +86,7 @@ export default class Stats extends React.Component {
   sendEmail() {
     const stats = this.getStats();
 
-    const bodySection = (title, correctAnswerValue) => {
+    const bodySection = (correctAnswerValue) => {
       const array = this.props.history.reduce((accum, record, index) => {
         if (record.correctAnswer === correctAnswerValue) {
           accum.push(`${index + 1}. ${record.question.text} -> ${record.correctAnswer === 'empty' ? '?' : record.answer} / ${record.question.answers.join(', ')}`);
@@ -85,12 +95,19 @@ export default class Stats extends React.Component {
         return accum;
       }, []);
 
-      return array.length === 0 ? `None ${title}` : `${array.length} ${title}\n--------------------\n${array.join('\n')}`;
+      return array.length === 0 ? `No ${correctAnswerValue}` : `${array.length} ${correctAnswerValue}\n--------------------\n${array.join('\n')}`;
     };
 
+    let body = '';
+    body += `${stats.totalAnswers} answers of ${stats.totalQuestions} questions made from ${stats.newWords} new and ${stats.oldWords} known words\n\n`;
+    body += `Grade = ${stats.grade} (${stats.percent})\n\n`;
+    body += `${bodySection('incorrect')}\n\n`;
+    body += `${bodySection('empty')}\n\n`;
+    body += `${bodySection('correct')}`;
+
     EMail.send({
-      subject: `${document.title} (${this.props.startTime.getAll()} - ${new DateEx().getTime()}) Grade = ${stats.grade} ${stats.percent}`,
-      body: `${stats.total} answers total\n\n${bodySection('wrong', 'incorrect')}\n\n${bodySection('no idea', 'empty')}\n\n${bodySection('correct', 'correct')}`,
+      subject: `${document.title} (${this.props.startTime.getAll()} - ${new DateEx().getTime()}): Grade = ${stats.grade} (${stats.percent})`,
+      body,
     });
   }
 
@@ -106,7 +123,7 @@ export default class Stats extends React.Component {
           borderRadius: '0.5em',
         })}
       >
-        {stats.total !== 0 &&
+        {stats.totalAnswers !== 0 &&
           <div
             className="glyphicon glyphicon-envelope"
             style={({
@@ -118,7 +135,7 @@ export default class Stats extends React.Component {
             onClick={() => this.sendEmail()}
           />
         }
-        {stats.total !== 0 &&
+        {stats.totalAnswers !== 0 &&
           <div
             className={stats.gradeClass}
             style={({
@@ -128,7 +145,7 @@ export default class Stats extends React.Component {
             })}
           >{stats.grade}</div>
         }
-        {stats.total !== 0 &&
+        {stats.totalAnswers !== 0 &&
           <div
             style={({
               display: 'inline-block',
@@ -138,7 +155,7 @@ export default class Stats extends React.Component {
             <b>{`${stats.percent}`}</b> correct
           </div>
         }
-        {stats.total !== 0 &&
+        {stats.totalAnswers !== 0 &&
           <br />
         }
         <div
