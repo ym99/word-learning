@@ -180,6 +180,34 @@ export default [
 
     { spanish: 'pelar', english: 'to peel' },
     { spanish: 'necesitar', english: 'to need' },
+
+    { new: true, spanish: 'logar', english: 'place' },
+    { new: true, spanish: 'plaza', english: 'square' },
+    { new: true, spanish: 'oficina', english: 'office' },
+    { new: true, spanish: 'casa', english: 'home' },
+    { new: true, spanish: 'parque', english: 'park' },
+    { new: true, spanish: 'restaurante', english: 'restaurant' },
+    { new: true, spanish: 'baño', english: 'bathroom' },
+    { new: true, spanish: 'biblioteca', english: 'library' },
+    { new: true, spanish: 'gimnasio', english: 'fitness center' },
+    { new: true, spanish: 'escuela', english: 'school' },
+    { new: true, spanish: 'museo', english: 'museum' },
+    { new: true, spanish: 'cine', english: 'cinema' },
+    { new: true, spanish: 'cocina', english: 'kitchen' },
+
+    { new: true, spanish: ['banito', 'banita'], english: 'pretty' },
+    { new: true, spanish: 'quedar', english: 'to stay' },
+    { new: true, spanish: 'viajar', english: 'to travel' },
+    { new: true, spanish: 'buscar', english: 'to search' },
+    { new: true, spanish: 'encontrar', english: 'to find' },
+    { new: true, spanish: 'cocinar', english: 'to cook' },
+
+    { new: true, spanish: 'sala', english: 'living room' },
+    { new: true, spanish: 'cuarto', english: 'room' },
+    { new: true, spanish: 'sótano', english: 'basement' },
+    { new: true, spanish: 'teatro', english: 'theater' },
+    { new: true, spanish: 'ciudad', english: 'city' },
+    { new: true, spanish: 'iglesia', english: 'church' },
 ];
 /*
     á Alt + 0225
