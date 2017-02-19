@@ -1,10 +1,15 @@
 import React from 'react';
 import Colors from './utils/Colors';
+import { flagStyle } from './utils/Flag';
 
 export default class Answer extends React.Component {
   static propTypes = {
     reviewMode: React.PropTypes.bool.isRequired,
     hasAnswerTextErrors: React.PropTypes.bool.isRequired,
+    answerLang: React.PropTypes.oneOf([
+      'english',
+      'spanish',
+    ]),
     answerText: React.PropTypes.string.isRequired,
     onAnswerReady: React.PropTypes.func.isRequired,
     onAnswerChange: React.PropTypes.func.isRequired,
@@ -36,8 +41,10 @@ export default class Answer extends React.Component {
           return true;
         }}
         style={({
+          ...flagStyle(this.props.answerLang),
           ...errorStyle,
-          width: '10em',
+          width: '175px',
+          backgroundPosition: 'right center',
         })}
         value={this.props.answerText}
       />

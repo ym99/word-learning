@@ -1,6 +1,6 @@
 import React from 'react';
-import Flag from './Flag';
 import Answer from './Answer';
+import { flagStyle } from './utils/Flag';
 import { say } from './utils/Speech';
 
 export default class Question extends React.Component {
@@ -60,13 +60,14 @@ export default class Question extends React.Component {
             margin: '0 auto',
           })}
         >
-          <Flag lang={this.props.question.lang} />
           <span
             className="input-group-addon"
             style={({
-              width: '10em',
+              ...flagStyle(this.props.question.lang),
+              width: '175px',
               textAlign: 'right',
               cursor: (this.props.reviewMode ? 'default' : 'pointer'),
+              backgroundPosition: 'left top',
             })}
             onClick={() => {
               if (!this.props.reviewMode) {
@@ -79,19 +80,30 @@ export default class Question extends React.Component {
           <Answer
             reviewMode={this.props.reviewMode}
             hasAnswerTextErrors={this.state.hasAnswerTextErrors}
+            answerLang={this.props.question.answerLang}
             answerText={this.state.answerText}
             onAnswerChange={this.handleAnswerChange}
             onAnswerReady={this.handleAnswerReady}
           />
+          <br />
+        </div>
+        <div
+          style={({
+            display: 'table',
+            margin: '0 auto',
+          })}
+        >
           <button
             className="btn btn-default"
             type="button"
+            style={({
+              width: '350px',
+            })}
             disabled={this.props.reviewMode || this.state.hasAnswerTextErrors}
             onClick={this.handleAnswerReady}
           >
             Check
           </button>
-          <Flag lang={this.props.question.answerLang} />
         </div>
       </div>
     );
