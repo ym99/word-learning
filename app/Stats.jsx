@@ -164,7 +164,7 @@ export default class Stats extends React.Component {
           })}
         >
           <b>
-            {this.props.words.reduce((accum, word) => accum + (!word.hide && word.new ? 1 : 0), 0)}
+            {stats.newWords}
           </b> new words
         </div>
         <div
@@ -174,7 +174,7 @@ export default class Stats extends React.Component {
           })}
         >
           <b>
-            {this.props.words.reduce((accum, word) => accum + (!word.hide && !word.new ? 1 : 0), 0)}
+            {stats.oldWords}
           </b> known words
         </div>
       </div>

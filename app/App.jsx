@@ -75,48 +75,44 @@ export default class App extends React.Component {
       }
     }
 
-    let newRatio;
-    let oldRatio;
-    switch (mode) {
-      case 'new':
-        newRatio = 3;
-        oldRatio = 0;
-        break;
-
-      case 'test':
-        newRatio = 1;
-        oldRatio = 1;
-        break;
-
-      default:
-        newRatio = 1;
-        oldRatio = 1;
-        break;
-    }
-
+    const tempWords = [...words];
     const questions = [];
 
-    for (let i = 0; i < words.length; i += 1) {
-      const word = words[i];
+    for (let i = 0; i < tempWords.length;) {
+      const word = tempWords[i];
 
-      if (!word.hide) {
+      if (word.hide) {
+        tempWords.splice(i, 1);
+      } else if (word.new) {
         pushQuestions(
           questions,
-          (word.new ? newRatio : oldRatio),
+          (mode === 'new' ? 3 : 1),
           word.spanish,
           'spanish',
           word.english,
           'english',
         );
 
+        tempWords.splice(i, 1);
+      } else {
+        i += 1;
+      }
+    }
+
+    if (mode === 'test') {
+        const i = Math.floor(Math.random() * tempWords.length);
+        const word = tempWords[i];
+
         pushQuestions(
           questions,
-          (word.new ? newRatio : oldRatio),
-          word.english,
-          'english',
+          1,
           word.spanish,
           'spanish',
+          word.english,
+          'english',
         );
+
+        tempWords.splice(i, 1);
       }
     }
 
