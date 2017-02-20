@@ -42,7 +42,14 @@ export default class App extends React.Component {
   }
 
   static generateQuestions(words, mode) {
-    function pushQuestions(arr, count, textAndComment, lang, answerOrFew, answerLang) {
+    function pushQuestions({
+        questions,
+        count,
+        textAndComment,
+        lang,
+        answerOrFew,
+        answerLang,
+      }) {
       function getQuestionText(value) {
         const splitValue = value.split('+', 2);
         return splitValue[0].trim() + (splitValue.length > 1 ? ` (${splitValue[1].trim()})` : '');
@@ -54,7 +61,7 @@ export default class App extends React.Component {
 
       for (let c = 0; c < count; c += 1) {
         if (typeof textAndComment === 'string') {
-          arr.push({
+          questions.push({
             id: App.generateUniqueId(),
             text: getQuestionText(textAndComment),
             lang,
@@ -63,7 +70,7 @@ export default class App extends React.Component {
           });
         } else {
           textAndComment.forEach((sourceItem) => {
-            arr.push({
+            questions.push({
               id: App.generateUniqueId(),
               text: getQuestionText(sourceItem),
               lang,
@@ -84,23 +91,23 @@ export default class App extends React.Component {
       if (word.hide) {
         tempWords.splice(i, 1);
       } else if (word.new) {
-        pushQuestions(
+        pushQuestions({
           questions,
-          (mode === 'new' ? 3 : 1),
-          word.spanish,
-          'spanish',
-          word.english,
-          'english',
-        );
+          count: (mode === 'new' ? 3 : 1),
+          textAndComment: word.spanish,
+          lang: 'spanish',
+          answerOrFew: word.english,
+          answerLang: 'english',
+        });
 
-        pushQuestions(
+        pushQuestions({
           questions,
-          (mode === 'new' ? 3 : 1),
-          word.english,
-          'english',
-          word.spanish,
-          'spanish',
-        );
+          count: (mode === 'new' ? 3 : 1),
+          textAndComment: word.english,
+          lang: 'english',
+          answerOrFew: word.spanish,
+          answerLang: 'spanish',
+        });
         tempWords.splice(i, 1);
       } else {
         i += 1;
@@ -112,23 +119,23 @@ export default class App extends React.Component {
         const i = Math.floor(Math.random() * tempWords.length);
         const word = tempWords[i];
 
-        pushQuestions(
+        pushQuestions({
           questions,
-          1,
-          word.spanish,
-          'spanish',
-          word.english,
-          'english',
-        );
+          count: 1,
+          textAndComment: word.spanish,
+          lang: 'spanish',
+          answerOrFew: word.english,
+          answerLang: 'english',
+        });
 
-        pushQuestions(
+        pushQuestions({
           questions,
-          1,
-          word.english,
-          'english',
-          word.spanish,
-          'spanish',
-        );
+          count: 1,
+          textAndComment: word.english,
+          lang: 'english',
+          answerOrFew: word.spanish,
+          answerLang: 'spanish',
+        });
 
         tempWords.splice(i, 1);
       }
@@ -165,7 +172,7 @@ export default class App extends React.Component {
   componentDidUpdate() {
     if (this.state.reviewMode) {
       if (this.state.history.length > 0) {
-        say([{ english: this.state.history[this.state.history.length - 1].correctAnswer === 'correct' ? 'Correct !' :
+        say([{ english: this.state.history[this.state.history.length - 1].correctAnswer === 'correct' ? 'Correct!' :
                         this.state.history[this.state.history.length - 1].correctAnswer === 'incorrect' ? 'Wrong! It is' :
                         'It is' },
             { answers: this.state.questions[this.state.questionIndex] },
