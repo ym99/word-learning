@@ -176,13 +176,42 @@ export default class App extends React.Component {
     this.componentDidUpdate();
   }
 
+
   componentDidUpdate() {
+    function comment(last) {
+      const array = last.correctAnswer === 'correct' ? last.question.newQuestion ? [
+        { english: 'You got it right!' },
+        { english: 'Unvelievable! You learned that it is' },
+      ] : [
+        { english: 'Correct!' },
+        { english: 'Of course, it is' },
+        { english: 'Right!' },
+      ] : last.correctAnswer === 'incorrect' ? last.question.newQuestion ? [
+        { english: 'You didn\'t get it. It is really' },
+        { english: 'Pay attention! It is' },
+        { english: 'Repeat after me!' },
+      ] : [
+        { english: 'Absolutely wrong! It is' },
+        { english: 'Shame on you! It is' },
+        { english: 'You told me that you learned this word! It is' },
+      ] : last.question.newQuestion ? [
+        { english: 'It is' },
+        { english: 'Study harder! It is' },
+        { english: 'Concentrate! It is' },
+      ] : [
+        { english: 'You learned this word earlier! It is' },
+        { english: 'Unacceptable! It is' },
+        { english: 'What are you doing? It is' },
+      ];
+
+      return array[Math.floor(Math.random() * array.length)];
+    }
+
     if (this.state.reviewMode) {
       if (this.state.history.length > 0) {
-        say([{ english: this.state.history[this.state.history.length - 1].correctAnswer === 'correct' ? 'Correct!' :
-                        this.state.history[this.state.history.length - 1].correctAnswer === 'incorrect' ? 'Wrong! It is' :
-                        'It is' },
-            { answers: this.state.questions[this.state.questionIndex] },
+        say([
+          comment(this.state.history[this.state.history.length - 1]),
+          { answers: this.state.questions[this.state.questionIndex] },
         ], () => {
           const newQuestions = [...this.state.questions];
           newQuestions.splice(this.state.questionIndex, 1);
