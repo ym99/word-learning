@@ -45,6 +45,7 @@ export default class App extends React.Component {
     function pushQuestions({
         questions,
         count,
+        newQuestion,
         textAndComment,
         lang,
         answerOrFew,
@@ -63,6 +64,7 @@ export default class App extends React.Component {
         if (typeof textAndComment === 'string') {
           questions.push({
             id: App.generateUniqueId(),
+            newQuestion,
             text: getQuestionText(textAndComment),
             lang,
             answers: (typeof answerOrFew === 'string' ? [answerOrFew] : answerOrFew).map(answer => getAnswerText(answer)),
@@ -72,6 +74,7 @@ export default class App extends React.Component {
           textAndComment.forEach((sourceItem) => {
             questions.push({
               id: App.generateUniqueId(),
+              newQuestion,
               text: getQuestionText(sourceItem),
               lang,
               answers: (typeof answerOrFew === 'string' ? [answerOrFew] : answerOrFew).map(answer => getAnswerText(answer)),
@@ -94,6 +97,7 @@ export default class App extends React.Component {
         pushQuestions({
           questions,
           count: (mode === 'new' ? 3 : 1),
+          newQuestion: word.new,
           textAndComment: word.spanish,
           lang: 'spanish',
           answerOrFew: word.english,
@@ -103,6 +107,7 @@ export default class App extends React.Component {
         pushQuestions({
           questions,
           count: (mode === 'new' ? 3 : 1),
+          newQuestion: word.new,
           textAndComment: word.english,
           lang: 'english',
           answerOrFew: word.spanish,
@@ -122,6 +127,7 @@ export default class App extends React.Component {
         pushQuestions({
           questions,
           count: 1,
+          newQuestion: word.new,
           textAndComment: word.spanish,
           lang: 'spanish',
           answerOrFew: word.english,
@@ -131,6 +137,7 @@ export default class App extends React.Component {
         pushQuestions({
           questions,
           count: 1,
+          newQuestion: word.new,
           textAndComment: word.english,
           lang: 'english',
           answerOrFew: word.spanish,
