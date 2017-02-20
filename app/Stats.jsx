@@ -89,7 +89,7 @@ export default class Stats extends React.Component {
     const bodySection = (correctAnswerValue) => {
       const array = this.props.history.reduce((accum, record, index) => {
         if (record.correctAnswer === correctAnswerValue) {
-          accum.push(`${index + 1}. ${record.question.text} -> ${record.correctAnswer === 'empty' ? '?' : record.answer} / ${record.question.answers.join(', ')}`);
+          accum.push(`${index + 1}. ${record.question.text}${record.question.newQuestion ? '*' : ''} -> ${record.correctAnswer === 'empty' ? '?' : record.answer} / ${record.question.answers.join(', ')}`);
         }
 
         return accum;
