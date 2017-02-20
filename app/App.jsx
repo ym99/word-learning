@@ -53,7 +53,7 @@ export default class App extends React.Component {
       }) {
       function getQuestionText(value) {
         const splitValue = value.split('+', 2);
-        return splitValue[0].trim() + (splitValue.length > 1 ? ` (${splitValue[1].trim()})` : '');
+        return splitValue[0].trim() + (splitValue.length > 1 ? `\n(${splitValue[1].trim()})` : '');
       }
 
       function getAnswerText(value) {
@@ -181,7 +181,7 @@ export default class App extends React.Component {
     function comment(last) {
       const array = last.correctAnswer === 'correct' ? last.question.newQuestion ? [
         { english: 'You got it right!' },
-        { english: 'Unvelievable! You learned that it is' },
+        { english: 'Unbelievable! You learned that it is' },
       ] : [
         { english: 'Correct!' },
         { english: 'Of course, it is' },
@@ -194,6 +194,7 @@ export default class App extends React.Component {
         { english: 'Absolutely wrong! It is' },
         { english: 'Shame on you! It is' },
         { english: 'You told me that you learned this word! It is' },
+        { english: 'Come on! You known that it is' },
       ] : last.question.newQuestion ? [
         { english: 'It is' },
         { english: 'Study harder! It is' },
