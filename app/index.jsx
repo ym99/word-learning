@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import words from './words';
 
 const packageJson = require('../package.json');
 
 ReactDOM.render(
-  <App words={words} />,
+  <App />,
   document.getElementById('app'),
 );
 

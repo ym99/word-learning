@@ -1,4 +1,3 @@
-export default [
     /* 001 */ { spanish: 'gracias', english: 'thanks' },
     /* 002 */ { spanish: 'ser', english: 'to be + somebody' },
     /* 003 */ { hide: true, spanish: 'a', english: 'to' },
