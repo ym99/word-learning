@@ -180,8 +180,13 @@ export default class App extends React.Component {
   componentDidUpdate() {
     function comment(last) {
       const array = last.correctAnswer === 'correct' ? last.question.newQuestion ? [
-        { english: 'You got it right!' },
-        { english: 'Unbelievable! You learned that it is' },
+        { english: 'You got it right! It is' },
+        { english: 'Unbelievable! You learned that this is' },
+        { english: 'Hooray! It is' },
+        { english: 'You nailed it! It is' },
+        { english: 'Good catch! This is really' },
+        { english: 'Unexpected comeback! It is' },
+        { english: 'Touchdown! It is' },
       ] : [
         { english: 'Correct!' },
         { english: 'Of course, it is' },
@@ -200,9 +205,10 @@ export default class App extends React.Component {
         { english: 'Study harder! It is' },
         { english: 'Concentrate! It is' },
       ] : [
-        { english: 'You learned this word earlier! It is' },
+        { english: 'You\'ve learned this word earlier! It is' },
         { english: 'Unacceptable! It is' },
         { english: 'What are you doing? It is' },
+        { english: 'Did you get enough sleep tonight? It is' },
       ];
 
       return array[Math.floor(Math.random() * array.length)];
