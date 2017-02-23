@@ -5,25 +5,11 @@ import Question from './Question';
 import History from './History';
 import Reaction from './Reaction';
 import DateEx from './utils/DateEx';
+import * as statements from './data/statements';
+import { words } from './data/words';
 import { say } from './utils/Speech';
 
 export default class App extends React.Component {
-  static propTypes = {
-    words: React.PropTypes.arrayOf(
-      React.PropTypes.shape({
-        hide: React.PropTypes.bool,
-        new: React.PropTypes.bool,
-        spanish: React.PropTypes.oneOfType([
-          React.PropTypes.string,
-          React.PropTypes.arrayOf(React.PropTypes.string),
-        ]).isRequired,
-        english: React.PropTypes.oneOfType([
-          React.PropTypes.string,
-          React.PropTypes.arrayOf(React.PropTypes.string),
-        ]).isRequired,
-      })).isRequired,
-  }
-
   static previousUniqueId = 0;
   static generateUniqueId() {
     const date = Date.now();
@@ -41,7 +27,7 @@ export default class App extends React.Component {
     return questions.length === 0 ? null : Math.floor(Math.random() * questions.length);
   }
 
-  static generateQuestions(words, mode) {
+  static generateQuestions(mode) {
     function pushQuestions({
         questions,
         count,
@@ -156,7 +142,7 @@ export default class App extends React.Component {
 
     const startTime = new DateEx();
     const mode = 'new';
-    const questions = App.generateQuestions(this.props.words, mode);
+    const questions = App.generateQuestions(mode);
     const questionIndex = App.generateQuestionIndex(questions);
 
     this.state = {
@@ -179,37 +165,9 @@ export default class App extends React.Component {
 
   componentDidUpdate() {
     function comment(last) {
-      const array = last.correctAnswer === 'correct' ? last.question.newQuestion ? [
-        { english: 'You got it right! It is' },
-        { english: 'Unbelievable! You learned that this is' },
-        { english: 'Hooray! It is' },
-        { english: 'You nailed it! It is' },
-        { english: 'Good catch! This is really' },
-        { english: 'Unexpected comeback! It is' },
-        { english: 'Touchdown! It is' },
-      ] : [
-        { english: 'Correct!' },
-        { english: 'Of course, it is' },
-        { english: 'Right!' },
-      ] : last.correctAnswer === 'incorrect' ? last.question.newQuestion ? [
-        { english: 'You didn\'t get it. It is really' },
-        { english: 'Pay attention! It is' },
-        { english: 'Repeat after me!' },
-      ] : [
-        { english: 'Absolutely wrong! It is' },
-        { english: 'Shame on you! It is' },
-        { english: 'You told me that you learned this word! It is' },
-        { english: 'Come on! You known that it is' },
-      ] : last.question.newQuestion ? [
-        { english: 'It is' },
-        { english: 'Study harder! It is' },
-        { english: 'Concentrate! It is' },
-      ] : [
-        { english: 'You\'ve learned this word earlier! It is' },
-        { english: 'Unacceptable! It is' },
-        { english: 'What are you doing? It is' },
-        { english: 'Did you get enough sleep tonight? It is' },
-      ];
+      const array = last.correctAnswer === 'correct' ? last.question.newQuestion ? statements.correctNew : statements.correctKnown
+                  : last.correctAnswer === 'incorrect' ? last.question.newQuestion ? statements.incorrectNew : statements.incorrectKnown
+                  : last.question.newQuestion ? statements.emptyNew : statements.emptyKnown;
 
       return array[Math.floor(Math.random() * array.length)];
     }
@@ -242,22 +200,17 @@ export default class App extends React.Component {
   }
 
   changeMode(mode) {
-    this.setState((prevState, props) => {
-      if (!window.confirm('Start over ?')) {
-        return {};
-      }
-
-      const questions = App.generateQuestions(props.words, mode);
+    if (window.confirm('Start over ?')) {
+      const questions = App.generateQuestions(mode);
       const questionIndex = App.generateQuestionIndex(questions);
-
-      return {
+      this.setState({
         startTime: new DateEx(),
         mode,
         questions,
         questionIndex,
         history: [],
-      };
-    });
+      });
+    }
   }
 
   processAnswer(answer) {
@@ -318,7 +271,7 @@ export default class App extends React.Component {
           startTime={this.state.startTime}
           questions={this.state.questions}
           history={this.state.history}
-          words={this.props.words}
+          words={words}
           processAnswer={this.processAnswer}
         />
         {this.state.reviewMode &&
