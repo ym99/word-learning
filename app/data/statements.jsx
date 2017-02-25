@@ -3,7 +3,7 @@ export const correctNew = [
   { english: 'Unbelievable! You learned that this is' },
   { english: 'Hooray! It is' },
   { english: 'You nailed it! It is' },
-  { english: 'Good catch! This is really' },
+  { english: 'Good catch! It is' },
   { english: 'Unexpected comeback! It is' },
   { english: 'Touchdown! It is' },
 ];
