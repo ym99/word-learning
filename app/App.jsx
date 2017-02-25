@@ -214,25 +214,20 @@ export default class App extends React.Component {
   }
 
   processAnswer(answer) {
-    function checkAnswer(question) {
-      function generalize(value) {
-        return value
-          .replace(/ /g, '')
-          .replace(/á/g, 'a')
-          .replace(/é/g, 'e')
-          .replace(/í/g, 'i')
-          .replace(/ó/g, 'o')
-          .replace(/ú/g, 'u')
-          .replace(/ñ/g, 'n')
-          .replace(/ü/g, 'u')
-          .toUpperCase();
-      }
-
-      const generalizedAnswer = generalize(answer);
-      return generalizedAnswer === '' ? 'empty' :
-             question.answers.some(x => generalize(x) === generalizedAnswer) ? 'correct' : 'incorrect'
-      ;
+    function generalize(value) {
+      return value
+        .replace(/ /g, '')
+        .replace(/á/g, 'a')
+        .replace(/é/g, 'e')
+        .replace(/í/g, 'i')
+        .replace(/ó/g, 'o')
+        .replace(/ú/g, 'u')
+        .replace(/ñ/g, 'n')
+        .replace(/ü/g, 'u')
+        .toUpperCase();
     }
+
+    const generalizedAnswer = generalize(answer);
 
     this.setState((prevState) => {
       const question = prevState.questions[prevState.questionIndex];
@@ -240,7 +235,7 @@ export default class App extends React.Component {
       return {
         history: [...prevState.history, {
           id: question.id,
-          correctAnswer: checkAnswer(question, answer),
+          correctAnswer: generalizedAnswer === '' ? 'empty' : question.answers.some(x => generalize(x) === generalizedAnswer) ? 'correct' : 'incorrect',
           question,
           answer,
           answerMeaning: null,
