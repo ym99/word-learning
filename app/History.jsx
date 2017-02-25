@@ -23,6 +23,7 @@ export default class History extends React.Component {
           lang: React.PropTypes.string.isRequired,
           answerLang: React.PropTypes.string.isRequired,
           answers: React.PropTypes.arrayOf(React.PropTypes.string),
+          answerMeaning: React.PropTypes.string.isRequired,
         }).isRequired,
         answer: React.PropTypes.string.isRequired,
       }).isRequired,
@@ -92,7 +93,9 @@ export default class History extends React.Component {
                   paddingLeft: '0.25em',
                   textDecoration: 'line-through',
                 })}
-              >{record.answer}</span>
+              >
+                {record.answer}{record.answerMeaning === null ? '' : ` (${record.answerMeaning})`}
+              </span>
             }
             <span
               style={({

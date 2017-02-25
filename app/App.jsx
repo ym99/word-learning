@@ -243,6 +243,7 @@ export default class App extends React.Component {
           correctAnswer: checkAnswer(question, answer),
           question,
           answer,
+          answerMeaning: null,
         }],
         reviewMode: true,
       };
