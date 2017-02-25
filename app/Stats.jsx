@@ -95,13 +95,13 @@ export default class Stats extends React.Component {
         return accum;
       }, []);
 
-      return array.length === 0 ? `No ${correctAnswerValue}` : `${array.length} ${correctAnswerValue}\n--------------------\n${array.join('\n')}`;
+      return array.length === 0 ? `No ${correctAnswerValue}` : `${array.length} ${correctAnswerValue}\r\n--------------------\r\n${array.join('\r\n')}`;
     };
 
     let body = '';
-    body += `${stats.totalAnswers} answers of ${stats.totalQuestions} questions made from ${stats.newWords} new and ${stats.oldWords} known words\n\n`;
-    body += `Grade = ${stats.grade} (${stats.percent})\n\n`;
-    body += `${bodySection('incorrect')}\n\n`;
+    body += `${stats.totalAnswers} answers of ${stats.totalQuestions} questions made from ${stats.newWords} new and ${stats.oldWords} known words\r\n\r\n`;
+    body += `Grade = ${stats.grade} (${stats.percent})\r\n\r\n`;
+    body += `${bodySection('incorrect')}\r\n\r\n`;
     body += `${bodySection('empty')}`;
 
     EMail.send({
