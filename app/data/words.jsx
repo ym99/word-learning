@@ -208,6 +208,23 @@ export const words = [
     { spanish: 'teatro', english: 'theater' },
     { spanish: 'ciudad', english: 'city' },
     { spanish: 'iglesia', english: 'church' },
+
+    { hide: true, spanish: 'jugar', english: 'to play + sport' },
+    { hide: true, spanish: 'tocar', english: 'to play + musical intrument' },
+    { hide: true, spanish: 'escalera', english: 'stairs' },
+    { hide: true, spanish: 'conocimiento', english: 'knowledge' },
+    { hide: true, spanish: 'junto', english: 'together' },
+    { hide: true, spanish: 'padre', english: 'father' },
+    { hide: true, spanish: 'mother', english: 'madre' },
+    { hide: true, spanish: 'dad', english: 'papá' },
+    { hide: true, spanish: 'mom', english: 'mamá' },
+    { hide: true, spanish: 'hermano', english: 'brother' },
+    { hide: true, spanish: 'hermana', english: 'sister' },
+    { hide: true, spanish: 'hijo', english: 'son' },
+    { hide: true, spanish: 'hija', english: 'daugther' },
+    { hide: true, spanish: ['primo', 'prima'], english: 'cousin' },
+    { hide: true, spanish: 'abuelo', english: 'grandfather' },
+    { hide: true, spanish: 'abuela', english: 'grandmother' },
 ];
 /*
     á Alt + 0225
