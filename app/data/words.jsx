@@ -1,7 +1,7 @@
 export const words = [
     /* 001 */ { spanish: 'gracias', english: 'thanks' },
     /* 002 */ { spanish: 'ser', english: 'to be + somebody' },
-    /* 003 */ { new: true, spanish: 'a', english: 'to' },
+    /* 003 */ // TOO MANY MEANINGS { new: true, spanish: 'a', english: 'to' },
     /* 004 */ { spanish: 'ir', english: 'to go' },
     /* 005 */ { spanish: 'estar', english: 'to be + location, feeling' },
     /* 006 */ { spanish: 'bueno', english: 'good' },
@@ -20,10 +20,10 @@ export const words = [
     /* 018 */ { new: true, spanish: 'y', english: 'and' },
     /* 019 */ { spanish: 'qué', english: 'what' },
 
-    /* 020 */ { new: true, spanish: 'por', english: ['for', 'by'] },  // PROBLEM
+    /* 020 */ // TOO MANY MEANINGS { new: true, spanish: 'por', english: ['for', 'by'] },
     /* 021 */ { spanish: 'amar', english: 'to love' },
     /* 022 */ { new: true, spanish: 'quién', english: 'who' },
-    /* 023 */ { new: true, spanish: 'para', english: ['for', 'to'] },  // 2x PROBLEMs
+    /* 023 */ // TOO MANY MEANINGS { new: true, spanish: 'para', english: ['for', 'to'] },
     /* 024 */ { spanish: 'venir', english: 'to come' },
     /* 025 */ { new: true, spanish: 'porque', english: 'because' },
     /* 026 */ { new: true, spanish: ['el', 'la', 'los', 'las'], english: 'the' },
