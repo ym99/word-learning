@@ -23,7 +23,7 @@ export default class History extends React.Component {
           lang: React.PropTypes.string.isRequired,
           answerLang: React.PropTypes.string.isRequired,
           answers: React.PropTypes.arrayOf(React.PropTypes.string),
-          answerMeaning: React.PropTypes.string.isRequired,
+          answerMeaning: React.PropTypes.string,
         }).isRequired,
         answer: React.PropTypes.string.isRequired,
       }).isRequired,

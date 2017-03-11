@@ -164,7 +164,7 @@ export default class App extends React.Component {
 
 
   componentDidUpdate() {
-    function comment(last) {
+    function statement(last) {
       const array = last.correctAnswer === 'correct' ? last.question.newQuestion ? statements.correctNew : statements.correctKnown
                   : last.correctAnswer === 'incorrect' ? last.question.newQuestion ? statements.incorrectNew : statements.incorrectKnown
                   : last.question.newQuestion ? statements.emptyNew : statements.emptyKnown;
@@ -175,7 +175,7 @@ export default class App extends React.Component {
     if (this.state.reviewMode) {
       if (this.state.history.length > 0) {
         say([
-          comment(this.state.history[this.state.history.length - 1]),
+          statement(this.state.history[this.state.history.length - 1]),
           { answers: this.state.questions[this.state.questionIndex] },
         ], () => {
           const newQuestions = [...this.state.questions];

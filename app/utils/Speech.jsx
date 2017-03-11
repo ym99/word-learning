@@ -7,6 +7,7 @@ function sayText(text, lang, callback) {
   switch (lang) {
     case 'spanish': utterance.lang = 'es'; break;
     case 'english': utterance.lang = 'en'; break;
+    case 'russian': utterance.lang = 'ru'; break;
     default: break;
   }
 
@@ -80,6 +81,16 @@ export function say(entities, callback) {
     (mute ? dontSayText : sayText)(
       entity.spanish,
       'spanish',
+      () => say(others, callback),
+    );
+
+    return;
+  }
+
+  if (entity.russian) {
+    (mute ? dontSayText : sayText)(
+      entity.russian,
+      'russian',
       () => say(others, callback),
     );
 
