@@ -28,6 +28,10 @@ app.get('/es.svg', (request, response) => {
   response.sendFile(path.resolve(__dirname, '../docs/es.svg'));
 });
 
+app.get('/ru.svg', (request, response) => {
+  response.sendFile(path.resolve(__dirname, '../docs/ru.svg'));
+});
+
 app.get('/us.svg', (request, response) => {
   response.sendFile(path.resolve(__dirname, '../docs/us.svg'));
 });
