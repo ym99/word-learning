@@ -71,6 +71,20 @@ export default class App extends React.Component {
       }
     }
 
+    function wordTextAndComment(word) {
+      if (word.russian) { return word.russian; }
+      if (word.spanish) { return word.spanish; }
+
+      return word.english;
+    }
+
+    function wordLang(word) {
+      if (word.russian) { return 'russian'; }
+      if (word.spanish) { return 'spanish'; }
+
+      return 'english';
+    }
+
     const tempWords = [...words];
     const questions = [];
 
@@ -84,21 +98,24 @@ export default class App extends React.Component {
           questions,
           count: (mode === 'new' ? 3 : 1),
           newQuestion: word.new,
-          textAndComment: word.spanish,
-          lang: 'spanish',
+          textAndComment: wordTextAndComment(word),
+          lang: wordLang(word),
           answerOrFew: word.english,
           answerLang: 'english',
         });
 
-        pushQuestions({
-          questions,
-          count: (mode === 'new' ? 3 : 1),
-          newQuestion: word.new,
-          textAndComment: word.english,
-          lang: 'english',
-          answerOrFew: word.spanish,
-          answerLang: 'spanish',
-        });
+        if (!word.oneWay) {
+          pushQuestions({
+            questions,
+            count: (mode === 'new' ? 3 : 1),
+            newQuestion: word.new,
+            textAndComment: word.english,
+            lang: 'english',
+            answerOrFew: wordTextAndComment(word),
+            answerLang: wordLang(word),
+          });
+        }
+
         tempWords.splice(i, 1);
       } else {
         i += 1;
@@ -114,21 +131,23 @@ export default class App extends React.Component {
           questions,
           count: 1,
           newQuestion: word.new,
-          textAndComment: word.spanish,
-          lang: 'spanish',
+          textAndComment: wordTextAndComment(word),
+          lang: wordLang(word),
           answerOrFew: word.english,
           answerLang: 'english',
         });
 
-        pushQuestions({
-          questions,
-          count: 1,
-          newQuestion: word.new,
-          textAndComment: word.english,
-          lang: 'english',
-          answerOrFew: word.spanish,
-          answerLang: 'spanish',
-        });
+        if (!word.oneWay) {
+          pushQuestions({
+            questions,
+            count: 1,
+            newQuestion: word.new,
+            textAndComment: word.english,
+            lang: 'english',
+            answerOrFew: wordTextAndComment(word),
+            answerLang: wordLang(word),
+          });
+        }
 
         tempWords.splice(i, 1);
       }

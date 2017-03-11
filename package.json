@@ -1,6 +1,6 @@
 {
   "name": "word-learning",
-  "version": "4.6.0",
+  "version": "5.0.0",
   "description": "Word Learning",
   "scripts": {
     "build-dev": "webpack --config compiler/webpack.config.dev.js",
