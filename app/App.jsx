@@ -141,7 +141,7 @@ export default class App extends React.Component {
     super(props);
 
     const startTime = new DateEx();
-    const mode = 'new';
+    const mode = words.some(word => !word.hide && word.new) ? 'new' : 'test';
     const questions = App.generateQuestions(mode);
     const questionIndex = App.generateQuestionIndex(questions);
 
