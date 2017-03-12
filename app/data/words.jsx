@@ -226,8 +226,8 @@ export const words = [
     { spanish: 'abuelo', english: 'grandfather' },
     { spanish: 'abuela', english: 'grandmother' },
 
-    { new: true, oneWay: true, russian: 'поросёнок', english: 'little pig' },
-    { new: true, oneWay: true, russian: 'красавица', english: 'beauty' },
+    { oneWay: true, russian: 'поросёнок', english: 'little pig' },
+    { oneWay: true, russian: 'красавица', english: 'beauty' },
 ];
 /*
     á Alt + 0225
