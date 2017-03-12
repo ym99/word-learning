@@ -239,6 +239,9 @@ export const words = [
     { new: true, spanish: 'año', english: 'year' },
     { new: true, spanish: 'cuántos', english: 'how many' },
     { new: true, spanish: 'cual', english: 'which' },
+    { new: true, spanish: 'buenos días', english: 'good morning' },
+    { new: true, spanish: 'buena noches', english: 'good evening' },
+    { new: true, spanish: 'buenas tardes', english: 'good afternoon' },
 ];
 /*
     á Alt + 0225
