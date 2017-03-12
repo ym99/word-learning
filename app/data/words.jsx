@@ -246,6 +246,15 @@ export const words = [
     { new: true, spanish: 'llamar', english: 'to call' },
 ];
 /*
+    {
+        hide: true,
+        new: true,
+        onlyToEnglish: true, onlyFromEnglish:true,
+        spanish: 'word', spanish: 'word + comment', spanish: ['word', 'word'],
+        english: '',
+        russian: '',
+    }
+
     á Alt + 0225
     é Alt + 0233
     í Alt + 0237
