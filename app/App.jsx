@@ -122,8 +122,8 @@ export default class App extends React.Component {
       }
     }
 
-    if (mode === 'test100') {
-      while (questions.length < 100 && tempWords.length > 0) {
+    if (mode === 'test100' || mode === 'testAll') {
+      while ((mode === 'testAll' || questions.length < 100) && tempWords.length > 0) {
         const i = Math.floor(Math.random() * tempWords.length);
         const word = tempWords[i];
 

@@ -7,6 +7,7 @@ export default class Menu extends React.Component {
     mode: React.PropTypes.oneOf([
       'new',
       'test100',
+      'testAll',
     ]).isRequired,
     changeMode: React.PropTypes.func.isRequired,
   }
@@ -59,11 +60,11 @@ export default class Menu extends React.Component {
           </li>
           <li
             role="presentation"
-            className={this.props.mode === 'test100' ? 'active' : ''}
+            className={this.props.mode === 'testAll' ? 'active' : ''}
           >
             <a
               href="#"
-              onClick={() => { this.props.changeMode('test100'); return false; }}
+              onClick={() => { this.props.changeMode('testAll'); return false; }}
             >
               Test<br />All
             </a>
