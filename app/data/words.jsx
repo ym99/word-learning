@@ -72,7 +72,7 @@ export const words = [
     /* 063 */ { spanish: 'salir', english: 'to leave' },
     /* 064 */ { spanish: 'hora', english: 'hour' },
     /* 065 */ { spanish: 'desde', english: 'from' },
-    /* 066 */ { spanish: 'ver', english: 'to see' },
+    /* 066 */ { spanish: 'ver', english: ['to see', 'to watch'] },
     /* 067 */ { spanish: ['malo', 'mal'], english: 'bad' },
     /* 068 */ { spanish: 'pensar', english: 'to think' },
     /* 069 */ { spanish: 'hasta', english: 'until' },

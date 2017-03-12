@@ -32,7 +32,8 @@ function dontSayText(text, lang, callback) {
   window.setTimeout(callback, 500);
 }
 
-const mute = false;
+const mute = typeof SpeechSynthesisUtterance === 'undefined';
+
 export function say(entities, callback) {
   if (entities.length === 0) {
     if (callback) {
