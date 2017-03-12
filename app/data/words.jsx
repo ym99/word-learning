@@ -244,6 +244,8 @@ export const words = [
     { new: true, spanish: 'buenas tardes', english: 'good afternoon' },
     { new: true, spanish: 'nombre', english: 'name' },
     { new: true, spanish: 'llamar', english: 'to call' },
+    { new: true, spanish: 'ayuda', english: 'help' },
+    { new: true, spanish: 'ayudar', english: 'to help' },
 ];
 /*
     {
