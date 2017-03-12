@@ -86,7 +86,7 @@ export const words = [
     /* 076a*/ { spanish: 'él', english: 'he' },
     /* 076b*/ { spanish: 'ella', english: 'she' },
     /* 076c*/ { spanish: ['ellos', 'ellas'], english: 'they' },
-    /* 077 */ { spanish: 'leer', english: 'to read' },
+    /* 077 */ { new: true, spanish: 'leer', english: 'to read' },
     /* 078 */ { spanish: 'cosa', english: 'thing' },
     /* 079 */ { spanish: 'sacar', english: ['to take out', 'to remove'] },
 
@@ -246,12 +246,21 @@ export const words = [
     { new: true, spanish: 'llamar', english: 'to call' },
     { new: true, spanish: 'ayuda', english: 'help' },
     { new: true, spanish: 'ayudar', english: 'to help' },
+    { new: true, spanish: 'escribir', english: 'to write' },
+    { new: true, spanish: 'playa', english: 'beach' },
+    { new: true, spanish: 'vacaciones', english: 'vacation' },
+    { new: true, spanish: 'pescar', english: 'to fish' },
+    { new: true, spanish: 'viaje', english: 'to travel' },
+    { new: true, spanish: 'preparar', english: 'to prepare' },
+    { new: true, spanish: 'comida', english: 'food' },
+    { new: true, spanish: 'fin de semana', english: 'weekend' },
 ];
 /*
+    { new: true, spanish: '', english: '' },
     {
         hide: true,
         new: true,
-        onlyToEnglish: true, onlyFromEnglish:true,
+        onlyToEnglish: true, onlyFromEnglish: true,
         spanish: 'word', spanish: 'word + comment', spanish: ['word', 'word'],
         english: '',
         russian: '',

@@ -1,3 +1,4 @@
+const mute = typeof SpeechSynthesisUtterance === 'undefined';
 window.dummyUtterances = [];
 
 function sayText(text, lang, callback) {
@@ -31,8 +32,6 @@ function sayText(text, lang, callback) {
 function dontSayText(text, lang, callback) {
   window.setTimeout(callback, 500);
 }
-
-const mute = typeof SpeechSynthesisUtterance === 'undefined';
 
 export function say(entities, callback) {
   if (entities.length === 0) {
