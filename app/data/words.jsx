@@ -1,7 +1,7 @@
 export const words = [
     /* 001 */ { spanish: 'gracias', english: 'thanks' },
     /* 002 */ { spanish: 'ser', english: 'to be + somebody' },
-    /* 003 */ { new: true, oneWay: true, spanish: 'a', english: 'to' },
+    /* 003 */ { new: true, onlyToEnglish: true, spanish: 'a', english: 'to' },
     /* 004 */ { spanish: 'ir', english: 'to go' },
     /* 005 */ { spanish: 'estar', english: 'to be + location, feeling' },
     /* 006 */ { spanish: 'bueno', english: 'good' },
@@ -20,10 +20,10 @@ export const words = [
     /* 018 */ { spanish: 'y', english: 'and' },
     /* 019 */ { spanish: 'qué', english: 'what' },
 
-    /* 020 */ { new: true, oneWay: true, spanish: 'por', english: ['for', 'by'] },
+    /* 020 */ { new: true, onlyToEnglish: true, spanish: 'por', english: ['for', 'by'] },
     /* 021 */ { spanish: 'amar', english: 'to love' },
     /* 022 */ { spanish: 'quién', english: 'who' },
-    /* 023 */ { new: true, oneWay: true, spanish: 'para', english: ['for', 'to'] },
+    /* 023 */ { new: true, onlyToEnglish: true, spanish: 'para', english: ['for', 'to'] },
     /* 024 */ { spanish: 'venir', english: 'to come' },
     /* 025 */ { spanish: 'porque', english: 'because' },
     /* 026 */ { spanish: ['el', 'la', 'los', 'las'], english: 'the' },
@@ -226,8 +226,8 @@ export const words = [
     { spanish: 'abuelo', english: 'grandfather' },
     { spanish: 'abuela', english: 'grandmother' },
 
-    { oneWay: true, russian: 'поросёнок', english: 'little pig' },
-    { oneWay: true, russian: 'красавица', english: 'beauty' },
+    { onlyToEnglish: true, russian: 'поросёнок', english: 'little pig' },
+    { onlyToEnglish: true, russian: 'красавица', english: 'beauty' },
 
     { new: true, spanish: 'compartir', english: 'share' },
     { new: true, spanish: 'contigo', english: 'with you' },
@@ -243,6 +243,7 @@ export const words = [
     { new: true, spanish: 'buena noches', english: 'good evening' },
     { new: true, spanish: 'buenas tardes', english: 'good afternoon' },
     { new: true, spanish: 'nombre', english: 'name' },
+    { new: true, spanish: 'llamar', english: 'to call' },
 ];
 /*
     á Alt + 0225

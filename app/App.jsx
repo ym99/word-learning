@@ -94,17 +94,19 @@ export default class App extends React.Component {
       if (word.hide) {
         tempWords.splice(i, 1);
       } else if (word.new) {
-        pushQuestions({
-          questions,
-          count: (mode === 'new' ? 3 : 1),
-          newQuestion: word.new,
-          textAndComment: wordTextAndComment(word),
-          lang: wordLang(word),
-          answerOrFew: word.english,
-          answerLang: 'english',
-        });
+        if (!word.onlyFromEnglish) {
+          pushQuestions({
+            questions,
+            count: (mode === 'new' ? 3 : 1),
+            newQuestion: word.new,
+            textAndComment: wordTextAndComment(word),
+            lang: wordLang(word),
+            answerOrFew: word.english,
+            answerLang: 'english',
+          });
+        }
 
-        if (!word.oneWay) {
+        if (!word.onlyToEnglish) {
           pushQuestions({
             questions,
             count: (mode === 'new' ? 3 : 1),
@@ -127,17 +129,19 @@ export default class App extends React.Component {
         const i = Math.floor(Math.random() * tempWords.length);
         const word = tempWords[i];
 
-        pushQuestions({
-          questions,
-          count: 1,
-          newQuestion: word.new,
-          textAndComment: wordTextAndComment(word),
-          lang: wordLang(word),
-          answerOrFew: word.english,
-          answerLang: 'english',
-        });
+        if (!word.onlyFromEnglish) {
+          pushQuestions({
+            questions,
+            count: 1,
+            newQuestion: word.new,
+            textAndComment: wordTextAndComment(word),
+            lang: wordLang(word),
+            answerOrFew: word.english,
+            answerLang: 'english',
+          });
+        }
 
-        if (!word.oneWay) {
+        if (!word.onlyToEnglish) {
           pushQuestions({
             questions,
             count: 1,
