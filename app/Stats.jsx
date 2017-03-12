@@ -6,6 +6,11 @@ export default class Stats extends React.Component {
   static propTypes = {
     finished: React.PropTypes.bool.isRequired,
     startTime: React.PropTypes.instanceOf(DateEx).isRequired,
+    mode: React.PropTypes.oneOf([
+      'new',
+      'test100',
+      'testAll',
+    ]),
     questions: React.PropTypes.arrayOf(React.PropTypes.any).isRequired,
     history: React.PropTypes.arrayOf(
       React.PropTypes.shape({
@@ -99,7 +104,7 @@ export default class Stats extends React.Component {
     };
 
     let body = '';
-    body += `${stats.totalAnswers} answers of ${stats.totalQuestions} questions made from ${stats.newWords} new and ${stats.oldWords} known words\r\n\r\n`;
+    body += `${stats.totalAnswers} answers of ${stats.totalQuestions} questions made from ${stats.newWords} new and ${stats.oldWords} known words in "${this.props.mode}" mode.\r\n\r\n`;
     body += `Grade = ${stats.grade} (${stats.percent})\r\n\r\n`;
     body += `${bodySection('incorrect')}\r\n\r\n`;
     body += `${bodySection('empty')}`;
