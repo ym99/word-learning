@@ -14,7 +14,7 @@ function toString(x, len) {
 const now = new Date();
 require('fs').writeFileSync(
     './app/data/version.jsx',
-    'export const version = \'' + toString(now.getFullYear(), 4) + '-' + toString(now.getMonth() + 1, 2) + '-' + toString(now.getDate(), 2) + '\';\n'
+    'export const version = \'' + toString(now.getFullYear() % 100, 2) + '.' + toString(now.getMonth() + 1, 2) + '.' + toString(now.getDate(), 2) + '\';\n'
 );
 
 module.exports = {

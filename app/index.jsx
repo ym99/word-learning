@@ -10,7 +10,7 @@ ReactDOM.render(
   document.getElementById('app'),
 );
 
-document.title = `${packageJson.description} v${packageJson.version}.${version}`;
+document.title = `${packageJson.description} ${version}`;
 
 if (module.hot) {
   module.hot.accept();
