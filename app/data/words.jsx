@@ -51,7 +51,7 @@ export const words = [
     /* 046 */ { spanish: 'cuando', english: 'when' },
     /* 047a*/ { spanish: 'chico', english: 'boy' },
     /* 047b*/ { spanish: 'chica', english: 'girl' },
-    /* 048 */ { spanish: 'entender', english: 'to understand' },
+    /* 048 */ { new: true, spanish: ['entender', 'comprender'], english: 'to understand' },
     /* 049 */ { spanish: 'si', english: ['if', 'yes'] },
 
     /* 050 */ { spanish: 'o', english: 'or' },
@@ -228,6 +228,9 @@ export const words = [
 
     { oneWay: true, russian: 'поросёнок', english: 'little pig' },
     { oneWay: true, russian: 'красавица', english: 'beauty' },
+
+    { new: true, spanish: 'compartir', english: 'share' },
+    { new: true, spanish: 'contigo', english: 'with you' },
 ];
 /*
     á Alt + 0225
