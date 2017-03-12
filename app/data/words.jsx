@@ -7,7 +7,7 @@ export const words = [
     /* 006 */ { spanish: 'bueno', english: 'good' },
     /* 007 */ { spanish: 'de', english: 'of' },
     /* 008 */ { spanish: 'su', english: ['your', 'her', 'his', 'their'] },
-    /* 009 */ { spanish: 'hacer', english: ['to do', 'to make'] },
+    /* 009 */ { new: true, spanish: 'hacer', english: ['to do', 'to make'] },
 
     /* 010 */ { spanish: 'amigo', english: 'friend' },
     /* 011 */ { spanish: 'por favor', english: 'please' },
