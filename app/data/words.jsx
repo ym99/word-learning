@@ -254,6 +254,7 @@ export const words = [
     { new: true, spanish: 'preparar', english: 'to prepare' },
     { new: true, spanish: 'comida', english: 'food' },
     { new: true, spanish: 'fin de semana', english: 'weekend' },
+    { new: true, spanish: 'nadar', english: 'to swim' },
 ];
 /*
     { new: true, spanish: '', english: '' },
