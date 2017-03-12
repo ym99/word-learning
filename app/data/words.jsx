@@ -1,7 +1,7 @@
 export const words = [
     /* 001 */ { spanish: 'gracias', english: 'thanks' },
     /* 002 */ { spanish: 'ser', english: 'to be + somebody' },
-    /* 003 */ // TOO MANY MEANINGS { spanish: 'a', english: 'to' },
+    /* 003 */ { new: true, oneWay: true, spanish: 'a', english: 'to' },
     /* 004 */ { spanish: 'ir', english: 'to go' },
     /* 005 */ { spanish: 'estar', english: 'to be + location, feeling' },
     /* 006 */ { spanish: 'bueno', english: 'good' },
@@ -20,10 +20,10 @@ export const words = [
     /* 018 */ { spanish: 'y', english: 'and' },
     /* 019 */ { spanish: 'qué', english: 'what' },
 
-    /* 020 */ // TOO MANY MEANINGS { spanish: 'por', english: ['for', 'by'] },
+    /* 020 */ { new: true, oneWay: true, spanish: 'por', english: ['for', 'by'] },
     /* 021 */ { spanish: 'amar', english: 'to love' },
     /* 022 */ { spanish: 'quién', english: 'who' },
-    /* 023 */ // TOO MANY MEANINGS { spanish: 'para', english: ['for', 'to'] },
+    /* 023 */ { new: true, oneWay: true, spanish: 'para', english: ['for', 'to'] },
     /* 024 */ { spanish: 'venir', english: 'to come' },
     /* 025 */ { spanish: 'porque', english: 'because' },
     /* 026 */ { spanish: ['el', 'la', 'los', 'las'], english: 'the' },
