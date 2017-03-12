@@ -231,6 +231,13 @@ export const words = [
 
     { new: true, spanish: 'compartir', english: 'share' },
     { new: true, spanish: 'contigo', english: 'with you' },
+    { new: true, spanish: 'cena', english: 'dinner' },
+    { new: true, spanish: 'minuto', english: 'minute' },
+    { new: true, spanish: 'semana', english: 'week' },
+    { new: true, spanish: 'fecha', english: 'date' },
+    { new: true, spanish: 'mes', english: 'month' },
+    { new: true, spanish: 'year', english: 'año' },
+
 ];
 /*
     á Alt + 0225
