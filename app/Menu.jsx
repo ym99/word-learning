@@ -28,10 +28,12 @@ export default class Menu extends React.Component {
               href="#"
               style={({
                 cursor: 'default',
-                fontSize: 'large',
+                fontSize: 'normal',
                 fontWeight: 'bold',
               })}
-            >Word<br />Learning</a>
+            >
+              Word<br />Learning
+            </a>
           </li>
           <li
             role="presentation"
@@ -42,6 +44,17 @@ export default class Menu extends React.Component {
               onClick={() => { this.props.changeMode('new'); return false; }}
             >
               New<br />Words
+            </a>
+          </li>
+          <li
+            role="presentation"
+            className={this.props.mode === 'test' ? 'active' : ''}
+          >
+            <a
+              href="#"
+              onClick={() => { this.props.changeMode('test'); return false; }}
+            >
+              Test<br />100
             </a>
           </li>
           <li
@@ -64,6 +77,8 @@ export default class Menu extends React.Component {
               style={({
                 cursor: 'default',
                 fontSize: 'x-small',
+                paddingLeft: '0',
+                paddingRight: '0',
               })}
             >
               <div>
