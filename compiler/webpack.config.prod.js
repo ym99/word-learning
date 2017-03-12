@@ -2,6 +2,21 @@ var path = require("path");
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
+function toString(x, len) {
+    var str = x.toString();
+    while (str.length < len) {
+        str = '0' + str;
+    }
+
+    return str;
+}
+
+const now = new Date();
+require('fs').writeFileSync(
+    './app/data/version.jsx',
+    'export const version = \'' + toString(now.getFullYear(), 4) + '-' + toString(now.getMonth() + 1, 2) + '-' + toString(now.getDate(), 2) + '\';\n'
+);
+
 module.exports = {
     entry: [
         './app/index'

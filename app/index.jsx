@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { version } from './data/version';
 
 const packageJson = require('../package.json');
 
@@ -9,7 +10,7 @@ ReactDOM.render(
   document.getElementById('app'),
 );
 
-document.title = `${packageJson.description} v${packageJson.version}`;
+document.title = `${packageJson.description} v${packageJson.version}.${version}`;
 
 if (module.hot) {
   module.hot.accept();
