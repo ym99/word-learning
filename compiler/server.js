@@ -28,16 +28,8 @@ app.get('/favicon.ico', (request, response) => {
   response.sendFile(path.resolve(__dirname, '../docs/favicon.ico'));
 });
 
-app.get('/images/es.svg', (request, response) => {
-  response.sendFile(path.resolve(__dirname, '../docs/images/es.svg'));
-});
-
-app.get('/images/ru.svg', (request, response) => {
-  response.sendFile(path.resolve(__dirname, '../docs/images/ru.svg'));
-});
-
-app.get('/images/us.svg', (request, response) => {
-  response.sendFile(path.resolve(__dirname, '../docs/images/us.svg'));
+app.get('/images/:img', (request, response) => {
+  response.sendFile(path.resolve(__dirname, '../docs/images/' + request.params.img));
 });
 
 require('http')
