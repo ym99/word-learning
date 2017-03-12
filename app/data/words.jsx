@@ -236,7 +236,11 @@ export const words = [
     { new: true, spanish: 'semana', english: 'week' },
     { new: true, spanish: 'fecha', english: 'date' },
     { new: true, spanish: 'mes', english: 'month' },
-    { new: true, spanish: 'year', english: 'año' },
+    { new: true, spanish: 'año', english: 'year' },
+    { new: true, spanish: 'cuántos', english: 'how many' },
+    { new: true, spanish: 'cual', english: 'which' },
+
+
 
 ];
 /*
