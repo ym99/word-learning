@@ -242,6 +242,7 @@ export const words = [
     { new: true, spanish: 'buenos días', english: 'good morning' },
     { new: true, spanish: 'buena noches', english: 'good evening' },
     { new: true, spanish: 'buenas tardes', english: 'good afternoon' },
+    { new: true, spanish: 'nombre', english: 'name' },
 ];
 /*
     á Alt + 0225
