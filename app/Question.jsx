@@ -76,7 +76,12 @@ export default class Question extends React.Component {
                 ]);
               }
             }}
-          >{this.props.question.text}</span>
+          >
+            <span>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+            {this.props.question.text}
+          </span>
           <Answer
             reviewMode={this.props.reviewMode}
             hasAnswerTextErrors={this.state.hasAnswerTextErrors}
