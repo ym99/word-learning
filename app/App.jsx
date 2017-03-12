@@ -122,7 +122,7 @@ export default class App extends React.Component {
       }
     }
 
-    if (mode === 'test') {
+    if (mode === 'test100') {
       while (questions.length < 100 && tempWords.length > 0) {
         const i = Math.floor(Math.random() * tempWords.length);
         const word = tempWords[i];
@@ -160,7 +160,7 @@ export default class App extends React.Component {
     super(props);
 
     const startTime = new DateEx();
-    const mode = words.some(word => !word.hide && word.new) ? 'new' : 'test';
+    const mode = words.some(word => !word.hide && word.new) ? 'new' : 'test100';
     const questions = App.generateQuestions(mode);
     const questionIndex = App.generateQuestionIndex(questions);
 

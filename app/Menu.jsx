@@ -6,7 +6,7 @@ export default class Menu extends React.Component {
     startTime: React.PropTypes.instanceOf(DateEx).isRequired,
     mode: React.PropTypes.oneOf([
       'new',
-      'test',
+      'test100',
     ]).isRequired,
     changeMode: React.PropTypes.func.isRequired,
   }
@@ -48,22 +48,22 @@ export default class Menu extends React.Component {
           </li>
           <li
             role="presentation"
-            className={this.props.mode === 'test' ? 'active' : ''}
+            className={this.props.mode === 'test100' ? 'active' : ''}
           >
             <a
               href="#"
-              onClick={() => { this.props.changeMode('test'); return false; }}
+              onClick={() => { this.props.changeMode('test100'); return false; }}
             >
               Test<br />100
             </a>
           </li>
           <li
             role="presentation"
-            className={this.props.mode === 'test' ? 'active' : ''}
+            className={this.props.mode === 'test100' ? 'active' : ''}
           >
             <a
               href="#"
-              onClick={() => { this.props.changeMode('test'); return false; }}
+              onClick={() => { this.props.changeMode('test100'); return false; }}
             >
               Test<br />All
             </a>
