@@ -24,6 +24,10 @@ app.get('/', (request, response) => {
   response.sendFile(path.resolve(__dirname, '../app/index-dev.html'));
 });
 
+app.get('/favicon.ico', (request, response) => {
+  response.sendFile(path.resolve(__dirname, '../docs/favicon.ico'));
+});
+
 app.get('/es.svg', (request, response) => {
   response.sendFile(path.resolve(__dirname, '../docs/es.svg'));
 });
