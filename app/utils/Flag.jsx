@@ -1,9 +1,9 @@
 export function flagStyle(lang) {
   let backgroundImage;
   switch (lang) {
-    case 'spanish': backgroundImage = 'url("es.svg")'; break;
-    case 'russian': backgroundImage = 'url("ru.svg")'; break;
-    case 'english': backgroundImage = 'url("us.svg")'; break;
+    case 'spanish': backgroundImage = 'url("images/es.svg")'; break;
+    case 'russian': backgroundImage = 'url("images/ru.svg")'; break;
+    case 'english': backgroundImage = 'url("images/us.svg")'; break;
     default: backgroundImage = null; break;
   }
 
