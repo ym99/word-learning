@@ -49,8 +49,8 @@ export default class Stats extends React.Component {
       (accum, word) => accum + (!word.hide && !word.new ? 1 : 0), 0);
 
     const totalAnswers = this.props.history.length;
-    const correctAnswers = this.props.history.reduce((accum, record) =>
-      accum + (record.correctAnswer === 'correct' ? 1 : 0), 0);
+    const correctAnswers = this.props.history.reduce(
+      (accum, record) => accum + (record.correctAnswer === 'correct' ? 1 : 0), 0);
 
     const percent = totalAnswers === 0 ? null : correctAnswers / totalAnswers;
 
