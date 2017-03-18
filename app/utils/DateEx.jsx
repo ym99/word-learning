@@ -10,13 +10,13 @@ export default class DateEx {
 
   static getDayOfWeekName(date) {
     const daysOfWeeks = [
+      'Sunday',
       'Monday',
       'Tuesday',
       'Wednesday',
       'Thursday',
       'Friday',
       'Saturday',
-      'Sunday',
     ];
 
     return daysOfWeeks[date.getDay()];
