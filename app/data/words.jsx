@@ -250,7 +250,7 @@ export const words = [
     { new: true, spanish: 'playa', english: 'beach' },
     { new: true, spanish: 'vacaciones', english: 'vacation' },
     { new: true, spanish: 'pescar', english: 'to fish' },
-    { new: true, spanish: 'viaje', english: 'to travel' },
+    { new: true, spanish: 'viaje', english: 'trip' },
     { new: true, spanish: 'preparar', english: 'to prepare' },
     { new: true, spanish: 'comida', english: 'food' },
     { new: true, spanish: 'fin de semana', english: 'weekend' },
