@@ -255,6 +255,19 @@ export const words = [
     { new: true, spanish: 'comida', english: 'food' },
     { new: true, spanish: 'fin de semana', english: 'weekend' },
     { new: true, spanish: 'nadar', english: 'to swim' },
+
+    { hide: true, new: true, spanish: 'caer', english: 'to fall' },
+    { hide: true, new: true, spanish: 'traer', english: 'to bring' },
+    { hide: true, new: true, spanish: '', english: '' },
+    { hide: true, new: true, spanish: '', english: '' },
+    { hide: true, new: true, spanish: '', english: '' },
+    { hide: true, new: true, spanish: '', english: '' },
+    { hide: true, new: true, spanish: '', english: '' },
+    { hide: true, new: true, spanish: '', english: '' },
+    { hide: true, new: true, spanish: '', english: '' },
+    { hide: true, new: true, spanish: '', english: '' },
+    { hide: true, new: true, spanish: '', english: '' },
+    { hide: true, new: true, spanish: '', english: '' },
 ];
 /*
     { new: true, spanish: '', english: '' },
