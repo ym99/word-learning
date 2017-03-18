@@ -49,8 +49,15 @@ export default class Stats extends React.Component {
       (accum, word) => accum + (!word.hide && !word.new ? 1 : 0), 0);
 
     const totalAnswers = this.props.history.length;
+
     const correctAnswers = this.props.history.reduce(
       (accum, record) => accum + (record.correctAnswer === 'correct' ? 1 : 0), 0);
+
+    const incorrectAnswers = this.props.history.reduce(
+      (accum, record) => accum + (record.correctAnswer === 'incorrect' ? 1 : 0), 0);
+
+    const emptyAnswers = this.props.history.reduce(
+      (accum, record) => accum + (record.correctAnswer === 'empty' ? 1 : 0), 0);
 
     const percent = totalAnswers === 0 ? null : correctAnswers / totalAnswers;
 
@@ -81,6 +88,9 @@ export default class Stats extends React.Component {
       newWords,
       oldWords,
       totalQuestions: this.props.questions.length + totalAnswers,
+      correctAnswers,
+      incorrectAnswers,
+      emptyAnswers,
       totalAnswers,
       percent: `${(percent * 100).toFixed(0)}%`,
       grade,
@@ -105,6 +115,7 @@ export default class Stats extends React.Component {
 
     let body = '';
     body += `${stats.totalAnswers} answers of ${stats.totalQuestions} questions made from ${stats.newWords} new and ${stats.oldWords} known words in "${this.props.mode}" mode.\r\n\r\n`;
+    body += `${stats.correctAnswers} + ${stats.incorrectAnswers} + ${stats.emptyAnswers} = ${stats.totalAnswers}\r\n\r\n`;
     body += `${bodySection('incorrect')}\r\n\r\n`;
     body += `${bodySection('empty')}`;
 
