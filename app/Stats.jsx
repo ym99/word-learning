@@ -115,7 +115,14 @@ export default class Stats extends React.Component {
 
     let body = '';
     body += `${stats.totalAnswers} answers of ${stats.totalQuestions} questions made from ${stats.newWords} new and ${stats.oldWords} known words in "${this.props.mode}" mode.\r\n\r\n`;
-    body += `${stats.correctAnswers} + ${stats.incorrectAnswers} + ${stats.emptyAnswers} = ${stats.totalAnswers}\r\n\r\n`;
+    body += `${stats.correctAnswers}`;
+    body += ' + ';
+    body += `${stats.incorrectAnswers}`;
+    body += ' + ';
+    body += `${stats.emptyAnswers}`;
+    body += ' = ';
+    body += `${stats.totalAnswers}`;
+    body += '\r\n\r\n';
     body += `${bodySection('incorrect')}\r\n\r\n`;
     body += `${bodySection('empty')}`;
 
