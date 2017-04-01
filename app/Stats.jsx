@@ -110,7 +110,7 @@ export default class Stats extends React.Component {
         return accum;
       }, []);
 
-      return array.length === 0 ? `No ${correctAnswerValue}` : `${array.length} ${correctAnswerValue}\r\n--------------------\r\n${array.join('\r\n')}`;
+      return array.length === 0 ? `[No ${correctAnswerValue}]` : `[${array.length} ${correctAnswerValue}]\r\n--------------------\r\n${array.join('\r\n')}`;
     };
 
     let body = '';
