@@ -27,6 +27,10 @@ module.exports = {
         publicPath: ''
     },
     plugins: [
+        new webpack.DefinePlugin({
+            '__DEVTOOLS__': false,
+            'process.env': { NODE_ENV: JSON.stringify("production") }
+        }),
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
                 screw_ie8: true,
