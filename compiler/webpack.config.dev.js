@@ -20,17 +20,26 @@ module.exports = {
         new webpack.IgnorePlugin(/regenerator|nodent|js-beautify/, /ajv/)
     ],
     module: {
-        loaders: [
-            { test: /\.(js|jsx)$/, loaders: ['babel', 'eslint-loader'], exclude: /node_modules/ },
-            { test: /\.json$/, loaders: ['json-loader'], exclude: /node_modules/ }
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                use: [
+                    {
+                        loader: 'babel-loader'
+                    },
+                    {
+                        loader: 'eslint-loader',
+                        options: {
+                            configFile: './compiler/.eslintrc.json'
+                        }
+                    }
+                ],
+                exclude: /node_modules/
+            }
         ],
     },
     resolve: {
-        extensions: ['', '.js', '.jsx'],
-        modulesDirectories: ['node_modules', 'app'],
-    },
-    eslint: {
-        configFile: './compiler/.eslintrc.json'
-    },
-    progress: true
+        extensions: ['.js', '.jsx'],
+        modules: ['node_modules', 'app'],
+    }
 };
