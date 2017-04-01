@@ -115,7 +115,7 @@ export default class Stats extends React.Component {
 
     let body = '';
     body += `${stats.totalAnswers} answers of ${stats.totalQuestions} questions made from ${stats.newWords} new and ${stats.oldWords} known words in "${this.props.mode}" mode.\r\n\r\n`;
-    body += `[${stats.correctAnswers == null ? 'null' : stats.correctAnswers}] + [${stats.incorrectAnswers == null ? 'null' : stats.incorrectAnswers}] + [${stats.emptyAnswers == null ? 'null' : stats.emptyAnswers}] = [${stats.totalAnswers == null ? 'null' : stats.totalAnswers}]\r\n\r\n`;
+    body += `[${stats.correctAnswers == null ? 'null' : stats.correctAnswers}] plus [${stats.incorrectAnswers == null ? 'null' : stats.incorrectAnswers}] plus [${stats.emptyAnswers == null ? 'null' : stats.emptyAnswers}] = [${stats.totalAnswers == null ? 'null' : stats.totalAnswers}]\r\n\r\n`;
     body += `${bodySection('incorrect')}\r\n\r\n`;
     body += `${bodySection('empty')}`;
 
