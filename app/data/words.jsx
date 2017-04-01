@@ -268,6 +268,11 @@ export const words = [
     { new: true, spanish: 'mañana', english: 'tomorrow' },
     { new: true, spanish: 'otro día', english: 'other day' },
     { new: true, spanish: 'pasado', english: 'past + last' },
+
+    { new: true, spanish: 'proximo', english: 'next' },
+    { new: true, spanish: 'tarde', english: 'afternoon' },
+    { new: true, spanish: 'después', english: 'after' },
+    { new: true, spanish: 'invitar', english: 'to invite' },
 ];
 /*
     { new: true, spanish: '', english: '' },
