@@ -52,14 +52,18 @@ export default class Stats extends React.Component {
 
     const correctAnswers = this.props.history.reduce(
       (accum, record) => accum + (record.correctAnswer === 'correct' ? 1 : 0), 0);
+    if (console) { console.info('correctAnswers', correctAnswers); }
 
     const incorrectAnswers = this.props.history.reduce(
       (accum, record) => accum + (record.correctAnswer === 'incorrect' ? 1 : 0), 0);
+    if (console) { console.info('incorrectAnswers', incorrectAnswers); }
 
     const emptyAnswers = this.props.history.reduce(
       (accum, record) => accum + (record.correctAnswer === 'empty' ? 1 : 0), 0);
+    if (console) { console.info('emptyAnswers', emptyAnswers); }
 
     const percent = totalAnswers === 0 ? null : correctAnswers / totalAnswers;
+    if (console) { console.info('percent', percent); }
 
     const grade =
       percent === null ? null :
