@@ -247,6 +247,8 @@ export default class App extends React.Component {
         .replace(/ú/g, 'u')
         .replace(/ñ/g, 'n')
         .replace(/ü/g, 'u')
+        .replace(/¡/g, '!')
+        .replace(/¿/g, '?')
         .toUpperCase();
     }
 
