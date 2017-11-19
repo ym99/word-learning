@@ -309,7 +309,7 @@ export const words = [
     { new: true, spanish: 'el fue', english: ['he went', 'he was'] },
     { new: true, spanish: 'ella fue', english: ['she went', 'she was'] },
     { new: true, spanish: 'ellas fueron', english: 'they went + all females' },
-    { new: true, spanish: 'ellos fueron', english: 'the went' },
+    { new: true, spanish: 'ellos fueron', english: 'they went' },
     { new: true, spanish: 'el turista', english: 'the tourist + male' },
     { new: true, spanish: 'la turista', english: 'the tourist + female' },
     { new: true, spanish: 'estar de vacaciones', english: 'to be on vacation' },
@@ -386,7 +386,7 @@ export const words = [
     { new: true, spanish: '¡Dale!', english: 'Come on!' },
     { new: true, spanish: '¡Uy!', english: 'Ugh!' },
 
-    { new: true, spanish: 'el deporte', english: 'sports' },
+    { new: true, spanish: 'el deporte', english: 'the sport' },
     { new: true, spanish: 'La Copa Mundial', english: 'The World Cup' },
     { new: true, spanish: 'Los Juegos Olímpicos', english: 'The Olympic Games' },
     { new: true, spanish: 'Los Juegos Panamericanos', english: 'The Panamerican games' },
