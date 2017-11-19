@@ -25,6 +25,8 @@ export default class Answer extends React.Component {
     return (
       <input
         autoFocus
+        autoComplete="off"
+        spellCheck="off"
         type="text"
         className="form-control"
         disabled={this.props.reviewMode}
