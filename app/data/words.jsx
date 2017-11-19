@@ -357,7 +357,7 @@ export const words = [
     { new: true, spanish: 'la competencia', english: 'the competition' },
     { new: true, spanish: 'el campeón', english: 'the champion  + male' },
     { new: true, spanish: 'la campeóna', english: 'the champion + female' },
-    { new: true, spanish: 'el trofeo', english: 'the throphy' },
+    { new: true, spanish: 'el trofeo', english: 'the trophy' },
     { new: true, spanish: 'una medalla', english: 'a medal' },
     { new: true, spanish: 'el ciclismo', english: 'bicycle racing' },
     { new: true, spanish: 'aprender a', english: 'to learn to' },
@@ -372,7 +372,7 @@ export const words = [
     { new: true, spanish: 'meter un gol', english: 'to score a goal' },
     { new: true, spanish: 'jugar en equipo', english: 'to play on a team' },
 
-    { new: true, spanish: 'el bate', english: 'the bait' },
+    { new: true, spanish: 'el bate', english: 'the bat' },
     { new: true, spanish: 'el campo', english: 'the field' },
     { new: true, spanish: 'la cancha', english: 'the court' },
     { new: true, spanish: 'el casco', english: 'the helmet' },
