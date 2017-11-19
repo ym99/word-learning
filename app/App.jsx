@@ -286,16 +286,17 @@ export default class App extends React.Component {
             processAnswer={this.processAnswer}
           />
         }
-        <History
-          reviewMode={this.state.reviewMode}
-          finished={!this.state.reviewMode && this.state.questionIndex === null}
-          startTime={this.state.startTime}
-          mode={this.state.mode}
-          questions={this.state.questions}
-          history={this.state.history}
-          words={words}
-          processAnswer={this.processAnswer}
-        />
+        {!this.state.reviewMode &&
+          <History
+            finished={!this.state.reviewMode && this.state.questionIndex === null}
+            startTime={this.state.startTime}
+            mode={this.state.mode}
+            questions={this.state.questions}
+            history={this.state.history}
+            words={words}
+            processAnswer={this.processAnswer}
+          />
+        }
         {this.state.reviewMode &&
           <Reaction history={this.state.history} />
         }
