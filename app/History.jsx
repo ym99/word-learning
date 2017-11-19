@@ -97,7 +97,7 @@ export default class History extends React.Component {
               <span
                 style={({
                   paddingLeft: '0.25em',
-                  textDecoration: 'line-through',
+                  color: Colors.red,
                 })}
               >
                 {record.answer}{record.answerMeaning === null ? '' : ` (${record.answerMeaning})`}
