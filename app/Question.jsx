@@ -29,7 +29,7 @@ export default class Question extends React.Component {
 
   handleAnswerChange(answerText) {
     this.setState({
-      hasAnswerTextErrors: !answerText.match(/^[ A-Za-z]*$/),
+      hasAnswerTextErrors: !answerText.match(/^[ A-Za-z!?]*$/),
       answerText,
     });
   }
