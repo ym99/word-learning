@@ -423,6 +423,30 @@ export const words = [
     { new: true, spanish: 'los carbohidratos', english: 'carbohydrates' },
     { new: true, spanish: 'la energía', english: 'energy' },
 
+    { new: true, spanish: 'acostarse', english: 'to go to bed' },
+    { new: true, spanish: 'afeitarse', english: 'to shave' },
+    { new: true, spanish: 'apagar la luz', english: 'to turn off the light' },
+    { new: true, spanish: 'arreglarse', english: 'to get ready' },
+    { new: true, spanish: 'a veces', english: 'sometimes' },
+    { new: true, spanish: 'bañarse', english: 'to take a bath' },
+    { new: true, spanish: 'la cara', english: 'face' },
+    { new: true, spanish: 'cepillarse los dientes', english: 'to brush one\'s teeth' },
+    { new: true, spanish: 'el cepillo', english: 'brush' },
+    { new: true, spanish: 'el cepillo de dientes', english: 'toothbrush' },
+    { new: true, spanish: 'ducharse', english: 'to take a shower' },
+    { new: true, spanish: 'ella se arregla', english: 'she gets ready' },
+    { new: true, spanish: 'ellos se despiertan', english: 'they wake up' },
+
+
+
+
+
+
+
+
+
+
+
     { hide: true, spanish: 'admitir', english: 'to admit' },
     { hide: true, spanish: 'advertir', english: 'to warn' },
     { hide: true, spanish: 'agotar', english: 'to exhaust' },
