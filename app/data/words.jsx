@@ -436,6 +436,7 @@ export const words = [
     { new: true, spanish: 'ducharse', english: 'to take a shower' },
     { new: true, spanish: 'ella se arregla', english: 'she gets ready' },
     { new: true, spanish: 'ellos se despiertan', english: 'they wake up' },
+    { new: true, spanish: 'encender la luz', english: 'to turn on the lights' },
 
 
 
