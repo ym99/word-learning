@@ -299,7 +299,7 @@ export const words = [
     { new: true, spanish: 'el arete', english: 'the earring' },
     { new: true, spanish: 'las artesanias', english: 'the handcrafts' },
     { new: true, spanish: 'el ascensor', english: 'the elevator' },
-    { new: true, spanish: 'bello', english: ['beatiful', 'nice'] },
+    { new: true, spanish: 'bello', english: ['beautiful', 'nice'] },
     { new: true, spanish: 'caro', english: 'expensive' },
 
     { new: true, spanish: 'el collar', english: 'the necklace' },
